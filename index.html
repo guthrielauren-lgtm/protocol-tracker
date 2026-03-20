@@ -519,9 +519,9 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;heigh
       <div class="trend-ttl" style="margin-bottom:0">Fat (lbs) Over Time</div>
       <div class="chart-period-tabs" id="fatPeriodTabs">
         <button class="cpt" data-days="30" onclick="setChartPeriod('fat',30)">30d</button>
-        <button class="cpt on" data-days="90" onclick="setChartPeriod('fat',90)">90d</button>
+        <button class="cpt" data-days="90" onclick="setChartPeriod('fat',90)">90d</button>
         <button class="cpt" data-days="180" onclick="setChartPeriod('fat',180)">6mo</button>
-        <button class="cpt" data-days="0" onclick="setChartPeriod('fat',0)">All</button>
+        <button class="cpt on" data-days="0" onclick="setChartPeriod('fat',0)">All</button>
       </div>
     </div>
     <svg class="trend-svg" height="126" id="bcFatSvg" viewBox="0 0 760 126" preserveAspectRatio="none"></svg>
@@ -531,9 +531,9 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;heigh
       <div class="trend-ttl" style="margin-bottom:0">Weight + Muscle (lbs)</div>
       <div class="chart-period-tabs" id="wtPeriodTabs">
         <button class="cpt" data-days="30" onclick="setChartPeriod('wt',30)">30d</button>
-        <button class="cpt on" data-days="90" onclick="setChartPeriod('wt',90)">90d</button>
+        <button class="cpt" data-days="90" onclick="setChartPeriod('wt',90)">90d</button>
         <button class="cpt" data-days="180" onclick="setChartPeriod('wt',180)">6mo</button>
-        <button class="cpt" data-days="0" onclick="setChartPeriod('wt',0)">All</button>
+        <button class="cpt on" data-days="0" onclick="setChartPeriod('wt',0)">All</button>
       </div>
     </div>
     <svg class="trend-svg" height="126" id="bcWtSvg" viewBox="0 0 760 126" preserveAspectRatio="none"></svg>
@@ -824,7 +824,7 @@ async function load(key,fb=null){
 
 // ════════════ STATE ════════════
 let logs=[],doseMem={},bodyLogs=[],checkins=[],pantry=[],protocols=[],activeProtoId=null;
-let chartPeriod={fat:90,wt:90}; // days to show; 0 = all
+let chartPeriod={fat:0,wt:0}; // days to show; 0 = all
 let selectedGoals=[];
 let buildCompounds=[];
 let bodySource='withings';
@@ -1463,19 +1463,19 @@ function filterByPeriod(logs, days){
   return logs.filter(function(l){return l.date>=cutoffStr;});
 }
 
-function setChartPeriod(chart, days){
+function setChartPeriod(chart,days){
   chartPeriod[chart]=days;
   // Update active tab styling
-  const tabsId=chart==='fat'?'fatPeriodTabs':'wtPeriodTabs';
-  const tabs=document.getElementById(tabsId);
+  var tabsId=chart==='fat'?'fatPeriodTabs':'wtPeriodTabs';
+  var tabs=document.getElementById(tabsId);
   if(tabs){
     tabs.querySelectorAll('.cpt').forEach(function(btn){
       btn.classList.toggle('on',+btn.dataset.days===days);
     });
   }
-  // Re-render just the affected chart
-  const sorted=[...bodyLogs].sort(function(a,b){return new Date(a.date)-new Date(b.date);});
-  const filtered=filterByPeriod(sorted,days);
+  // Build sorted from global bodyLogs (not a closed-over variable)
+  var sorted=[...bodyLogs].sort(function(a,b){return new Date(a.date)-new Date(b.date);});
+  var filtered=filterByPeriod(sorted,days);
   if(chart==='fat'){
     renderBcSvg('bcFatSvg',filtered,'fat',126);
   } else {
@@ -1520,18 +1520,26 @@ function getPhaseColor(phase){
   return 'var(--p3)';
 }
 function fmtShortDate(d){
+  // Parse YYYY-MM-DD string directly — avoids UTC timezone shift from new Date()
   if(!d) return '';
   var p=d.split('-');
   var m=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-  return m[+p[1]-1]+' '+p[0].slice(2);
+  return m[+p[1]-1]+' '+p[2].replace(/^0/,'')+' '+p[0].slice(2);
 }
+function parseLocalDate(s){
+  // Parse YYYY-MM-DD without UTC shift
+  if(!s) return new Date(0);
+  var p=s.split('-');
+  return new Date(+p[0],+p[1]-1,+p[2]);
+}
+
 function renderPhaseBands(pts,W,H,pad,LABEL_H,minDate,totalMs){
   var html='';
   var COLORS={'fat loss phase':'rgba(245,166,35,0.08)','baseline':'rgba(102,94,84,0.07)','recomp':'rgba(61,214,140,0.07)'};
   var bands=[],cur=null;
   pts.forEach(function(p){
     var ph=(p.phase||'').toLowerCase().trim();
-    var x=pad+((new Date(p.date)-minDate)/totalMs)*(W-pad*2);
+    var x=pad+((parseLocalDate(p.date)-minDate)/totalMs)*(W-pad*2);
     if(!cur||cur.phase!==ph){if(cur)bands.push(cur);cur={phase:ph,label:p.phase||'',x1:x,x2:x};}
     else{cur.x2=x;}
   });
@@ -1551,7 +1559,7 @@ function renderPhaseBands(pts,W,H,pad,LABEL_H,minDate,totalMs){
 function renderDexaMarkers(W,H,pad,LABEL_H,minDate,maxDate,totalMs){
   var html='';
   bodyLogs.filter(function(l){return l.source==='dexa';}).forEach(function(d){
-    var dDate=new Date(d.date);
+    var dDate=parseLocalDate(d.date);
     if(dDate<minDate||dDate>maxDate) return;
     var dx=pad+((dDate-minDate)/totalMs)*(W-pad*2);
     html+='<line x1="'+dx+'" y1="'+pad+'" x2="'+dx+'" y2="'+(H-LABEL_H-pad)+'" stroke="var(--p3)" stroke-width="1.5" stroke-dasharray="4,3" opacity="0.8"/>';
@@ -1560,15 +1568,26 @@ function renderDexaMarkers(W,H,pad,LABEL_H,minDate,maxDate,totalMs){
   return html;
 }
 function renderDateAxis(pts,W,H,pad,LABEL_H,minDate,totalMs){
+  if(!pts||pts.length<2) return '';
   var html='';
-  function xOf(p){return pad+((new Date(p.date)-minDate)/totalMs)*(W-pad*2);}
-  var first=pts[0],last=pts[pts.length-1],mid=pts[Math.floor(pts.length/2)];
   var labelY=H-3;
-  html+='<text x="'+xOf(first)+'" y="'+labelY+'" text-anchor="start" font-family="IBM Plex Mono" font-size="9" fill="var(--dim)">'+fmtShortDate(first.date)+'</text>';
-  if(pts.length>4){
-    html+='<text x="'+xOf(mid)+'" y="'+labelY+'" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" fill="var(--dim)">'+fmtShortDate(mid.date)+'</text>';
+  // Left label = earliest data point date, pinned to left edge (x=pad)
+  // Right label = latest data point date, pinned to right edge (x=W-pad)
+  var first=pts[0],last=pts[pts.length-1];
+  html+='<text x="'+pad+'" y="'+labelY+'" text-anchor="start" font-family="IBM Plex Mono" font-size="9" fill="var(--dim)">'+fmtShortDate(first.date)+'</text>';
+  html+='<text x="'+(W-pad)+'" y="'+labelY+'" text-anchor="end" font-family="IBM Plex Mono" font-size="9" fill="var(--dim)">'+fmtShortDate(last.date)+'</text>';
+  // Mid label only if range > 14 days and labels won't collide (need >120px total width)
+  if(totalMs>14*24*3600*1000&&W-pad*2>200){
+    var midMs=minDate.getTime()+totalMs/2;
+    var midPt=pts.reduce(function(best,p){
+      return Math.abs(parseLocalDate(p.date)-midMs)<Math.abs(parseLocalDate(best.date)-midMs)?p:best;
+    });
+    // Only show mid if it's a genuinely different date from first and last
+    if(midPt.date!==first.date&&midPt.date!==last.date){
+      var midX=pad+((parseLocalDate(midPt.date)-minDate)/totalMs)*(W-pad*2);
+      html+='<text x="'+midX+'" y="'+labelY+'" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" fill="var(--dim)">'+fmtShortDate(midPt.date)+'</text>';
+    }
   }
-  html+='<text x="'+xOf(last)+'" y="'+labelY+'" text-anchor="end" font-family="IBM Plex Mono" font-size="9" fill="var(--dim)">'+fmtShortDate(last.date)+'</text>';
   return html;
 }
 
@@ -1579,9 +1598,9 @@ function renderBcSvg(svgId,sorted,key,H){
   var W=760,pad=22,LABEL_H=16;
   var vals=pts.map(function(p){return p[key];});
   var minV=Math.min.apply(null,vals),maxV=Math.max.apply(null,vals),range=maxV-minV||1;
-  var minDate=new Date(pts[0].date),maxDate=new Date(pts[pts.length-1].date);
+  var minDate=parseLocalDate(pts[0].date),maxDate=parseLocalDate(pts[pts.length-1].date);
   var totalMs=maxDate-minDate||1;
-  function xOf(p){return pad+((new Date(p.date)-minDate)/totalMs)*(W-pad*2);}
+  function xOf(p){return pad+((parseLocalDate(p.date)-minDate)/totalMs)*(W-pad*2);}
   function yOf(v){return H-pad-LABEL_H-((v-minV)/range)*(H-pad*2-LABEL_H);}
   var html='';
   html+=renderPhaseBands(pts,W,H,pad,LABEL_H,minDate,totalMs);
@@ -1607,9 +1626,9 @@ function renderBcWtSvg(svgId,sorted,H){
   if(wPts.length<2){svg.innerHTML='<text x="380" y="'+(H/2+4)+'" text-anchor="middle" font-family="IBM Plex Mono" font-size="10" fill="var(--dim)" letter-spacing="2">Log 2+ entries</text>';return;}
   var W=760,pad=22,LABEL_H=16;
   var allPts=wPts;
-  var minDate=new Date(allPts[0].date),maxDate=new Date(allPts[allPts.length-1].date);
+  var minDate=parseLocalDate(allPts[0].date),maxDate=parseLocalDate(allPts[allPts.length-1].date);
   var totalMs=maxDate-minDate||1;
-  function xOf(p){return pad+((new Date(p.date)-minDate)/totalMs)*(W-pad*2);}
+  function xOf(p){return pad+((parseLocalDate(p.date)-minDate)/totalMs)*(W-pad*2);}
   var allV=wPts.map(function(p){return p.weight;}).concat(mPts.map(function(p){return p.muscle;})).filter(Boolean);
   var minV=Math.min.apply(null,allV),maxV=Math.max.apply(null,allV),range=maxV-minV||1;
   function yOf(v){return H-pad-LABEL_H-((v-minV)/range)*(H-pad*2-LABEL_H);}
