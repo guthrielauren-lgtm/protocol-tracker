@@ -1,0 +1,2758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Protocol">
+<meta name="theme-color" content="#0d1b2a">
+<link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9Im5hdnlCZyIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiMwZDFiMmEiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdHlsZT0ic3RvcC1jb2xvcjojMWEyZDQ1Ii8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJhbWJlckdyYWQiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdHlsZT0ic3RvcC1jb2xvcjojZjVjODQyIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3R5bGU9InN0b3AtY29sb3I6I2Y1YTYyMyIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iZW1lcmFsZEdyYWQiIHgxPSIwJSIgeTE9IjEwMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdHlsZT0ic3RvcC1jb2xvcjojMmVjNGI2Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3R5bGU9InN0b3AtY29sb3I6IzNkZDY4YyIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxmaWx0ZXIgaWQ9Imdsb3ciPgogICAgICA8ZmVHYXVzc2lhbkJsdXIgc3RkRGV2aWF0aW9uPSI2IiByZXN1bHQ9ImNvbG9yZWRCbHVyIi8+CiAgICAgIDxmZU1lcmdlPgogICAgICAgIDxmZU1lcmdlTm9kZSBpbj0iY29sb3JlZEJsdXIiLz4KICAgICAgICA8ZmVNZXJnZU5vZGUgaW49IlNvdXJjZUdyYXBoaWMiLz4KICAgICAgPC9mZU1lcmdlPgogICAgPC9maWx0ZXI+CiAgICA8ZmlsdGVyIGlkPSJzb2Z0Z2xvdyI+CiAgICAgIDxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjMiIHJlc3VsdD0iY29sb3JlZEJsdXIiLz4KICAgICAgPGZlTWVyZ2U+CiAgICAgICAgPGZlTWVyZ2VOb2RlIGluPSJjb2xvcmVkQmx1ciIvPgogICAgICAgIDxmZU1lcmdlTm9kZSBpbj0iU291cmNlR3JhcGhpYyIvPgogICAgICA8L2ZlTWVyZ2U+CiAgICA8L2ZpbHRlcj4KICAgIDxjbGlwUGF0aCBpZD0icm91bmRSZWN0Ij4KICAgICAgPHJlY3Qgd2lkdGg9IjUxMiIgaGVpZ2h0PSI1MTIiIHJ4PSIxMTIiIHJ5PSIxMTIiLz4KICAgIDwvY2xpcFBhdGg+CiAgPC9kZWZzPgoKICA8IS0tIEJhY2tncm91bmQgLS0+CiAgPHJlY3Qgd2lkdGg9IjUxMiIgaGVpZ2h0PSI1MTIiIHJ4PSIxMTIiIHJ5PSIxMTIiIGZpbGw9InVybCgjbmF2eUJnKSIvPgoKICA8IS0tIFN1YnRsZSBncmlkIHRleHR1cmUgLS0+CiAgPGcgb3BhY2l0eT0iMC4wNiIgY2xpcC1wYXRoPSJ1cmwoI3JvdW5kUmVjdCkiPgogICAgPGxpbmUgeDE9IjAiIHkxPSIxMjgiIHgyPSI1MTIiIHkyPSIxMjgiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLXdpZHRoPSIxIi8+CiAgICA8bGluZSB4MT0iMCIgeTE9IjI1NiIgeDI9IjUxMiIgeTI9IjI1NiIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utd2lkdGg9IjEiLz4KICAgIDxsaW5lIHgxPSIwIiB5MT0iMzg0IiB4Mj0iNTEyIiB5Mj0iMzg0IiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMSIvPgogICAgPGxpbmUgeDE9IjEyOCIgeTE9IjAiIHgyPSIxMjgiIHkyPSI1MTIiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLXdpZHRoPSIxIi8+CiAgICA8bGluZSB4MT0iMjU2IiB5MT0iMCIgeDI9IjI1NiIgeTI9IjUxMiIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utd2lkdGg9IjEiLz4KICAgIDxsaW5lIHgxPSIzODQiIHkxPSIwIiB4Mj0iMzg0IiB5Mj0iNTEyIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMSIvPgogIDwvZz4KCiAgPCEtLSBBTUJFUiB0cmlhbmdsZSBwb2ludGluZyBVUCDigJQgbXVzY2xlL2xlYW4gbWFzcyBnYWluIC0tPgogIDwhLS0gVmVydGljZXM6IHRvcC1jZW50ZXIsIGJvdHRvbS1sZWZ0LCBib3R0b20tcmlnaHQg4oCUIHNoaWZ0ZWQgc2xpZ2h0bHkgdXAgYW5kIGxlZnQgLS0+CiAgPHBvbHlnb24KICAgIHBvaW50cz0iMjMyLDEwOCAgOTYsMzMwICAzNjgsMzMwIgogICAgZmlsbD0idXJsKCNhbWJlckdyYWQpIgogICAgb3BhY2l0eT0iMC45MiIKICAgIGZpbHRlcj0idXJsKCNnbG93KSIKICAvPgoKICA8IS0tIEVNRVJBTEQgdHJpYW5nbGUgcG9pbnRpbmcgRE9XTiDigJQgZmF0IHJlZHVjdGlvbiAtLT4KICA8IS0tIFZlcnRpY2VzOiB0b3AtbGVmdCwgdG9wLXJpZ2h0LCBib3R0b20tY2VudGVyIOKAlCBzaGlmdGVkIHNsaWdodGx5IGRvd24gYW5kIHJpZ2h0IC0tPgogIDxwb2x5Z29uCiAgICBwb2ludHM9IjE0NCwxOTIgIDQxNiwxOTIgIDI4MCw0MTQiCiAgICBmaWxsPSJ1cmwoI2VtZXJhbGRHcmFkKSIKICAgIG9wYWNpdHk9IjAuODUiCiAgICBmaWx0ZXI9InVybCgjZ2xvdykiCiAgLz4KCiAgPCEtLSBJbnRlcnNlY3Rpb24gb3ZlcmxheSDigJQgZ2xvd2luZyBjZW50ZXIgZGlhbW9uZCB3aGVyZSB0aGV5IG92ZXJsYXAgLS0+CiAgPCEtLSBDb21wdXRlZCBpbnRlcnNlY3Rpb24gaXMgcm91Z2hseSBhIGRpYW1vbmQvcmhvbWJ1cyBzaGFwZSAtLT4KICA8cG9seWdvbgogICAgcG9pbnRzPSIyMzIsMTkyICAzNjgsMTkyICAyODAsMzMwICAxNDQsMzMwIgogICAgZmlsbD0iI2ZmZmZmZiIKICAgIG9wYWNpdHk9IjAuMDgiCiAgLz4KCiAgPCEtLSBDZW50cmFsIGRvdCDigJQgdGhlIHByb3RvY29sIGZvY2FsIHBvaW50IC0tPgogIDxjaXJjbGUgY3g9IjI1NiIgY3k9IjI2MSIgcj0iMTgiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuOTUiIGZpbHRlcj0idXJsKCNzb2Z0Z2xvdykiLz4KICA8Y2lyY2xlIGN4PSIyNTYiIGN5PSIyNjEiIHI9IjEwIiBmaWxsPSJ1cmwoI2FtYmVyR3JhZCkiLz4KCiAgPCEtLSBUb3AgdmVydGV4IGFjY2VudCBkb3QgLS0+CiAgPGNpcmNsZSBjeD0iMjMyIiBjeT0iMTA4IiByPSI3IiBmaWxsPSIjZjVjODQyIiBvcGFjaXR5PSIwLjkiLz4KCiAgPCEtLSBCb3R0b20gdmVydGV4IGFjY2VudCBkb3QgLS0+CiAgPGNpcmNsZSBjeD0iMjgwIiBjeT0iNDE0IiByPSI3IiBmaWxsPSIjM2RkNjhjIiBvcGFjaXR5PSIwLjkiLz4KCiAgPCEtLSBUaGluIGJvcmRlciByaW5nIC0tPgogIDxyZWN0IHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiByeD0iMTEyIiByeT0iMTEyIiBmaWxsPSJub25lIiBzdHJva2U9InJnYmEoMjU1LDI1NSwyNTUsMC4wOCkiIHN0cm9rZS13aWR0aD0iMyIvPgo8L3N2Zz4K">
+<link rel="manifest" href="data:application/json;base64,eyJuYW1lIjogIlJlc2VhcmNoIFByb3RvY29sIiwgInNob3J0X25hbWUiOiAiUHJvdG9jb2wiLCAiZGVzY3JpcHRpb24iOiAiQm9keSByZWNvbXBvc2l0aW9uIHBlcHRpZGUgcHJvdG9jb2wgdHJhY2tlciIsICJzdGFydF91cmwiOiAiLiIsICJkaXNwbGF5IjogInN0YW5kYWxvbmUiLCAiYmFja2dyb3VuZF9jb2xvciI6ICIjMGQxYjJhIiwgInRoZW1lX2NvbG9yIjogIiMwZDFiMmEiLCAib3JpZW50YXRpb24iOiAicG9ydHJhaXQiLCAiaWNvbnMiOiBbeyJzcmMiOiAiZGF0YTppbWFnZS9zdmcreG1sO2Jhc2U2NCxQSE4yWnlCNGJXeHVjejBpYUhSMGNEb3ZMM2QzZHk1M015NXZjbWN2TWpBd01DOXpkbWNpSUhacFpYZENiM2c5SWpBZ01DQTFNVElnTlRFeUlpQjNhV1IwYUQwaU5URXlJaUJvWldsbmFIUTlJalV4TWlJK0NpQWdQR1JsWm5NK0NpQWdJQ0E4YkdsdVpXRnlSM0poWkdsbGJuUWdhV1E5SW01aGRubENaeUlnZURFOUlqQWxJaUI1TVQwaU1DVWlJSGd5UFNJeE1EQWxJaUI1TWowaU1UQXdKU0krQ2lBZ0lDQWdJRHh6ZEc5d0lHOW1abk5sZEQwaU1DVWlJSE4wZVd4bFBTSnpkRzl3TFdOdmJHOXlPaU13WkRGaU1tRWlMejRLSUNBZ0lDQWdQSE4wYjNBZ2IyWm1jMlYwUFNJeE1EQWxJaUJ6ZEhsc1pUMGljM1J2Y0MxamIyeHZjam9qTVdFeVpEUTFJaTgrQ2lBZ0lDQThMMnhwYm1WaGNrZHlZV1JwWlc1MFBnb2dJQ0FnUEd4cGJtVmhja2R5WVdScFpXNTBJR2xrUFNKaGJXSmxja2R5WVdRaUlIZ3hQU0l3SlNJZ2VURTlJakFsSWlCNE1qMGlNVEF3SlNJZ2VUSTlJakV3TUNVaVBnb2dJQ0FnSUNBOGMzUnZjQ0J2Wm1aelpYUTlJakFsSWlCemRIbHNaVDBpYzNSdmNDMWpiMnh2Y2pvalpqVmpPRFF5SWk4K0NpQWdJQ0FnSUR4emRHOXdJRzltWm5ObGREMGlNVEF3SlNJZ2MzUjViR1U5SW5OMGIzQXRZMjlzYjNJNkkyWTFZVFl5TXlJdlBnb2dJQ0FnUEM5c2FXNWxZWEpIY21Ga2FXVnVkRDRLSUNBZ0lEeHNhVzVsWVhKSGNtRmthV1Z1ZENCcFpEMGlaVzFsY21Gc1pFZHlZV1FpSUhneFBTSXdKU0lnZVRFOUlqRXdNQ1VpSUhneVBTSXhNREFsSWlCNU1qMGlNQ1VpUGdvZ0lDQWdJQ0E4YzNSdmNDQnZabVp6WlhROUlqQWxJaUJ6ZEhsc1pUMGljM1J2Y0MxamIyeHZjam9qTW1Wak5HSTJJaTgrQ2lBZ0lDQWdJRHh6ZEc5d0lHOW1abk5sZEQwaU1UQXdKU0lnYzNSNWJHVTlJbk4wYjNBdFkyOXNiM0k2SXpOa1pEWTRZeUl2UGdvZ0lDQWdQQzlzYVc1bFlYSkhjbUZrYVdWdWRENEtJQ0FnSUR4bWFXeDBaWElnYVdROUltZHNiM2NpUGdvZ0lDQWdJQ0E4Wm1WSFlYVnpjMmxoYmtKc2RYSWdjM1JrUkdWMmFXRjBhVzl1UFNJMklpQnlaWE4xYkhROUltTnZiRzl5WldSQ2JIVnlJaTgrQ2lBZ0lDQWdJRHhtWlUxbGNtZGxQZ29nSUNBZ0lDQWdJRHhtWlUxbGNtZGxUbTlrWlNCcGJqMGlZMjlzYjNKbFpFSnNkWElpTHo0S0lDQWdJQ0FnSUNBOFptVk5aWEpuWlU1dlpHVWdhVzQ5SWxOdmRYSmpaVWR5WVhCb2FXTWlMejRLSUNBZ0lDQWdQQzltWlUxbGNtZGxQZ29nSUNBZ1BDOW1hV3gwWlhJK0NpQWdJQ0E4Wm1sc2RHVnlJR2xrUFNKemIyWjBaMnh2ZHlJK0NpQWdJQ0FnSUR4bVpVZGhkWE56YVdGdVFteDFjaUJ6ZEdSRVpYWnBZWFJwYjI0OUlqTWlJSEpsYzNWc2REMGlZMjlzYjNKbFpFSnNkWElpTHo0S0lDQWdJQ0FnUEdabFRXVnlaMlUrQ2lBZ0lDQWdJQ0FnUEdabFRXVnlaMlZPYjJSbElHbHVQU0pqYjJ4dmNtVmtRbXgxY2lJdlBnb2dJQ0FnSUNBZ0lEeG1aVTFsY21kbFRtOWtaU0JwYmowaVUyOTFjbU5sUjNKaGNHaHBZeUl2UGdvZ0lDQWdJQ0E4TDJabFRXVnlaMlUrQ2lBZ0lDQThMMlpwYkhSbGNqNEtJQ0FnSUR4amJHbHdVR0YwYUNCcFpEMGljbTkxYm1SU1pXTjBJajRLSUNBZ0lDQWdQSEpsWTNRZ2QybGtkR2c5SWpVeE1pSWdhR1ZwWjJoMFBTSTFNVElpSUhKNFBTSXhNVElpSUhKNVBTSXhNVElpTHo0S0lDQWdJRHd2WTJ4cGNGQmhkR2crQ2lBZ1BDOWtaV1p6UGdvS0lDQThJUzB0SUVKaFkydG5jbTkxYm1RZ0xTMCtDaUFnUEhKbFkzUWdkMmxrZEdnOUlqVXhNaUlnYUdWcFoyaDBQU0kxTVRJaUlISjRQU0l4TVRJaUlISjVQU0l4TVRJaUlHWnBiR3c5SW5WeWJDZ2pibUYyZVVKbktTSXZQZ29LSUNBOElTMHRJRk4xWW5Sc1pTQm5jbWxrSUhSbGVIUjFjbVVnTFMwK0NpQWdQR2NnYjNCaFkybDBlVDBpTUM0d05pSWdZMnhwY0Mxd1lYUm9QU0oxY213b0kzSnZkVzVrVW1WamRDa2lQZ29nSUNBZ1BHeHBibVVnZURFOUlqQWlJSGt4UFNJeE1qZ2lJSGd5UFNJMU1USWlJSGt5UFNJeE1qZ2lJSE4wY205clpUMGlJMlptWm1abVppSWdjM1J5YjJ0bExYZHBaSFJvUFNJeElpOCtDaUFnSUNBOGJHbHVaU0I0TVQwaU1DSWdlVEU5SWpJMU5pSWdlREk5SWpVeE1pSWdlVEk5SWpJMU5pSWdjM1J5YjJ0bFBTSWpabVptWm1abUlpQnpkSEp2YTJVdGQybGtkR2c5SWpFaUx6NEtJQ0FnSUR4c2FXNWxJSGd4UFNJd0lpQjVNVDBpTXpnMElpQjRNajBpTlRFeUlpQjVNajBpTXpnMElpQnpkSEp2YTJVOUlpTm1abVptWm1ZaUlITjBjbTlyWlMxM2FXUjBhRDBpTVNJdlBnb2dJQ0FnUEd4cGJtVWdlREU5SWpFeU9DSWdlVEU5SWpBaUlIZ3lQU0l4TWpnaUlIa3lQU0kxTVRJaUlITjBjbTlyWlQwaUkyWm1abVptWmlJZ2MzUnliMnRsTFhkcFpIUm9QU0l4SWk4K0NpQWdJQ0E4YkdsdVpTQjRNVDBpTWpVMklpQjVNVDBpTUNJZ2VESTlJakkxTmlJZ2VUSTlJalV4TWlJZ2MzUnliMnRsUFNJalptWm1abVptSWlCemRISnZhMlV0ZDJsa2RHZzlJakVpTHo0S0lDQWdJRHhzYVc1bElIZ3hQU0l6T0RRaUlIa3hQU0l3SWlCNE1qMGlNemcwSWlCNU1qMGlOVEV5SWlCemRISnZhMlU5SWlObVptWm1abVlpSUhOMGNtOXJaUzEzYVdSMGFEMGlNU0l2UGdvZ0lEd3ZaejRLQ2lBZ1BDRXRMU0JCVFVKRlVpQjBjbWxoYm1kc1pTQndiMmx1ZEdsdVp5QlZVQ0RpZ0pRZ2JYVnpZMnhsTDJ4bFlXNGdiV0Z6Y3lCbllXbHVJQzB0UGdvZ0lEd2hMUzBnVm1WeWRHbGpaWE02SUhSdmNDMWpaVzUwWlhJc0lHSnZkSFJ2YlMxc1pXWjBMQ0JpYjNSMGIyMHRjbWxuYUhRZzRvQ1VJSE5vYVdaMFpXUWdjMnhwWjJoMGJIa2dkWEFnWVc1a0lHeGxablFnTFMwK0NpQWdQSEJ2YkhsbmIyNEtJQ0FnSUhCdmFXNTBjejBpTWpNeUxERXdPQ0FnT1RZc016TXdJQ0F6Tmpnc016TXdJZ29nSUNBZ1ptbHNiRDBpZFhKc0tDTmhiV0psY2tkeVlXUXBJZ29nSUNBZ2IzQmhZMmwwZVQwaU1DNDVNaUlLSUNBZ0lHWnBiSFJsY2owaWRYSnNLQ05uYkc5M0tTSUtJQ0F2UGdvS0lDQThJUzB0SUVWTlJWSkJURVFnZEhKcFlXNW5iR1VnY0c5cGJuUnBibWNnUkU5WFRpRGlnSlFnWm1GMElISmxaSFZqZEdsdmJpQXRMVDRLSUNBOElTMHRJRlpsY25ScFkyVnpPaUIwYjNBdGJHVm1kQ3dnZEc5d0xYSnBaMmgwTENCaWIzUjBiMjB0WTJWdWRHVnlJT0tBbENCemFHbG1kR1ZrSUhOc2FXZG9kR3g1SUdSdmQyNGdZVzVrSUhKcFoyaDBJQzB0UGdvZ0lEeHdiMng1WjI5dUNpQWdJQ0J3YjJsdWRITTlJakUwTkN3eE9USWdJRFF4Tml3eE9USWdJREk0TUN3ME1UUWlDaUFnSUNCbWFXeHNQU0oxY213b0kyVnRaWEpoYkdSSGNtRmtLU0lLSUNBZ0lHOXdZV05wZEhrOUlqQXVPRFVpQ2lBZ0lDQm1hV3gwWlhJOUluVnliQ2dqWjJ4dmR5a2lDaUFnTHo0S0NpQWdQQ0V0TFNCSmJuUmxjbk5sWTNScGIyNGdiM1psY214aGVTRGlnSlFnWjJ4dmQybHVaeUJqWlc1MFpYSWdaR2xoYlc5dVpDQjNhR1Z5WlNCMGFHVjVJRzkyWlhKc1lYQWdMUzArQ2lBZ1BDRXRMU0JEYjIxd2RYUmxaQ0JwYm5SbGNuTmxZM1JwYjI0Z2FYTWdjbTkxWjJoc2VTQmhJR1JwWVcxdmJtUXZjbWh2YldKMWN5QnphR0Z3WlNBdExUNEtJQ0E4Y0c5c2VXZHZiZ29nSUNBZ2NHOXBiblJ6UFNJeU16SXNNVGt5SUNBek5qZ3NNVGt5SUNBeU9EQXNNek13SUNBeE5EUXNNek13SWdvZ0lDQWdabWxzYkQwaUkyWm1abVptWmlJS0lDQWdJRzl3WVdOcGRIazlJakF1TURnaUNpQWdMejRLQ2lBZ1BDRXRMU0JEWlc1MGNtRnNJR1J2ZENEaWdKUWdkR2hsSUhCeWIzUnZZMjlzSUdadlkyRnNJSEJ2YVc1MElDMHRQZ29nSUR4amFYSmpiR1VnWTNnOUlqSTFOaUlnWTNrOUlqSTJNU0lnY2owaU1UZ2lJR1pwYkd3OUlpTm1abVptWm1ZaUlHOXdZV05wZEhrOUlqQXVPVFVpSUdacGJIUmxjajBpZFhKc0tDTnpiMlowWjJ4dmR5a2lMejRLSUNBOFkybHlZMnhsSUdONFBTSXlOVFlpSUdONVBTSXlOakVpSUhJOUlqRXdJaUJtYVd4c1BTSjFjbXdvSTJGdFltVnlSM0poWkNraUx6NEtDaUFnUENFdExTQlViM0FnZG1WeWRHVjRJR0ZqWTJWdWRDQmtiM1FnTFMwK0NpQWdQR05wY21Oc1pTQmplRDBpTWpNeUlpQmplVDBpTVRBNElpQnlQU0kzSWlCbWFXeHNQU0lqWmpWak9EUXlJaUJ2Y0dGamFYUjVQU0l3TGpraUx6NEtDaUFnUENFdExTQkNiM1IwYjIwZ2RtVnlkR1Y0SUdGalkyVnVkQ0JrYjNRZ0xTMCtDaUFnUEdOcGNtTnNaU0JqZUQwaU1qZ3dJaUJqZVQwaU5ERTBJaUJ5UFNJM0lpQm1hV3hzUFNJak0yUmtOamhqSWlCdmNHRmphWFI1UFNJd0xqa2lMejRLQ2lBZ1BDRXRMU0JVYUdsdUlHSnZjbVJsY2lCeWFXNW5JQzB0UGdvZ0lEeHlaV04wSUhkcFpIUm9QU0kxTVRJaUlHaGxhV2RvZEQwaU5URXlJaUJ5ZUQwaU1URXlJaUJ5ZVQwaU1URXlJaUJtYVd4c1BTSnViMjVsSWlCemRISnZhMlU5SW5KblltRW9NalUxTERJMU5Td3lOVFVzTUM0d09Da2lJSE4wY205clpTMTNhV1IwYUQwaU15SXZQZ284TDNOMlp6NEsiLCAic2l6ZXMiOiAiNTEyeDUxMiIsICJ0eXBlIjogImltYWdlL3N2Zyt4bWwiLCAicHVycG9zZSI6ICJhbnkgbWFza2FibGUifV19">
+<title>Protocol</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono:wght@300;400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0f0e0c;--bg2:#161511;--sf:#1e1c18;--sf2:#252320;
+  --bd:#333028;--bd2:#46423a;
+  --p1:#3dd68c;--p1d:rgba(61,214,140,.13);
+  --p2:#f5a623;--p2d:rgba(245,166,35,.13);
+  --p3:#2ec4b6;--p3d:rgba(46,196,182,.13);
+  --p4:#9b72cf;--p4d:rgba(155,114,207,.13);
+  --p5:#f25c54;--p5d:rgba(242,92,84,.13);
+  --warn:#f5a623;
+  --text:#f2ede6;--mid:#a09890;--dim:#665e54;
+  --mono:'IBM Plex Mono',monospace;
+  --serif:'Playfair Display',serif;
+  --sans:'IBM Plex Sans',sans-serif;
+  --tab-h:64px;--safe-b:env(safe-area-inset-bottom,0px);--hdr-h:56px;
+}
+@media(prefers-color-scheme:light){:root{
+  --bg:#f5f2ec;--bg2:#ede9e0;--sf:#fff;--sf2:#f0ece4;
+  --bd:#d6d0c4;--bd2:#b8b0a2;
+  --p1:#1a9e5c;--p1d:rgba(26,158,92,.10);
+  --p2:#c47d00;--p2d:rgba(196,125,0,.10);
+  --p3:#0e8a80;--p3d:rgba(14,138,128,.10);
+  --p4:#6e3fb5;--p4d:rgba(110,63,181,.10);
+  --p5:#d93025;--p5d:rgba(217,48,37,.10);
+  --text:#1a1714;--mid:#5a5248;--dim:#9c9184;
+}}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-weight:300;min-height:100dvh;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 70% 50% at 15% 0%,rgba(61,214,140,.05),transparent 55%),radial-gradient(ellipse 50% 60% at 85% 100%,rgba(155,114,207,.04),transparent 55%);pointer-events:none;z-index:0}
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-thumb{background:var(--bd2);border-radius:2px}
+.app{display:grid;grid-template-columns:240px 1fr;min-height:100dvh;position:relative;z-index:1}
+.sidebar{background:var(--bg2);border-right:1px solid var(--bd);padding:28px 0;display:flex;flex-direction:column;position:sticky;top:0;height:100vh;overflow-y:auto}
+.logo{padding:0 24px 22px;border-bottom:1px solid var(--bd);margin-bottom:18px}
+.logo h1{font-family:var(--serif);font-style:italic;font-size:20px;font-weight:400;line-height:1.2}
+.logo .sub{font-family:var(--mono);font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--dim);margin-top:4px}
+.nav-section{padding:0 14px;flex:1}
+.nav-btn{display:flex;align-items:center;gap:10px;width:100%;padding:10px 12px;border-radius:5px;border:none;background:none;color:var(--mid);cursor:pointer;font-family:var(--mono);font-size:11px;letter-spacing:.04em;text-align:left;transition:all .15s;margin-bottom:2px;-webkit-tap-highlight-color:transparent}
+.nav-btn:hover{background:var(--sf);color:var(--text)}
+.nav-btn.on{background:var(--sf2);color:var(--text)}
+.nav-icon{width:18px;text-align:center;font-size:13px}
+.sidebar-footer{padding:16px 14px 0;border-top:1px solid var(--bd);margin-top:auto}
+.backup-row{display:flex;gap:6px;margin-bottom:12px}
+.backup-btn{flex:1;font-family:var(--mono);font-size:9px;letter-spacing:.06em;padding:7px 8px;border-radius:4px;cursor:pointer;text-align:center;transition:all .15s}
+.backup-btn.export{background:var(--p1d);border:1px solid var(--p1);color:var(--p1)}
+.backup-btn.import-btn{background:var(--sf2);border:1px solid var(--bd);color:var(--mid)}
+.mob-header{display:none;align-items:center;justify-content:space-between;background:var(--bg2);border-bottom:1px solid var(--bd);padding:0 18px;height:var(--hdr-h);position:fixed;top:0;left:0;right:0;z-index:50}
+.mob-title{font-family:var(--serif);font-style:italic;font-size:18px;font-weight:400}
+.mob-proto-btn{font-family:var(--mono);font-size:10px;padding:5px 12px;border-radius:20px;border:1px solid var(--p1);color:var(--p1);background:var(--p1d);cursor:pointer;max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;-webkit-tap-highlight-color:transparent}
+.bottom-tabs{display:none;position:fixed;bottom:0;left:0;right:0;height:calc(var(--tab-h) + var(--safe-b));padding-bottom:var(--safe-b);background:var(--bg2);border-top:1px solid var(--bd);z-index:100;align-items:stretch}
+.tab-btn{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;border:none;background:none;cursor:pointer;color:var(--dim);transition:color .15s;-webkit-tap-highlight-color:transparent;padding:0;position:relative}
+.tab-btn.on{color:var(--p1)}
+.tab-icon{font-size:19px;line-height:1}
+.tab-label{font-family:var(--mono);font-size:9px;letter-spacing:.05em}
+.main{overflow-y:auto;height:100vh;padding:32px 36px 60px;position:relative;z-index:1}
+@media(max-width:767px){
+  .app{grid-template-columns:1fr;padding-top:var(--hdr-h)}
+  .sidebar{display:none}
+  .mob-header{display:flex}
+  .bottom-tabs{display:flex}
+  .main{height:calc(100dvh - var(--hdr-h));padding:16px 16px calc(var(--tab-h) + var(--safe-b) + 16px);overflow-y:auto;-webkit-overflow-scrolling:touch}
+}
+.panel{display:none;animation:fadeUp .18s ease}
+.panel.on{display:block}
+@keyframes fadeUp{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+.ph{margin-bottom:20px}
+.ph h2{font-family:var(--serif);font-style:italic;font-size:24px;font-weight:400;margin-bottom:3px}
+.ph p{font-size:13px;color:var(--mid);line-height:1.5}
+@media(max-width:767px){.ph h2{font-size:21px}.ph p{font-size:12px}.ph{margin-bottom:14px}}
+.card{background:var(--sf);border:1px solid var(--bd);border-radius:10px;overflow:hidden;margin-bottom:10px}
+.sec-lbl{font-family:var(--mono);font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--dim);margin-bottom:10px;margin-top:20px}
+@media(max-width:767px){.sec-lbl{font-size:11px}}
+.callout{background:var(--sf);border-left:2px solid var(--p1);padding:12px 16px;border-radius:0 6px 6px 0;font-size:13px;color:var(--mid);line-height:1.6;margin-bottom:10px}
+.callout.warn{border-left-color:var(--warn)}.callout.err{border-left-color:var(--p5)}
+.callout strong{color:var(--p1)}.callout.warn strong{color:var(--warn)}.callout.err strong{color:var(--p5)}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+.g4{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:10px}
+@media(max-width:767px){.g3{grid-template-columns:1fr 1fr}.g4{grid-template-columns:1fr 1fr}}
+@media(max-width:420px){.g2,.g3,.g4{grid-template-columns:1fr}}
+.field{display:flex;flex-direction:column;gap:5px;margin-bottom:10px}
+label{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+@media(max-width:767px){label{font-size:11px}}
+input,select,textarea{background:var(--sf2);border:1px solid var(--bd);color:var(--text);font-family:var(--mono);font-size:13px;padding:10px 12px;border-radius:6px;outline:none;transition:border-color .15s;width:100%;-webkit-appearance:none;appearance:none}
+@media(max-width:767px){input,select,textarea{font-size:16px;padding:13px 12px;border-radius:8px}}
+input:focus,select:focus,textarea:focus{border-color:var(--p1)}
+textarea{resize:vertical;min-height:60px;line-height:1.5}
+.btn{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:11px 22px;background:var(--p1);color:var(--bg);border:none;border-radius:6px;cursor:pointer;font-weight:500;transition:opacity .15s;white-space:nowrap;-webkit-tap-highlight-color:transparent;display:inline-flex;align-items:center;gap:6px}
+.btn:hover{opacity:.85}
+.btn.ghost{background:none;color:var(--mid);border:1px solid var(--bd)}
+.btn.ghost:hover{border-color:var(--bd2);color:var(--text);opacity:1}
+.btn.danger{background:var(--p5d);color:var(--p5);border:1px solid var(--p5)}
+.btn.warn-btn{background:var(--p2d);color:var(--p2);border:1px solid var(--p2)}
+.btn.sm{padding:8px 14px;font-size:10px}
+.btn-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+@media(max-width:767px){.btn{font-size:13px;padding:14px 22px;border-radius:8px}.btn.sm{font-size:11px;padding:10px 14px}}
+.chip{font-family:var(--mono);font-size:10px;padding:6px 12px;border:1px solid var(--bd);border-radius:20px;color:var(--dim);cursor:pointer;background:none;transition:all .15s;-webkit-tap-highlight-color:transparent}
+.chip:hover{border-color:var(--bd2);color:var(--mid)}
+.chip.on{background:var(--p1d);border-color:var(--p1);color:var(--p1)}
+.chip.warn-chip.on{background:var(--p2d);border-color:var(--p2);color:var(--p2)}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+@media(max-width:767px){.chip{font-size:12px;padding:9px 14px}}
+.dow-pills{display:flex;gap:4px;flex-wrap:wrap;margin-top:6px}
+.dow-pill{font-family:var(--mono);font-size:9px;padding:5px 8px;border:1px solid var(--bd);border-radius:4px;color:var(--dim);cursor:pointer;background:none;transition:all .15s;-webkit-tap-highlight-color:transparent}
+.dow-pill.on{background:var(--p1d);border-color:var(--p1);color:var(--p1)}
+@media(max-width:767px){.dow-pill{font-size:11px;padding:8px 10px;border-radius:6px}}
+.sliders{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:14px}
+@media(max-width:420px){.sliders{grid-template-columns:1fr}}
+.sl-field{display:flex;flex-direction:column;gap:7px}
+.sl-hdr{display:flex;justify-content:space-between;align-items:center}
+.sl-val{font-family:var(--mono);font-size:18px;font-weight:500;line-height:1}
+input[type=range]{-webkit-appearance:none;height:3px;background:var(--bd2);border:none;padding:0;border-radius:2px;cursor:pointer}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:var(--p1);cursor:pointer;border:2px solid var(--bg)}
+.stats-band{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--bd);border:1px solid var(--bd);border-radius:8px;overflow:hidden;margin-bottom:12px}
+.stat-cell{background:var(--sf);padding:13px 12px 11px}
+.stat-lbl{font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);margin-bottom:4px;display:flex;align-items:center;gap:4px}
+.stat-num{font-family:var(--serif);font-style:italic;font-size:23px;color:var(--text);line-height:1;margin-bottom:2px}
+.stat-sub{font-family:var(--mono);font-size:9px;color:var(--dim)}
+.stat-sub.up{color:var(--p1)}.stat-sub.dn{color:var(--p5)}.stat-sub.neu{color:var(--dim)}
+@media(max-width:767px){.stats-band{grid-template-columns:1fr 1fr}.stat-num{font-size:26px}.stat-lbl{font-size:10px}.stat-sub{font-size:10px}}
+.proto-progress{height:4px;background:var(--bd);border-radius:2px;overflow:hidden;margin-top:6px}
+.proto-progress-fill{height:100%;background:var(--p1);border-radius:2px;transition:width .4s ease}
+.empty{text-align:center;padding:40px 20px;border:1px dashed var(--bd);border-radius:8px}
+.empty-big{font-family:var(--serif);font-style:italic;font-size:20px;color:var(--mid);display:block;margin-bottom:6px}
+.empty p{font-family:var(--mono);font-size:11px;color:var(--dim)}
+.toast{position:fixed;bottom:calc(var(--tab-h) + var(--safe-b) + 14px);right:18px;background:var(--p1);color:var(--bg);font-family:var(--mono);font-size:11px;letter-spacing:.08em;padding:11px 18px;border-radius:6px;transform:translateY(60px);opacity:0;transition:all .3s cubic-bezier(.34,1.56,.64,1);z-index:999;pointer-events:none}
+.toast.show{transform:translateY(0);opacity:1}
+@media(min-width:768px){.toast{bottom:24px;right:24px}}
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:300;align-items:flex-end;justify-content:center;padding:0}
+.modal-overlay.open{display:flex}
+.modal{background:var(--bg2);border:1px solid var(--bd2);border-radius:16px 16px 0 0;padding:22px 20px;width:100%;max-width:600px;max-height:92dvh;overflow-y:auto;margin:0 auto}
+@media(min-width:600px){.modal-overlay{align-items:center;padding:20px}.modal{border-radius:14px;max-height:90vh}}
+.modal-title{font-family:var(--serif);font-style:italic;font-size:20px;margin-bottom:18px;display:flex;justify-content:space-between;align-items:center}
+.modal-close{background:none;border:none;color:var(--dim);font-size:22px;cursor:pointer;padding:0 4px;line-height:1}
+.modal-close:hover{color:var(--text)}
+/* TODAY */
+.proto-header{background:var(--sf);border:1px solid var(--bd);border-radius:10px;padding:16px 18px;margin-bottom:12px}
+.proto-header-top{display:flex;align-items:flex-start;gap:14px;margin-bottom:10px}
+.proto-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;margin-top:6px}
+.proto-info{flex:1;min-width:0}
+.proto-name{font-family:var(--serif);font-style:italic;font-size:20px;margin-bottom:1px;line-height:1.2}
+.proto-meta{font-family:var(--mono);font-size:10px;color:var(--dim);line-height:1.6}
+.proto-week{font-family:var(--mono);font-size:11px;color:var(--p1);margin-top:2px}
+.proto-actions{display:flex;gap:6px;flex-shrink:0;flex-wrap:wrap}
+.proto-swap{font-family:var(--mono);font-size:10px;padding:6px 12px;background:var(--sf2);border:1px solid var(--bd);border-radius:5px;color:var(--mid);cursor:pointer;-webkit-tap-highlight-color:transparent;transition:all .15s}
+.proto-swap:hover{border-color:var(--p1);color:var(--p1)}
+.bc-strip-outer{margin-bottom:12px}
+.bc-strip-clickable{cursor:pointer;-webkit-tap-highlight-color:transparent}
+.bc-inline-entry{background:var(--sf);border:1px solid var(--bd);border-top:none;border-radius:0 0 8px 8px;padding:14px 16px;display:none}
+.bc-inline-entry.open{display:block}
+.bc-live-row{font-family:var(--mono);font-size:11px;color:var(--mid);padding:8px 12px;background:var(--sf2);border-radius:6px;margin-bottom:10px;display:none}
+.timing-group{margin-bottom:14px}
+.timing-group-hdr{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);margin-bottom:7px;padding:0 2px;display:flex;align-items:center;gap:8px}
+.timing-group-hdr::after{content:'';flex:1;height:1px;background:var(--bd)}
+@media(max-width:767px){.timing-group-hdr{font-size:11px}}
+.cr{background:var(--sf);border:1px solid var(--bd);border-radius:8px;margin-bottom:5px;overflow:hidden;transition:border-color .15s}
+.cr.logged{border-color:var(--p1)}.cr.low-stock{border-color:var(--warn)}
+.cr-main{display:flex;align-items:center;gap:11px;padding:12px 14px;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.cr-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.cr-info{flex:1;min-width:0}
+.cr-name{font-family:var(--serif);font-style:italic;font-size:15px;margin-bottom:1px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cr-meta{font-family:var(--mono);font-size:10px;color:var(--dim);line-height:1.4}
+.cr-right{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.cr-check{width:26px;height:26px;border-radius:50%;border:1.5px solid var(--bd);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--dim);background:var(--sf2);transition:all .2s}
+.cr.logged .cr-check{background:var(--p1);border-color:var(--p1);color:var(--bg)}
+.cr-expand{display:none;padding:0 14px 12px;border-top:1px solid var(--bd)}
+.cr-expand.open{display:block}
+.cr-dose-row{display:flex;align-items:center;gap:8px;margin-top:11px;margin-bottom:8px}
+.cr-dose-input{flex:1;font-size:14px;padding:9px 11px}
+@media(max-width:767px){.cr-dose-input{font-size:16px}}
+.cr-log-btn{font-family:var(--mono);font-size:11px;letter-spacing:.06em;padding:9px 16px;background:var(--p1d);border:1px solid var(--p1);border-radius:6px;color:var(--p1);cursor:pointer;transition:all .15s;white-space:nowrap;-webkit-tap-highlight-color:transparent}
+.cr-log-btn:hover,.cr.logged .cr-log-btn{background:var(--p1);color:var(--bg)}
+.cr-site-row{display:flex;gap:5px;flex-wrap:wrap}
+.checkin-card{background:var(--sf);border:1px solid var(--bd);border-radius:10px;margin-bottom:12px;overflow:hidden}
+.checkin-hdr{display:flex;align-items:center;gap:10px;padding:13px 16px;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.checkin-hdr.open{border-bottom:1px solid var(--bd)}
+.checkin-badge{font-family:var(--mono);font-size:10px;color:var(--p1);margin-left:auto}
+.checkin-body{padding:16px;display:none}
+.checkin-body.open{display:block}
+.add-compound-btn{display:flex;align-items:center;gap:10px;padding:12px 14px;background:var(--sf);border:1px dashed var(--bd);border-radius:8px;cursor:pointer;width:100%;margin-top:4px;transition:border-color .15s;-webkit-tap-highlight-color:transparent}
+.add-compound-btn:hover{border-color:var(--p1)}
+.add-compound-btn span{font-family:var(--mono);font-size:11px;color:var(--dim)}
+/* HISTORY */
+.day-card{background:var(--sf);border:1px solid var(--bd);border-radius:8px;margin-bottom:6px;overflow:hidden}
+.day-card:hover{border-color:var(--bd2)}
+.day-card-hdr{display:flex;align-items:center;gap:12px;padding:13px 16px;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.day-card-hdr.open{border-bottom:1px solid var(--bd)}
+.day-date{font-family:var(--mono);font-size:11px;color:var(--mid);min-width:64px}
+.day-dots{display:flex;gap:4px;flex:1;flex-wrap:wrap}
+.day-dot{width:9px;height:9px;border-radius:50%}
+.day-scores{display:flex;gap:8px;flex-shrink:0}
+.day-score{font-family:var(--mono);font-size:10px;color:var(--dim);display:flex;align-items:center;gap:3px}
+.day-expand{display:none;padding:10px 16px 14px}
+.day-expand.open{display:block}
+.day-entry{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid var(--bd)}
+.day-entry:last-child{border-bottom:none}
+.day-entry-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;margin-top:5px}
+.day-entry-info{flex:1;min-width:0}
+.day-entry-name{font-family:var(--serif);font-style:italic;font-size:15px;margin-bottom:2px}
+.day-entry-meta{font-family:var(--mono);font-size:10px;color:var(--dim)}
+.day-entry-actions{display:flex;gap:6px;flex-shrink:0}
+.day-entry-btn{font-family:var(--mono);font-size:9px;padding:4px 9px;border-radius:3px;border:1px solid var(--bd);background:none;color:var(--dim);cursor:pointer;-webkit-tap-highlight-color:transparent;transition:all .15s}
+.day-entry-btn:hover{border-color:var(--bd2);color:var(--text)}
+.day-entry-btn.del:hover{border-color:var(--p5);color:var(--p5)}
+/* BODY */
+.bc-form-card{background:var(--sf);border:1px solid var(--bd);border-radius:10px;padding:18px;margin-bottom:12px}
+.src-tabs{display:flex;gap:4px;margin-bottom:14px}
+.src-tab{font-family:var(--mono);font-size:10px;padding:7px 14px;border:1px solid var(--bd);border-radius:5px;background:none;color:var(--dim);cursor:pointer;transition:all .15s;-webkit-tap-highlight-color:transparent}
+.src-tab.on{background:var(--p3d);border-color:var(--p3);color:var(--p3)}
+@media(max-width:767px){.src-tab{font-size:12px;padding:9px 14px}}
+.bc-feed-row{background:var(--sf);border:1px solid var(--bd);border-radius:6px;padding:11px 13px;display:flex;align-items:flex-start;gap:10px;margin-bottom:4px;transition:background .15s}
+.bc-feed-row:hover{background:var(--sf2)}
+.bc-metrics{display:flex;gap:12px;flex-wrap:wrap;flex:1}
+.bc-m{display:flex;flex-direction:column;gap:1px}
+.bc-m-lbl{font-family:var(--mono);font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim)}
+.bc-m-val{font-family:var(--serif);font-style:italic;font-size:15px}
+.bc-m-val.fat{color:var(--p2)}.bc-m-val.mu{color:var(--p4)}.bc-m-val.water{color:var(--p3)}
+.src-badge{font-family:var(--mono);font-size:9px;padding:2px 7px;border-radius:3px;border:1px solid;white-space:nowrap;flex-shrink:0}
+.trend-card{background:var(--sf);border:1px solid var(--bd);border-radius:8px;padding:16px;margin-bottom:10px}
+.trend-ttl{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-bottom:10px}
+.trend-svg{width:100%;display:block}
+/* PANTRY */
+.pantry-add-toggle{display:flex;align-items:center;gap:10px;padding:13px 16px;background:var(--sf);border:1px dashed var(--bd);border-radius:8px;cursor:pointer;width:100%;margin-bottom:12px;transition:border-color .15s;-webkit-tap-highlight-color:transparent}
+.pantry-add-toggle:hover{border-color:var(--p1)}
+.pantry-add-toggle span{font-family:var(--mono);font-size:11px;color:var(--dim)}
+.pantry-add-form{background:var(--sf);border:1px solid var(--bd);border-radius:8px;padding:16px;margin-bottom:12px;display:none}
+.pantry-add-form.open{display:block}
+.pc{background:var(--sf);border:1px solid var(--bd);border-radius:8px;padding:14px 16px;margin-bottom:6px;transition:border-color .15s}
+.pc:hover{border-color:var(--bd2)}.pc.low-stock{border-color:var(--warn)}.pc.inactive{opacity:.45}
+.pc-top{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.pc-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.pc-name-wrap{flex:1;min-width:0}
+.pc-name{font-family:var(--serif);font-style:italic;font-size:15px;margin-bottom:1px}
+.pc-form{font-family:var(--mono);font-size:10px;color:var(--dim)}
+.pc-actions{display:flex;gap:5px;flex-shrink:0;flex-wrap:wrap}
+.pc-toggle{font-family:var(--mono);font-size:9px;padding:4px 10px;border-radius:3px;border:1px solid var(--bd);background:none;color:var(--dim);cursor:pointer;transition:all .15s}
+.pc-toggle.on{border-color:var(--p1);color:var(--p1);background:var(--p1d)}
+.pc-edit-btn{font-family:var(--mono);font-size:9px;padding:4px 10px;border-radius:3px;border:1px solid var(--bd);background:none;color:var(--dim);cursor:pointer;transition:all .15s}
+.pc-edit-btn:hover{border-color:var(--bd2);color:var(--text)}
+.pc-stock{display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:6px;align-items:end}
+@media(max-width:600px){.pc-stock{grid-template-columns:1fr 1fr}}
+.stock-f{display:flex;flex-direction:column;gap:3px}
+.stock-f label{font-size:8px}
+.stock-f input{font-size:12px;padding:7px 9px}
+@media(max-width:767px){.stock-f input{font-size:14px;padding:10px 10px}}
+.days-rem{font-family:var(--mono);font-size:10px;line-height:1.4}
+.days-rem.ok{color:var(--p1)}.days-rem.low{color:var(--warn)}.days-rem.out{color:var(--p5)}
+.restock-btn{font-family:var(--mono);font-size:9px;padding:7px 12px;background:var(--p2d);border:1px solid var(--p2);border-radius:4px;color:var(--p2);cursor:pointer;transition:all .15s;white-space:nowrap}
+.restock-btn:hover{background:var(--p2);color:var(--bg)}
+/* BUILD */
+.stepper{display:flex;align-items:center;gap:0;margin-bottom:24px;overflow-x:auto;padding-bottom:2px}
+.step{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.step-num{width:26px;height:26px;border-radius:50%;border:1.5px solid var(--bd);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:10px;color:var(--dim);transition:all .2s;flex-shrink:0}
+.step.on .step-num{background:var(--p1);border-color:var(--p1);color:var(--bg)}
+.step.done .step-num{background:var(--p1d);border-color:var(--p1);color:var(--p1)}
+.step-label{font-family:var(--mono);font-size:10px;color:var(--dim);transition:color .2s}
+.step.on .step-label{color:var(--text)}.step.done .step-label{color:var(--p1)}
+.step-sep{flex:1;height:1px;background:var(--bd);margin:0 8px;min-width:16px}
+.build-step{display:none}.build-step.on{display:block;animation:fadeUp .18s ease}
+.goal-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px}
+@media(max-width:420px){.goal-grid{grid-template-columns:1fr}}
+.goal-btn{padding:12px 14px;border:1px solid var(--bd);border-radius:8px;background:none;color:var(--mid);font-family:var(--mono);font-size:11px;text-align:left;cursor:pointer;transition:all .15s;display:flex;align-items:center;gap:8px;-webkit-tap-highlight-color:transparent}
+.goal-btn:hover{border-color:var(--bd2);color:var(--text)}.goal-btn.on{background:var(--p1d);border-color:var(--p1);color:var(--p1)}
+@media(max-width:767px){.goal-btn{font-size:13px;padding:14px}}
+.sugg-card{background:var(--sf);border:1px solid var(--bd);border-radius:8px;padding:12px 14px;margin-bottom:5px;display:flex;align-items:flex-start;gap:11px;transition:border-color .15s}
+.sugg-card.selected{border-color:var(--p1);background:var(--p1d)}.sugg-card.not-in-pantry{opacity:.55}
+.sugg-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0;margin-top:4px}
+.sugg-info{flex:1;min-width:0}
+.sugg-name{font-family:var(--serif);font-style:italic;font-size:15px;margin-bottom:2px}
+.sugg-detail{font-family:var(--mono);font-size:10px;color:var(--dim);line-height:1.5}
+.sugg-right{display:flex;flex-direction:column;gap:5px;align-items:flex-end;flex-shrink:0}
+.sugg-select-btn{font-family:var(--mono);font-size:9px;padding:5px 10px;border-radius:3px;border:1px solid var(--bd);background:none;color:var(--dim);cursor:pointer;transition:all .15s;-webkit-tap-highlight-color:transparent;white-space:nowrap}
+.sugg-card.selected .sugg-select-btn{background:var(--p1);border-color:var(--p1);color:var(--bg)}
+.sugg-add-pantry{font-family:var(--mono);font-size:9px;padding:5px 10px;border-radius:3px;border:1px solid var(--p2);color:var(--p2);background:var(--p2d);cursor:pointer;transition:all .15s;white-space:nowrap}
+.review-compound{background:var(--sf);border:1px solid var(--bd);border-radius:8px;margin-bottom:8px;overflow:hidden}
+.rc-hdr{display:flex;align-items:center;gap:10px;padding:12px 14px;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.rc-hdr.open{border-bottom:1px solid var(--bd)}
+.rc-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.rc-name{font-family:var(--serif);font-style:italic;font-size:15px;flex:1}
+.rc-summary{font-family:var(--mono);font-size:10px;color:var(--dim)}
+.rc-remove{font-family:var(--mono);font-size:9px;padding:4px 8px;border-radius:3px;border:1px solid var(--p5);color:var(--p5);background:none;cursor:pointer;flex-shrink:0;-webkit-tap-highlight-color:transparent;transition:all .15s}
+.rc-remove:hover{background:var(--p5);color:#fff}
+.rc-body{display:none;padding:14px}.rc-body.open{display:block}
+.conflict-item{background:var(--p5d);border:1px solid var(--p5);border-radius:6px;padding:12px 14px;margin-bottom:6px;display:flex;align-items:flex-start;gap:10px}
+.conflict-check{flex-shrink:0;margin-top:1px}
+.conflict-check input[type=checkbox]{width:16px;height:16px;cursor:pointer;accent-color:var(--p1)}
+.conflict-text{font-family:var(--mono);font-size:11px;color:var(--p5);line-height:1.6;flex:1}
+.spc{background:var(--sf);border:1px solid var(--bd);border-radius:8px;padding:14px 16px;margin-bottom:6px}
+.spc.active{border-color:var(--p1)}
+.spc-top{display:flex;align-items:center;gap:11px;margin-bottom:8px}
+.spc-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.spc-info{flex:1;min-width:0}
+.spc-name{font-family:var(--serif);font-style:italic;font-size:16px;margin-bottom:2px}
+.spc-meta{font-family:var(--mono);font-size:10px;color:var(--dim)}
+.spc-actions{display:flex;gap:5px;flex-shrink:0;flex-wrap:wrap}
+.spc-btn{font-family:var(--mono);font-size:9px;padding:5px 10px;border-radius:3px;border:1px solid;cursor:pointer;background:none;-webkit-tap-highlight-color:transparent;transition:all .15s}
+.spc-btn.activate-btn{border-color:var(--p1);color:var(--p1)}
+.spc-btn.activate-btn:hover,.spc-btn.activate-btn.is-active{background:var(--p1);color:var(--bg)}
+.spc-btn.edit-btn{border-color:var(--bd);color:var(--mid)}.spc-btn.edit-btn:hover{border-color:var(--bd2);color:var(--text)}
+.spc-btn.dup-btn{border-color:var(--p3);color:var(--p3)}
+.spc-btn.del-btn{border-color:var(--p5);color:var(--p5)}.spc-btn.del-btn:hover{background:var(--p5);color:#fff}
+.editor-tabs{display:flex;gap:4px;margin-bottom:14px}
+.editor-tab{font-family:var(--mono);font-size:10px;padding:7px 14px;border:1px solid var(--bd);border-radius:5px;background:none;color:var(--dim);cursor:pointer;transition:all .15s}
+.editor-tab.on{background:var(--p4d);border-color:var(--p4);color:var(--p4)}
+.spinner{width:26px;height:26px;border:2px solid var(--bd);border-top-color:var(--p1);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 12px}
+@keyframes spin{to{transform:rotate(360deg)}}
+/* Inline unit suffix select */
+.dose-wrap{display:flex;gap:0;align-items:stretch}
+.dose-wrap input{border-radius:6px 0 0 6px;border-right:none;flex:1}
+.dose-wrap input:focus{border-color:var(--p1);z-index:1}
+.unit-select{font-family:var(--mono);font-size:11px;padding:0 8px;background:var(--sf2);border:1px solid var(--bd);border-radius:0 6px 6px 0;color:var(--mid);cursor:pointer;min-width:52px;-webkit-appearance:none;appearance:none;text-align:center}
+.unit-select:focus{border-color:var(--p1);outline:none}
+@media(max-width:767px){.dose-wrap input{font-size:16px;padding:13px 12px}.unit-select{font-size:14px;min-width:58px}}
+/* Chart period tabs */
+.chart-period-tabs{display:flex;gap:3px;margin-bottom:8px}
+.cpt{font-family:var(--mono);font-size:9px;letter-spacing:.08em;padding:5px 10px;border:1px solid var(--bd);border-radius:4px;background:none;color:var(--dim);cursor:pointer;transition:all .15s;-webkit-tap-highlight-color:transparent}
+.cpt:hover{border-color:var(--bd2);color:var(--mid)}
+.cpt.on{background:var(--p3d);border-color:var(--p3);color:var(--p3)}
+@media(max-width:767px){.cpt{font-size:11px;padding:8px 12px;border-radius:6px}}
+</style>
+</head>
+<body>
+
+<header class="mob-header" id="mobHeader">
+  <span class="mob-title">Protocol</span>
+  <button class="mob-proto-btn" id="mobProtoBtn" onclick="openProtoSwap()">Loading…</button>
+</header>
+
+<div class="app">
+<aside class="sidebar">
+  <div class="logo"><h1>Research<br>Protocol</h1><div class="sub">Body Recomposition</div></div>
+  <div class="nav-section">
+    <button class="nav-btn on" id="dn-today"   onclick="nav('today')"><span class="nav-icon">◎</span>Today</button>
+    <button class="nav-btn"    id="dn-history" onclick="nav('history')"><span class="nav-icon">≡</span>History</button>
+    <button class="nav-btn"    id="dn-body"    onclick="nav('body')"><span class="nav-icon">⊡</span>Body Comp</button>
+    <button class="nav-btn"    id="dn-pantry"  onclick="nav('pantry')"><span class="nav-icon">◉</span>Pantry</button>
+    <button class="nav-btn"    id="dn-build"   onclick="nav('build')"><span class="nav-icon">⚗</span>Build</button>
+  </div>
+  <div class="sidebar-footer">
+    <div class="backup-row">
+      <button class="backup-btn export" onclick="exportData()">↓ Backup</button>
+      <label class="backup-btn import-btn">↑ Restore<input type="file" accept=".json" style="display:none" onchange="importData(this)"></label>
+    </div>
+  </div>
+</aside>
+
+<main class="main" id="mainEl">
+
+<!-- TODAY -->
+<div class="panel on" id="panel-today">
+  <div class="proto-header" id="protoHeader">
+    <div class="proto-header-top">
+      <div class="proto-dot" id="protoDot" style="background:var(--p2)"></div>
+      <div class="proto-info">
+        <div class="proto-name" id="protoName">No active protocol</div>
+        <div class="proto-meta" id="protoMeta"></div>
+        <div class="proto-week" id="protoWeek"></div>
+      </div>
+      <div class="proto-actions">
+        <button class="proto-swap" onclick="openProtoSwap()">Switch ⌄</button>
+        <button class="proto-swap" onclick="nav('build')" style="color:var(--p1);border-color:var(--p1)">Edit</button>
+      </div>
+    </div>
+    <div class="proto-progress"><div class="proto-progress-fill" id="protoProgressFill" style="width:0%"></div></div>
+  </div>
+
+  <div class="bc-strip-outer">
+    <div class="bc-strip-clickable" id="bcStripToggle" onclick="toggleBCEntry()">
+      <div class="stats-band" id="todayStrip">
+        <div class="stat-cell"><div class="stat-lbl">Weight</div><div class="stat-num" id="tsWeight">—</div><div class="stat-sub neu" id="tsWeightD">lbs</div></div>
+        <div class="stat-cell"><div class="stat-lbl">Fat %<span id="tsFatSrc" style="font-size:8px;color:var(--p3);margin-left:3px"></span></div><div class="stat-num" id="tsFat">—</div><div class="stat-sub" id="tsFatD">—</div></div>
+        <div class="stat-cell"><div class="stat-lbl">Muscle</div><div class="stat-num" id="tsMuscle">—</div><div class="stat-sub" id="tsMuscleD">lbs</div></div>
+        <div class="stat-cell"><div class="stat-lbl">Water</div><div class="stat-num" id="tsWater">—</div><div class="stat-sub" id="tsWaterD">%</div></div>
+      </div>
+    </div>
+    <div class="bc-inline-entry" id="bcInlineEntry">
+      <div style="font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);margin-bottom:10px">Today's Withings Reading · tap strip again to close</div>
+      <div class="g4" style="margin-bottom:8px">
+        <div class="field"><label>M · Muscle</label><input type="number" inputmode="decimal" id="tM" placeholder="127.3" step="0.1" oninput="bcLiveCalc()"></div>
+        <div class="field"><label>F · Fat</label><input type="number" inputmode="decimal" id="tF" placeholder="33.9" step="0.1" oninput="bcLiveCalc()"></div>
+        <div class="field"><label>B · Bone</label><input type="number" inputmode="decimal" id="tB" placeholder="7.3" step="0.1" oninput="bcLiveCalc()"></div>
+        <div class="field"><label>W · Water</label><input type="number" inputmode="decimal" id="tW" placeholder="82.4" step="0.1"></div>
+      </div>
+      <div class="bc-live-row" id="bcLiveRow">
+        Total: <b id="bcLiveWt" style="color:var(--text)"></b> lbs &nbsp;·&nbsp; Fat <span id="bcLiveFat" style="color:var(--p2)"></span>% &nbsp;·&nbsp; Lean <span id="bcLiveLean" style="color:var(--p1)"></span>%
+      </div>
+      <div style="display:flex;gap:8px;align-items:center">
+        <button class="btn sm" onclick="saveTodayBC()">Save Reading</button>
+        <button class="btn ghost sm" onclick="nav('body')">Full History →</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="checklistWrap"></div>
+
+  <button class="add-compound-btn" onclick="openAddCompoundToday()">
+    <span style="font-size:18px;color:var(--p1)">+</span>
+    <span>Add compound for today</span>
+  </button>
+
+  <div class="checkin-card" style="margin-top:12px">
+    <div class="checkin-hdr" id="checkinHdr" onclick="toggleCheckin()">
+      <span style="font-size:15px">✦</span>
+      <span style="font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);flex:1;margin-left:6px">Morning Check-in</span>
+      <span class="checkin-badge" id="checkinBadge"></span>
+      <span style="font-size:11px;color:var(--dim);margin-left:6px" id="checkinChev">▾</span>
+    </div>
+    <div class="checkin-body" id="checkinBody">
+      <div class="sliders">
+        <div class="sl-field"><div class="sl-hdr"><label>Sleep</label><span class="sl-val" id="ciVSleep" style="color:var(--p3)">7</span></div><input type="range" min="1" max="10" value="7" id="ciSleep" oninput="document.getElementById('ciVSleep').textContent=this.value"></div>
+        <div class="sl-field"><div class="sl-hdr"><label>Energy</label><span class="sl-val" id="ciVEnergy" style="color:var(--p1)">7</span></div><input type="range" min="1" max="10" value="7" id="ciEnergy" oninput="document.getElementById('ciVEnergy').textContent=this.value"></div>
+        <div class="sl-field"><div class="sl-hdr"><label>Hunger</label><span class="sl-val" id="ciVHunger" style="color:var(--p2)">5</span></div><input type="range" min="1" max="10" value="5" id="ciHunger" oninput="document.getElementById('ciVHunger').textContent=this.value"></div>
+        <div class="sl-field"><div class="sl-hdr"><label>Recovery</label><span class="sl-val" id="ciVRecovery" style="color:var(--p4)">7</span></div><input type="range" min="1" max="10" value="7" id="ciRecovery" oninput="document.getElementById('ciVRecovery').textContent=this.value"></div>
+      </div>
+      <div class="field" style="margin-bottom:10px">
+        <label>Side Effects</label>
+        <div class="chips" id="ciSideChips">
+          <button class="chip warn-chip" onclick="chipMulti(this)">Water retention</button>
+          <button class="chip warn-chip" onclick="chipMulti(this)">Tingling</button>
+          <button class="chip warn-chip" onclick="chipMulti(this)">Fatigue</button>
+          <button class="chip warn-chip" onclick="chipMulti(this)">Headache</button>
+          <button class="chip warn-chip" onclick="chipMulti(this)">GI upset</button>
+          <button class="chip warn-chip" onclick="chipMulti(this)">Site irritation</button>
+          <button class="chip" onclick="chipMulti(this)">None</button>
+        </div>
+      </div>
+      <div class="field" style="margin-bottom:10px"><label>Notes</label><textarea id="ciNotes" placeholder="How are you feeling?" style="min-height:44px"></textarea></div>
+      <button class="btn" onclick="saveCheckin()">Save Check-in</button>
+    </div>
+  </div>
+</div>
+
+<!-- HISTORY -->
+<div class="panel" id="panel-history">
+  <div class="ph">
+    <h2>History</h2>
+    <div style="display:flex;gap:8px;margin-top:8px">
+      <button onclick="exportData()" class="btn ghost sm">↓ Backup</button>
+      <label class="btn ghost sm" style="cursor:pointer">↑ Restore<input type="file" accept=".json" style="display:none" onchange="importData(this)"></label>
+    </div>
+  </div>
+  <div class="stats-band" id="histStats">
+    <div class="stat-cell"><div class="stat-lbl">Total</div><div class="stat-num" id="hst1">0</div><div class="stat-sub">entries</div></div>
+    <div class="stat-cell"><div class="stat-lbl">Avg Sleep</div><div class="stat-num" id="hst2">—</div><div class="stat-sub" id="hst2s">—</div></div>
+    <div class="stat-cell"><div class="stat-lbl">Avg Energy</div><div class="stat-num" id="hst3">—</div><div class="stat-sub" id="hst3s">—</div></div>
+    <div class="stat-cell"><div class="stat-lbl">Adherence</div><div class="stat-num" id="hst4">—</div><div class="stat-sub" id="hst4s">14-day</div></div>
+  </div>
+  <div id="histFeed"></div>
+</div>
+
+<!-- BODY -->
+<div class="panel" id="panel-body">
+  <div class="ph"><h2>Body Composition</h2><p>Raw source data in lbs. DEXA for calibration.</p></div>
+  <div class="bc-form-card">
+    <div class="g2" style="margin-bottom:14px">
+      <div class="field"><label>Date</label><input type="date" id="bcDate"></div>
+      <div class="field"><label>Source</label>
+        <div class="src-tabs" style="margin-bottom:0">
+          <button class="src-tab on" id="srcWithings" onclick="setBodySource('withings')">Withings</button>
+          <button class="src-tab" id="srcDexa" onclick="setBodySource('dexa')">DEXA</button>
+        </div>
+      </div>
+    </div>
+    <div id="ssImportWrap" style="display:none"></div>
+    <div id="dexaImportWrap" style="display:none"></div>
+    <div id="withingsFields">
+      <div class="g4" style="margin-bottom:8px">
+        <div class="field"><label>M · Muscle (lbs)</label><input type="number" inputmode="decimal" id="bcMuscle" placeholder="127.3" step="0.1" oninput="bcFormCalc()"></div>
+        <div class="field"><label>F · Fat (lbs)</label><input type="number" inputmode="decimal" id="bcFat" placeholder="33.9" step="0.1" oninput="bcFormCalc()"></div>
+        <div class="field"><label>B · Bone (lbs)</label><input type="number" inputmode="decimal" id="bcBone" placeholder="7.3" step="0.1" oninput="bcFormCalc()"></div>
+        <div class="field"><label>W · Water (lbs)</label><input type="number" inputmode="decimal" id="bcWater" placeholder="82.4" step="0.1"></div>
+      </div>
+      <div id="bcFormCalcRow" style="display:none;font-family:var(--mono);font-size:11px;color:var(--mid);padding:8px 12px;background:var(--sf2);border-radius:6px;margin-bottom:10px">
+        Total: <b id="bcFormWt" style="color:var(--text)"></b> lbs &nbsp;·&nbsp; Fat <span id="bcFormFatPct" style="color:var(--p2)"></span>% &nbsp;·&nbsp; Lean <span id="bcFormLeanPct" style="color:var(--p1)"></span>%
+      </div>
+    </div>
+    <div id="dexaFields" style="display:none">
+      <div class="callout" style="margin-bottom:12px;border-color:var(--p3)"><strong style="color:var(--p3)">DEXA scan</strong> — enter values from your printed report below.</div>
+      <div class="g2" style="margin-bottom:8px">
+        <div class="field"><label>Fat % (DEXA)</label><input type="number" inputmode="decimal" id="dexaFatPct" placeholder="26.4" step="0.1"></div>
+        <div class="field"><label>Lean % (DEXA)</label><input type="number" inputmode="decimal" id="dexaLeanPct" placeholder="69.8" step="0.1"></div>
+      </div>
+      <div class="g3" style="margin-bottom:8px">
+        <div class="field"><label>Weight (lbs)</label><input type="number" inputmode="decimal" id="dexaWeight" placeholder="168.5" step="0.1"></div>
+        <div class="field"><label>Lean Mass (lbs)</label><input type="number" inputmode="decimal" id="dexaLeanLbs" placeholder="117.5" step="0.1"></div>
+        <div class="field"><label>Fat Mass (lbs)</label><input type="number" inputmode="decimal" id="dexaFatLbs" placeholder="44.4" step="0.1"></div>
+      </div>
+      <div class="g2" style="margin-bottom:8px">
+        <div class="field"><label>Visceral Fat Rating</label><input type="number" inputmode="decimal" id="dexaVisceral" placeholder="12" step="1"></div>
+        <div class="field"><label>Bone T-score</label><input type="number" inputmode="decimal" id="dexaTscore" placeholder="-0.4" step="0.1"></div>
+      </div>
+    </div>
+    <div class="field" style="margin-bottom:12px"><label>Notes</label><input type="text" id="bcNotes" placeholder="e.g. fasted, post-workout, facility name"></div>
+    <div class="btn-row"><button class="btn" onclick="saveBodyComp()">Save</button><button class="btn ghost" onclick="clearBC()">Clear</button></div>
+  </div>
+
+  <div class="stats-band">
+    <div class="stat-cell"><div class="stat-lbl">Weight</div><div class="stat-num" id="bcS1">—</div><div class="stat-sub" id="bcS1d">lbs</div></div>
+    <div class="stat-cell"><div class="stat-lbl">Muscle</div><div class="stat-num" id="bcS2">—</div><div class="stat-sub" id="bcS2d">lbs</div></div>
+    <div class="stat-cell"><div class="stat-lbl">Fat</div><div class="stat-num" id="bcS3">—</div><div class="stat-sub" id="bcS3d">lbs</div></div>
+    <div class="stat-cell"><div class="stat-lbl">Entries</div><div class="stat-num" id="bcS5">0</div><div class="stat-sub">logged</div></div>
+  </div>
+  <div id="calibCard" style="margin-bottom:10px"></div>
+  <div class="trend-card">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+      <div class="trend-ttl" style="margin-bottom:0">Fat (lbs) Over Time</div>
+      <div class="chart-period-tabs" id="fatPeriodTabs">
+        <button class="cpt" data-days="30" onclick="setChartPeriod('fat',30)">30d</button>
+        <button class="cpt on" data-days="90" onclick="setChartPeriod('fat',90)">90d</button>
+        <button class="cpt" data-days="180" onclick="setChartPeriod('fat',180)">6mo</button>
+        <button class="cpt" data-days="0" onclick="setChartPeriod('fat',0)">All</button>
+      </div>
+    </div>
+    <svg class="trend-svg" height="126" id="bcFatSvg" viewBox="0 0 760 126" preserveAspectRatio="none"></svg>
+  </div>
+  <div class="trend-card">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+      <div class="trend-ttl" style="margin-bottom:0">Weight + Muscle (lbs)</div>
+      <div class="chart-period-tabs" id="wtPeriodTabs">
+        <button class="cpt" data-days="30" onclick="setChartPeriod('wt',30)">30d</button>
+        <button class="cpt on" data-days="90" onclick="setChartPeriod('wt',90)">90d</button>
+        <button class="cpt" data-days="180" onclick="setChartPeriod('wt',180)">6mo</button>
+        <button class="cpt" data-days="0" onclick="setChartPeriod('wt',0)">All</button>
+      </div>
+    </div>
+    <svg class="trend-svg" height="126" id="bcWtSvg" viewBox="0 0 760 126" preserveAspectRatio="none"></svg>
+  </div>
+  <div class="sec-lbl" style="margin-top:16px">Measurement History</div>
+  <div id="bcFeed"></div>
+</div>
+
+<!-- PANTRY -->
+<div class="panel" id="panel-pantry">
+  <div class="ph"><h2>Compound Pantry</h2><p>Stock tracking, defaults, and library.</p></div>
+  <button class="pantry-add-toggle" onclick="togglePantryAddForm()">
+    <span style="font-size:16px;color:var(--p1)">+</span>
+    <span id="pantryAddToggleLabel">Add custom compound</span>
+  </button>
+  <div class="pantry-add-form" id="pantryAddForm">
+    <div class="g2">
+      <div class="field"><label>Name</label><input type="text" id="newName" placeholder="e.g. Selank"></div>
+      <div class="field"><label>Form</label>
+        <select id="newForm"><option value="vial">Vial (reconstitute)</option><option value="oral">Oral (capsule/tablet)</option><option value="prefilled">Pre-filled</option><option value="cream">Topical/Cream</option></select>
+      </div>
+    </div>
+    <div class="g3">
+      <div class="field"><label>Default Dose</label><input type="text" id="newDose" placeholder="250mcg"></div>
+      <div class="field"><label>Route</label>
+        <select id="newRoute"><option>Subcutaneous</option><option>Intramuscular</option><option>Oral</option><option>Sublingual</option><option>Intranasal</option><option>Topical</option></select>
+      </div>
+      <div class="field"><label>Category</label>
+        <select id="newCat"><option value="gh">GH Axis</option><option value="metabolic">Metabolic</option><option value="healing">Healing</option><option value="longevity">Longevity</option><option value="immune">Immune</option><option value="other">Other</option></select>
+      </div>
+    </div>
+    <div class="field" style="margin-bottom:12px"><label>Notes / Mechanism</label><input type="text" id="newNotes" placeholder="Key mechanism, timing notes..."></div>
+    <div class="btn-row"><button class="btn sm" onclick="addCompound()">Add to Pantry</button><button class="btn ghost sm" onclick="togglePantryAddForm()">Cancel</button></div>
+  </div>
+  <div id="pantryGrid"></div>
+</div>
+
+<!-- BUILD -->
+<div class="panel" id="panel-build">
+  <div class="ph"><h2>Protocol Builder</h2><p>Build, customize, and manage your protocols.</p></div>
+  <div class="sec-lbl" style="margin-top:0">Your Protocols</div>
+  <div id="savedProtocols"></div>
+  <div id="protoEditorWrap" style="display:none"></div>
+  <div id="builderSection">
+    <div class="sec-lbl">Build New Protocol</div>
+    <div class="stepper" id="stepper">
+      <div class="step on" id="step-ind-0"><div class="step-num">1</div><div class="step-label">Goals</div></div>
+      <div class="step-sep"></div>
+      <div class="step" id="step-ind-1"><div class="step-num">2</div><div class="step-label">Compounds</div></div>
+      <div class="step-sep"></div>
+      <div class="step" id="step-ind-2"><div class="step-num">3</div><div class="step-label">Customize</div></div>
+      <div class="step-sep"></div>
+      <div class="step" id="step-ind-3"><div class="step-num">4</div><div class="step-label">Review</div></div>
+    </div>
+    <!-- Step 1 -->
+    <div class="build-step on" id="bstep-0">
+      <div style="font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);margin-bottom:12px">Select your primary goals</div>
+      <div class="goal-grid" id="goalGrid">
+        <button class="goal-btn" onclick="toggleGoal(this)" data-goal="Fat loss and visceral fat reduction">🔥 Fat Loss</button>
+        <button class="goal-btn" onclick="toggleGoal(this)" data-goal="Lean mass and muscle preservation">💪 Lean Mass</button>
+        <button class="goal-btn" onclick="toggleGoal(this)" data-goal="Recovery and injury healing">🩹 Recovery</button>
+        <button class="goal-btn" onclick="toggleGoal(this)" data-goal="Longevity and anti-aging">⏳ Longevity</button>
+        <button class="goal-btn" onclick="toggleGoal(this)" data-goal="Immune support and resilience">🛡 Immune</button>
+        <button class="goal-btn" onclick="toggleGoal(this)" data-goal="Sleep quality and GH optimization">🌙 Sleep / GH</button>
+        <button class="goal-btn" onclick="toggleGoal(this)" data-goal="Metabolic rate and energy">⚡ Metabolic</button>
+        <button class="goal-btn" onclick="toggleGoal(this)" data-goal="Appetite suppression">⚖️ Appetite</button>
+      </div>
+      <div class="field" style="margin-bottom:14px"><label>Additional Context</label><textarea id="builderContext" placeholder="e.g. training 4x/week, prefer oral where possible, currently on tirzepatide, want 12-week cycle..." style="min-height:56px"></textarea></div>
+      <div class="btn-row"><button class="btn" id="buildBtn" onclick="runBuildStep1()">Generate Suggestions →</button></div>
+    </div>
+    <!-- Step 2 -->
+    <div class="build-step" id="bstep-1">
+      <div style="font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);margin-bottom:4px">From your pantry</div>
+      <div id="suggPantry" style="margin-bottom:16px"></div>
+      <div style="font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);margin-bottom:4px">Not in pantry — add to consider</div>
+      <div id="suggOther" style="margin-bottom:16px"></div>
+      <div class="btn-row">
+        <button class="btn" onclick="goToStep(2)">Customize Selected →</button>
+        <button class="btn ghost" onclick="goToStep(0)">← Back</button>
+      </div>
+    </div>
+    <!-- Step 3 -->
+    <div class="build-step" id="bstep-2">
+      <div style="font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);margin-bottom:12px">Protocol settings</div>
+      <div class="g3" style="margin-bottom:0">
+        <div class="field"><label>Protocol Name</label><input type="text" id="newProtoName" placeholder="e.g. Fat Loss Phase 1"></div>
+        <div class="field"><label>Start Date</label><input type="date" id="newProtoStart"></div>
+        <div class="field"><label>Duration (weeks)</label><input type="number" inputmode="decimal" id="newProtoDuration" placeholder="12" min="1" max="52"></div>
+      </div>
+      <div class="g2" style="margin-bottom:12px">
+        <div class="field"><label>Protocol Color</label>
+          <select id="newProtoColor">
+            <option value="var(--p2)">Amber (Fat Loss)</option>
+            <option value="var(--p1)">Emerald (Recomp)</option>
+            <option value="var(--p3)">Teal (Metabolic)</option>
+            <option value="var(--p4)">Violet (Longevity)</option>
+            <option value="var(--p5)">Coral (GH)</option>
+          </select>
+        </div>
+        <div class="field"><label>Notes</label><input type="text" id="newProtoNotes" placeholder="Optional description..."></div>
+      </div>
+      <div style="font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);margin-bottom:8px">Compound Details — tap to expand</div>
+      <div id="customizeCompounds"></div>
+      <div style="margin-top:12px"><button class="btn ghost sm" onclick="openAddToNewProtocol()" style="margin-bottom:10px">+ Add compound from pantry</button></div>
+      <div class="btn-row">
+        <button class="btn" onclick="goToStep(3)">Review & Save →</button>
+        <button class="btn ghost" onclick="goToStep(1)">← Back</button>
+      </div>
+    </div>
+    <!-- Step 4 -->
+    <div class="build-step" id="bstep-3">
+      <div style="font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);margin-bottom:12px">Protocol summary</div>
+      <div id="reviewSummary"></div>
+      <div id="conflictSection" style="margin-bottom:14px"></div>
+      <div class="btn-row">
+        <button class="btn" id="finalSaveBtn" onclick="finalSaveProtocol()">Save &amp; Activate Protocol</button>
+        <button class="btn ghost" onclick="goToStep(2)">← Back</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</main>
+</div>
+
+<nav class="bottom-tabs" id="bottomTabs">
+  <button class="tab-btn on" id="tb-today"   onclick="nav('today')"><span class="tab-icon">◎</span><span class="tab-label">Today</span></button>
+  <button class="tab-btn"    id="tb-history" onclick="nav('history')"><span class="tab-icon">≡</span><span class="tab-label">History</span></button>
+  <button class="tab-btn"    id="tb-body"    onclick="nav('body')"><span class="tab-icon">⊡</span><span class="tab-label">Body</span></button>
+  <button class="tab-btn"    id="tb-pantry"  onclick="nav('pantry')"><span class="tab-icon">◉</span><span class="tab-label">Pantry</span></button>
+  <button class="tab-btn"    id="tb-build"   onclick="nav('build')"><span class="tab-icon">⚗</span><span class="tab-label">Build</span></button>
+</nav>
+
+<div class="toast" id="toast"></div>
+
+<!-- Modals -->
+<div class="modal-overlay" id="protoSwapModal">
+  <div class="modal">
+    <div class="modal-title">Switch Protocol <button class="modal-close" onclick="closeModal('protoSwapModal')">✕</button></div>
+    <div id="protoSwapList"></div>
+    <div style="font-family:var(--mono);font-size:10px;color:var(--dim);margin-top:14px">Build or edit protocols in the Build tab.</div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="addTodayModal">
+  <div class="modal">
+    <div class="modal-title">Add Compound <button class="modal-close" onclick="closeModal('addTodayModal')">✕</button></div>
+    <div class="field" style="margin-bottom:12px"><label>Select from pantry</label><select id="addTodaySelect"></select></div>
+    <div class="field" style="margin-bottom:14px"><label>Dose</label><input type="text" id="addTodayDose" placeholder="e.g. 250mcg"></div>
+    <div class="btn-row">
+      <button class="btn sm" onclick="addCompoundTodayOnly()">Log today only</button>
+      <button class="btn warn-btn sm" onclick="addCompoundToProtocol()">Add to protocol permanently</button>
+      <button class="btn ghost sm" onclick="closeModal('addTodayModal')">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="restockModal">
+  <div class="modal">
+    <div class="modal-title"><span id="restockTitle">Restock</span><button class="modal-close" onclick="closeModal('restockModal')">✕</button></div>
+    <input type="hidden" id="restockId">
+    <div class="g2" style="margin-bottom:10px">
+      <div class="field"><label id="restockQtyLabel">Vials adding</label><input type="number" inputmode="decimal" id="restockQty" placeholder="2" min="0" step="1"></div>
+      <div class="field"><label>New Expiry Date</label><input type="date" id="restockExpiry"></div>
+    </div>
+    <div class="field" style="margin-bottom:14px"><label>Notes</label><input type="text" id="restockNotes" placeholder="e.g. batch #, supplier"></div>
+    <button class="btn" onclick="saveRestock()">Confirm Restock</button>
+  </div>
+</div>
+
+<div class="modal-overlay" id="editLogModal">
+  <div class="modal">
+    <div class="modal-title">Edit Entry <button class="modal-close" onclick="closeModal('editLogModal')">✕</button></div>
+    <input type="hidden" id="editLogId">
+    <div class="g2">
+      <div class="field"><label>Compound</label><input type="text" id="editCompound"></div>
+      <div class="field"><label>Dose</label><input type="text" id="editDose"></div>
+    </div>
+    <div class="g3">
+      <div class="field"><label>Date</label><input type="date" id="editDate"></div>
+      <div class="field"><label>Time</label><input type="time" id="editTime"></div>
+      <div class="field"><label>Fed State</label><select id="editFed"><option value="fasted">Fasted</option><option value="semi">Semi</option><option value="fed">Fed</option></select></div>
+    </div>
+    <div class="g2" style="margin-bottom:10px">
+      <div class="field"><label>Route</label><select id="editRoute"><option>Subcutaneous</option><option>Oral</option><option>Intramuscular</option><option>Sublingual</option></select></div>
+      <div class="field"><label>Site</label><input type="text" id="editSite"></div>
+    </div>
+    <div class="field" style="margin-bottom:12px"><label>Notes</label><textarea id="editNotes" style="min-height:44px"></textarea></div>
+    <div style="display:flex;gap:8px">
+      <button class="btn" onclick="saveEditLog()">Save</button>
+      <button class="btn ghost" onclick="closeModal('editLogModal')">Cancel</button>
+      <button class="btn danger" onclick="deleteLogEntry()">Delete</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="editPantryModal">
+  <div class="modal">
+    <div class="modal-title">Edit Compound <button class="modal-close" onclick="closeModal('editPantryModal')">✕</button></div>
+    <input type="hidden" id="editPantryId">
+    <div class="g2">
+      <div class="field"><label>Name</label><input type="text" id="epName"></div>
+      <div class="field"><label>Default Dose</label><div class="dose-wrap"><input type="text" id="epDose" inputmode="decimal" placeholder="e.g. 250"><select id="epDoseUnit" class="unit-select"><option value="mcg">mcg</option><option value="mg">mg</option></select></div></div>
+    </div>
+    <div class="g2">
+      <div class="field"><label>Route</label><select id="epRoute"><option>Subcutaneous</option><option>Oral</option><option>Intramuscular</option><option>Sublingual</option><option>Intranasal</option><option>Topical</option></select></div>
+      <div class="field"><label>Form</label><select id="epForm"><option value="vial">Vial</option><option value="oral">Oral</option><option value="prefilled">Pre-filled</option><option value="cream">Topical</option></select></div>
+    </div>
+    <div class="g2" style="margin-bottom:10px">
+      <div class="field"><label>Injection Site</label><select id="epSite"><option>Abdomen</option><option>Thigh</option><option>Glute</option><option>Deltoid</option><option>N/A</option></select></div>
+      <div class="field"><label>Fasting Required</label><select id="epFasting"><option value="true">Yes — inject fasted</option><option value="false">No</option></select></div>
+    </div>
+    <div class="field" style="margin-bottom:12px"><label>Notes / Mechanism</label><input type="text" id="epNotes"></div>
+    <div class="btn-row"><button class="btn" onclick="savePantryEdit()">Save</button><button class="btn ghost" onclick="closeModal('editPantryModal')">Cancel</button></div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="editBodyModal">
+  <div class="modal">
+    <div class="modal-title">Edit Measurement <button class="modal-close" onclick="closeModal('editBodyModal')">✕</button></div>
+    <input type="hidden" id="editBodyId">
+    <div class="g2" style="margin-bottom:10px">
+      <div class="field"><label>Date</label><input type="date" id="editBodyDate"></div>
+      <div class="field"><label>Source</label>
+        <select id="editBodySource">
+          <option value="withings">Withings</option>
+          <option value="dexa">DEXA</option>
+        </select>
+      </div>
+    </div>
+    <div class="g4" style="margin-bottom:10px">
+      <div class="field"><label>Muscle (lbs)</label><input type="number" inputmode="decimal" id="editBodyMuscle" step="0.1"></div>
+      <div class="field"><label>Fat (lbs)</label><input type="number" inputmode="decimal" id="editBodyFat" step="0.1"></div>
+      <div class="field"><label>Bone (lbs)</label><input type="number" inputmode="decimal" id="editBodyBone" step="0.1"></div>
+      <div class="field"><label>Water (lbs)</label><input type="number" inputmode="decimal" id="editBodyWater" step="0.1"></div>
+    </div>
+    <div class="g2" style="margin-bottom:10px">
+      <div class="field"><label>Fat % (override)</label><input type="number" inputmode="decimal" id="editBodyFatPct" step="0.1" placeholder="auto-calc if blank"></div>
+      <div class="field"><label>Phase / Protocol</label><input type="text" id="editBodyPhase"></div>
+    </div>
+    <div class="field" style="margin-bottom:14px"><label>Notes</label><input type="text" id="editBodyNotes"></div>
+    <div style="display:flex;gap:8px">
+      <button class="btn" onclick="saveEditBody()">Save</button>
+      <button class="btn ghost" onclick="closeModal('editBodyModal')">Cancel</button>
+      <button class="btn danger" onclick="deleteBodyEntry()">Delete</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="addToProtoModal">
+  <div class="modal">
+    <div class="modal-title">Add from Pantry <button class="modal-close" onclick="closeModal('addToProtoModal')">✕</button></div>
+    <div id="addToProtoList"></div>
+  </div>
+</div>
+
+<!-- First-load restore prompt -->
+<div class="modal-overlay" id="restorePromptModal" style="z-index:500">
+  <div class="modal" style="max-width:480px;text-align:center;padding:32px 24px">
+    <div style="font-family:var(--serif);font-style:italic;font-size:22px;margin-bottom:10px">No saved data found</div>
+    <div style="font-family:var(--mono);font-size:11px;color:var(--mid);line-height:1.7;margin-bottom:20px">This appears to be a fresh session.<br>If you have a backup file, restore it now to recover your logs, body comp data, and protocols.</div>
+    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+      <label class="btn" style="cursor:pointer">↑ Restore Backup<input type="file" accept=".json" style="display:none" onchange="restoreFromPrompt(this)"></label>
+      <button class="btn ghost" onclick="dismissRestorePrompt()">Start Fresh</button>
+    </div>
+    <div style="font-family:var(--mono);font-size:10px;color:var(--dim);margin-top:16px">Tip: use the Backup button regularly to save your data.</div>
+  </div>
+</div>
+
+<script>
+'use strict';
+
+// ════════════ STORAGE ════════════
+const KEYS={logs:'rp_logs_v2',doseMem:'rp_dose_mem',bodyLogs:'rp_body_v1',
+            checkins:'rp_checkins_v1',pantry:'rp_pantry_v1',
+            protocols:'rp_protocols_v1',activeProtoId:'rp_active_proto'};
+
+async function persist(key,val){
+  const s=JSON.stringify(val);
+  localStorage.setItem(key,s);
+  try{await window.storage.set(key,s);}catch(e){}
+}
+async function load(key,fb=null){
+  try{const r=await window.storage.get(key);if(r)return JSON.parse(r.value);}catch(e){}
+  const ls=localStorage.getItem(key);
+  return ls?JSON.parse(ls):fb;
+}
+
+// ════════════ STATE ════════════
+let logs=[],doseMem={},bodyLogs=[],checkins=[],pantry=[],protocols=[],activeProtoId=null;
+let chartPeriod={fat:90,wt:90}; // days to show; 0 = all
+let selectedGoals=[];
+let buildCompounds=[];
+let bodySource='withings';
+let checkinOpen=false;
+let bcEntryOpen=false;
+let editingProtoId=null;
+let currentBuildStep=0;
+
+// ════════════ COMPOUND DB ════════════
+const COMPOUND_DB=[
+  {name:'Tesamorelin',cat:'gh',color:'var(--p5)',dose:'2mg',route:'Subcutaneous',form:'vial',fasting:true,site:'Abdomen',goals:['Fat loss','Metabolic'],rationale:'GHRH analogue — strongest clinical evidence for visceral fat reduction.',conflicts:['CJC-1295'],timingWindow:'am',frequency:'daily',daysOfWeek:[0,1,2,3,4,5,6]},
+  {name:'Ipamorelin',cat:'gh',color:'var(--p1)',dose:'250mcg',route:'Subcutaneous',form:'vial',fasting:true,site:'Abdomen',goals:['Sleep / GH','Lean Mass'],rationale:'GH secretagogue — pulsatile GH release for sleep and lean mass.',conflicts:[],timingWindow:'pm',frequency:'daily',daysOfWeek:[0,1,2,3,4,5,6]},
+  {name:'CJC-1295',cat:'gh',color:'var(--p1)',dose:'100mcg',route:'Subcutaneous',form:'vial',fasting:true,site:'Abdomen',goals:['Sleep / GH','Lean Mass'],rationale:'GHRH — amplifies Ipamorelin GH pulse. Do not combine with Tesamorelin.',conflicts:['Tesamorelin'],timingWindow:'pm',frequency:'daily',daysOfWeek:[0,1,2,3,4,5,6]},
+  {name:'Tirzepatide',cat:'metabolic',color:'var(--p2)',dose:'5mg',route:'Subcutaneous',form:'prefilled',fasting:false,site:'Thigh',goals:['Fat loss','Appetite'],rationale:'GLP-1/GIP dual agonist — primary appetite suppression.',conflicts:['Retatrutide','Semaglutide'],timingWindow:'weekly',frequency:'weekly',daysOfWeek:[1]},
+  {name:'Retatrutide',cat:'metabolic',color:'#fb923c',dose:'2mg',route:'Subcutaneous',form:'prefilled',fasting:false,site:'Thigh',goals:['Fat loss','Appetite'],rationale:'Triple GLP-1/GIP/glucagon agonist — aggressive visceral fat mobilization.',conflicts:['Tirzepatide','Semaglutide'],timingWindow:'weekly',frequency:'weekly',daysOfWeek:[1]},
+  {name:'Semaglutide',cat:'metabolic',color:'#fbbf24',dose:'0.5mg',route:'Subcutaneous',form:'prefilled',fasting:false,site:'Thigh',goals:['Fat loss','Appetite'],rationale:'GLP-1 agonist — appetite suppression and glycemic control.',conflicts:['Tirzepatide','Retatrutide'],timingWindow:'weekly',frequency:'weekly',daysOfWeek:[1]},
+  {name:'Cagrilintide',cat:'metabolic',color:'#f87171',dose:'0.5mg',route:'Subcutaneous',form:'prefilled',fasting:false,site:'Thigh',goals:['Fat loss','Appetite'],rationale:'Amylin analogue — synergistic appetite suppression with GLP-1 class.',conflicts:['Retatrutide'],timingWindow:'weekly',frequency:'weekly',daysOfWeek:[1]},
+  {name:'5-Amino-1MQ',cat:'metabolic',color:'var(--p3)',dose:'50mg',route:'Oral',form:'oral',fasting:true,site:'N/A',goals:['Fat loss','Metabolic'],rationale:'NNMT inhibitor — raises NAD+, boosts basal metabolic rate.',conflicts:[],timingWindow:'am',frequency:'daily',daysOfWeek:[0,1,2,3,4,5,6]},
+  {name:'SLU-PP-332',cat:'metabolic',color:'var(--p4)',dose:'20mg',route:'Oral',form:'oral',fasting:false,site:'N/A',goals:['Metabolic','Lean Mass'],rationale:'ERR agonist — mitochondrial biogenesis, exercise mimetic.',conflicts:[],timingWindow:'preworkout',frequency:'daily',daysOfWeek:[0,1,2,3,4,5,6]},
+  {name:'AOD-9604',cat:'metabolic',color:'#fbbf24',dose:'300mcg',route:'Subcutaneous',form:'vial',fasting:true,site:'Abdomen',goals:['Fat loss'],rationale:'HGH fragment — targeted fat oxidation without glucose effects.',conflicts:[],timingWindow:'am',frequency:'daily',daysOfWeek:[0,1,2,3,4,5,6]},
+  {name:'MOTS-c',cat:'metabolic',color:'#2dd4bf',dose:'5mg',route:'Subcutaneous',form:'vial',fasting:true,site:'Abdomen',goals:['Metabolic','Fat loss'],rationale:'Mitochondria-derived peptide — metabolic flexibility.',conflicts:[],timingWindow:'am',frequency:'3x/week',daysOfWeek:[1,3,5]},
+  {name:'BPC-157',cat:'healing',color:'#60a5fa',dose:'250mcg',route:'Subcutaneous',form:'vial',fasting:false,site:'Abdomen',goals:['Recovery'],rationale:'Body protection compound — systemic healing, gut health, tendon repair.',conflicts:[],timingWindow:'am',frequency:'daily',daysOfWeek:[0,1,2,3,4,5,6]},
+  {name:'TB-500',cat:'healing',color:'#34d399',dose:'2mg',route:'Subcutaneous',form:'vial',fasting:false,site:'Abdomen',goals:['Recovery'],rationale:'Systemic healing — tissue remodeling and inflammation reduction.',conflicts:[],timingWindow:'am',frequency:'2x/week',daysOfWeek:[1,4]},
+  {name:'KLOW',cat:'healing',color:'#4ade80',dose:'—',route:'Subcutaneous',form:'vial',fasting:false,site:'Abdomen',goals:['Recovery','Immune'],rationale:'Blend: GHK-Cu + TB-500 + BPC-157 + KPV — comprehensive repair.',conflicts:[],timingWindow:'am',frequency:'daily',daysOfWeek:[0,1,2,3,4,5,6]},
+  {name:'SS-31',cat:'longevity',color:'var(--p4)',dose:'5mg',route:'Subcutaneous',form:'vial',fasting:false,site:'Abdomen',goals:['Longevity'],rationale:'Mitochondrial membrane protector — reduces oxidative stress.',conflicts:[],timingWindow:'am',frequency:'daily',daysOfWeek:[0,1,2,3,4,5,6]},
+  {name:'GHK-Cu',cat:'longevity',color:'#f472b6',dose:'2mg',route:'Subcutaneous',form:'vial',fasting:false,site:'Abdomen',goals:['Longevity','Recovery'],rationale:'Copper peptide — collagen synthesis, tissue repair.',conflicts:[],timingWindow:'am',frequency:'daily',daysOfWeek:[0,1,2,3,4,5,6]},
+  {name:'Epithalon',cat:'longevity',color:'#818cf8',dose:'10mg',route:'Subcutaneous',form:'vial',fasting:false,site:'Abdomen',goals:['Longevity','Sleep / GH'],rationale:'Telomerase activator — longevity and sleep quality. 10-day cycle quarterly.',conflicts:[],timingWindow:'pm',frequency:'daily',daysOfWeek:[0,1,2,3,4,5,6]},
+  {name:'NAD+',cat:'longevity',color:'#38bdf8',dose:'500mg',route:'Oral',form:'oral',fasting:false,site:'N/A',goals:['Longevity','Metabolic'],rationale:'Cellular energy substrate — mitochondrial function.',conflicts:[],timingWindow:'am',frequency:'daily',daysOfWeek:[0,1,2,3,4,5,6]},
+  {name:'Thymosin Alpha-1',cat:'immune',color:'#34d399',dose:'1.5mg',route:'Subcutaneous',form:'vial',fasting:false,site:'Abdomen',goals:['Immune'],rationale:'Thymic peptide — immune system modulation and T-cell activation.',conflicts:[],timingWindow:'am',frequency:'2x/week',daysOfWeek:[1,4]},
+  {name:'Selank',cat:'neuro',color:'#f472b6',dose:'250mcg',route:'Intranasal',form:'vial',fasting:false,site:'N/A',goals:['Immune','Recovery'],rationale:'Anxiolytic peptide — stress reduction, immune modulation.',conflicts:[],timingWindow:'am',frequency:'daily',daysOfWeek:[0,1,2,3,4,5,6]},
+  {name:'Semax',cat:'neuro',color:'#c084fc',dose:'200mcg',route:'Intranasal',form:'vial',fasting:false,site:'N/A',goals:['Metabolic','Recovery'],rationale:'ACTH analogue — cognitive enhancement, neuroprotection.',conflicts:[],timingWindow:'am',frequency:'daily',daysOfWeek:[0,1,2,3,4,5,6]},
+];
+
+const CAT_COLORS={gh:'var(--p1)',metabolic:'var(--p2)',healing:'#60a5fa',longevity:'var(--p4)',immune:'#34d399',neuro:'#f472b6',other:'var(--mid)'};
+
+const DEFAULT_PANTRY=[
+  {id:'tirz',  name:'Tirzepatide',   form:'prefilled',cat:'metabolic',dose:'5mg',   route:'Subcutaneous',site:'Thigh',  fasting:false,active:true,color:'var(--p2)',notes:'GLP-1/GIP dual agonist. Weekly.',vialMg:null,vials:0,expiry:'',reorderDays:14,stockLog:[]},
+  {id:'amino', name:'5-Amino-1MQ',   form:'oral',     cat:'metabolic',dose:'50mg',  route:'Oral',         site:'N/A',   fasting:true, active:true,color:'var(--p3)',notes:'NNMT inhibitor. AM fasted.',vialMg:null,vials:0,expiry:'',reorderDays:14,stockLog:[]},
+  {id:'slupp', name:'SLU-PP-332',    form:'oral',     cat:'metabolic',dose:'750mcg',route:'Oral',         site:'N/A',   fasting:false,active:true,color:'var(--p4)',notes:'ERR agonist. Pre-workout. 250mcg/cap × 3 caps = 750mcg/day.',vialMg:null,vials:0,capsRemaining:null,capDose:0.25,expiry:'',reorderDays:14,stockLog:[]},
+  {id:'tesa',  name:'Tesamorelin',   form:'vial',     cat:'gh',       dose:'2mg',   route:'Subcutaneous',site:'Abdomen',fasting:true, active:true,color:'var(--p5)',notes:'GHRH analogue. Visceral fat.',vialMg:2,vials:0,expiry:'',reorderDays:14,stockLog:[]},
+  {id:'ipa',   name:'Ipamorelin',    form:'vial',     cat:'gh',       dose:'250mcg',route:'Subcutaneous',site:'Abdomen',fasting:true, active:true,color:'var(--p1)',notes:'GH secretagogue. Pre-sleep.',vialMg:5,vials:0,expiry:'',reorderDays:14,stockLog:[]},
+  {id:'cjc',   name:'CJC-1295',      form:'vial',     cat:'gh',       dose:'100mcg',route:'Subcutaneous',site:'Abdomen',fasting:true, active:true,color:'var(--p1)',notes:'GHRH. Stack with Ipa, not Tesa.',vialMg:2,vials:0,expiry:'',reorderDays:14,stockLog:[]},
+  {id:'bpc',   name:'BPC-157',       form:'vial',     cat:'healing',  dose:'250mcg',route:'Subcutaneous',site:'Abdomen',fasting:false,active:true,color:'#60a5fa',notes:'Healing & gut repair.',vialMg:5,vials:0,expiry:'',reorderDays:14,stockLog:[]},
+  {id:'tb500', name:'TB-500',        form:'vial',     cat:'healing',  dose:'2mg',   route:'Subcutaneous',site:'Abdomen',fasting:false,active:true,color:'#34d399',notes:'Systemic healing. 2x/week.',vialMg:5,vials:0,expiry:'',reorderDays:14,stockLog:[]},
+  {id:'aod',   name:'AOD-9604',      form:'vial',     cat:'metabolic',dose:'300mcg',route:'Subcutaneous',site:'Abdomen',fasting:true, active:true,color:'#fbbf24',notes:'HGH fragment. Fat oxidation.',vialMg:5,vials:0,expiry:'',reorderDays:14,stockLog:[]},
+  {id:'ss31',  name:'SS-31',         form:'vial',     cat:'longevity',dose:'5mg',   route:'Subcutaneous',site:'Abdomen',fasting:false,active:true,color:'var(--p4)',notes:'Mitochondrial protector.',vialMg:10,vials:0,expiry:'',reorderDays:14,stockLog:[]},
+  {id:'ghkcu', name:'GHK-Cu',        form:'vial',     cat:'longevity',dose:'2mg',   route:'Subcutaneous',site:'Abdomen',fasting:false,active:true,color:'#f472b6',notes:'Copper peptide. Collagen.',vialMg:5,vials:0,expiry:'',reorderDays:14,stockLog:[]},
+  {id:'klow',  name:'KLOW',          form:'vial',     cat:'healing',  dose:'—',     route:'Subcutaneous',site:'Abdomen',fasting:false,active:true,color:'#4ade80',notes:'Blend: GHK-Cu+TB-500+BPC-157+KPV.',vialMg:null,vials:0,expiry:'',reorderDays:14,stockLog:[]},
+  {id:'retrat',name:'Retatrutide',   form:'prefilled',cat:'metabolic',dose:'2mg',   route:'Subcutaneous',site:'Thigh',  fasting:false,active:true,color:'#fb923c',notes:'Triple GLP-1/GIP/glucagon.',vialMg:null,vials:0,expiry:'',reorderDays:14,stockLog:[]},
+  {id:'cagri', name:'Cagrilintide',  form:'prefilled',cat:'metabolic',dose:'0.5mg', route:'Subcutaneous',site:'Thigh',  fasting:false,active:true,color:'#f87171',notes:'Amylin analogue.',vialMg:null,vials:0,expiry:'',reorderDays:14,stockLog:[]},
+  {id:'epith', name:'Epithalon',     form:'vial',     cat:'longevity',dose:'10mg',  route:'Subcutaneous',site:'Abdomen',fasting:false,active:true,color:'#818cf8',notes:'Telomerase activator. 10-day cycles.',vialMg:10,vials:0,expiry:'',reorderDays:14,stockLog:[]},
+  {id:'nad',   name:'NAD+',          form:'oral',     cat:'longevity',dose:'500mg', route:'Oral',         site:'N/A',   fasting:false,active:true,color:'#38bdf8',notes:'Cellular energy. Daily AM.',vialMg:null,vials:0,expiry:'',reorderDays:14,stockLog:[]},
+  {id:'motsc', name:'MOTS-c',        form:'vial',     cat:'metabolic',dose:'5mg',   route:'Subcutaneous',site:'Abdomen',fasting:true, active:true,color:'#2dd4bf',notes:'Mitochondrial peptide.',vialMg:5,vials:0,expiry:'',reorderDays:14,stockLog:[]},
+  {id:'vesil', name:'Vesilute',      form:'vial',     cat:'other',    dose:'—',     route:'—',            site:'—',     fasting:false,active:true,color:'#94a3b8',notes:'Add notes when ready.',vialMg:null,vials:0,expiry:'',reorderDays:14,stockLog:[]},
+];
+
+const DEFAULT_PROTOCOL={
+  id:'default-fat-loss',name:'Fat Loss Phase',color:'var(--p2)',
+  startDate:'2026-03-15',durationWeeks:12,notes:'',
+  compounds:[
+    {name:'5-Amino-1MQ', dose:'50mg',  route:'Oral',        form:'oral',    fasting:true, site:'N/A',    timing:'Upon Waking',timingWindow:'am',        frequency:'daily',  daysOfWeek:[0,1,2,3,4,5,6],rationale:'NNMT inhibitor.'},
+    {name:'Tesamorelin', dose:'2mg',   route:'Subcutaneous',form:'vial',    fasting:true, site:'Abdomen',timing:'Upon Waking',timingWindow:'am',        frequency:'daily',  daysOfWeek:[0,1,2,3,4,5,6],rationale:'Visceral fat reduction.'},
+    {name:'SLU-PP-332',  dose:'750mcg',route:'Oral',        form:'oral',    fasting:false,site:'N/A',    timing:'Pre-Workout', timingWindow:'preworkout',frequency:'daily',  daysOfWeek:[0,1,2,3,4,5,6],rationale:'ERR agonist. 250mcg/cap × 3 caps.'},
+    {name:'Tirzepatide', dose:'5mg',   route:'Subcutaneous',form:'prefilled',fasting:false,site:'Thigh', timing:'Weekly',      timingWindow:'weekly',    frequency:'weekly', daysOfWeek:[1],             rationale:'GLP-1/GIP agonist.'},
+    {name:'MOTS-c',      dose:'5mg',   route:'Subcutaneous',form:'vial',    fasting:true, site:'Abdomen',timing:'Upon Waking',timingWindow:'am',        frequency:'3x/week',daysOfWeek:[1,3,5],         rationale:'Metabolic flexibility.'},
+  ]
+};
+
+// ════════════ HELPERS ════════════
+const MONTHS=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const DAYS=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+const TIMING_WINDOWS=[
+  {key:'am',label:'Upon Waking',icon:'🌅'},
+  {key:'preworkout',label:'Pre-Workout',icon:'🏋'},
+  {key:'weekly',label:'Weekly',icon:'📅'},
+  {key:'pm',label:'Pre-Sleep',icon:'🌙'},
+  {key:'other',label:'Other',icon:'⏱'},
+];
+
+function fmtDate(d){if(!d)return'—';const p=d.split('-');return MONTHS[+p[1]-1]+' '+(+p[2]);}
+function today(){
+  const d=new Date();
+  return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+}
+function todayDOW(){return new Date().getDay();}
+function weeksBetween(a,b){return Math.floor((new Date(b)-new Date(a))/(7*24*3600*1000));}
+function chipMulti(el){el.classList.toggle('on');}
+function closeModal(id){document.getElementById(id).classList.remove('open');}
+function openModal(id){document.getElementById(id).classList.add('open');}
+function toast(msg,col){
+  const t=document.getElementById('toast');
+  t.textContent=msg;t.style.background=col||'var(--p1)';
+  t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2400);
+}
+function getPColor(name){
+  const p=pantry.find(p=>p.name===name)||COMPOUND_DB.find(c=>c.name===name);
+  return p&&p.color?p.color:'var(--mid)';
+}
+function getEffectiveDose(name){
+  // Protocol wins unless compound was manually logged in last 24h
+  const proto=getActiveProtocol();
+  const protoCmp=proto&&proto.compounds?proto.compounds.find(function(c){return c.name===name;}):null;
+  const mem=doseMem[name];
+  const recentLog=logs.find(function(l){
+    return l.compound===name&&(Date.now()-new Date(l.date+'T'+(l.time||'00:00')).getTime())<86400000;
+  });
+  if(recentLog&&mem&&mem.dose&&mem.dose!=='—') return mem.dose;
+  if(protoCmp&&protoCmp.dose&&protoCmp.dose!=='—') return protoCmp.dose;
+  if(mem&&mem.dose&&mem.dose!=='—') return mem.dose;
+  const p=pantry.find(function(p){return p.name===name;});
+  return (p&&p.dose)?p.dose:'—';
+}
+function getActiveProtocol(){return protocols.find(p=>p.id===activeProtoId)||null;}
+
+// ════════════ NAV ════════════
+function nav(tab){
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('on'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('on'));
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('on'));
+  const dn=document.getElementById('dn-'+tab);if(dn)dn.classList.add('on');
+  const tb=document.getElementById('tb-'+tab);if(tb)tb.classList.add('on');
+  const panel=document.getElementById('panel-'+tab);if(panel)panel.classList.add('on');
+  const mainEl=document.getElementById('mainEl');if(mainEl)mainEl.scrollTop=0;
+  if(tab==='today')   renderToday();
+  if(tab==='history') renderHistory();
+  if(tab==='body')    renderBodyComp();
+  if(tab==='pantry')  renderPantry();
+  if(tab==='build')   renderBuild();
+}
+
+// ════════════ PROTOCOL MANAGEMENT ════════════
+function activateProtocol(id){
+  activeProtoId=id;persist(KEYS.activeProtoId,id);
+  renderToday();renderBuild();updateMobHeader();
+  toast('Protocol activated ✓');closeModal('protoSwapModal');
+}
+
+function openProtoSwap(){
+  const list=document.getElementById('protoSwapList');
+  if(!protocols.length){
+    list.innerHTML='<div style="font-family:var(--mono);font-size:11px;color:var(--dim);padding:12px 0">No saved protocols yet. Build one in the Build tab.</div>';
+    openModal('protoSwapModal');return;
+  }
+  list.innerHTML=protocols.map(p=>`
+    <div style="display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--bd)">
+      <div style="width:9px;height:9px;border-radius:50%;background:${p.color||'var(--mid)'};flex-shrink:0"></div>
+      <div style="flex:1">
+        <div style="font-family:var(--serif);font-style:italic;font-size:15px">${p.name}</div>
+        <div style="font-family:var(--mono);font-size:10px;color:var(--dim)">${p.durationWeeks||'—'} weeks · ${(p.compounds||[]).length} compounds${p.startDate?' · Started '+fmtDate(p.startDate):''}</div>
+      </div>
+      <button onclick="activateProtocol('${p.id}')" style="font-family:var(--mono);font-size:9px;padding:6px 12px;background:${activeProtoId===p.id?'var(--p1)':'var(--p1d)'};border:1px solid var(--p1);border-radius:4px;color:${activeProtoId===p.id?'var(--bg)':'var(--p1)'};cursor:pointer">${activeProtoId===p.id?'✓ Active':'Activate'}</button>
+    </div>`).join('');
+  openModal('protoSwapModal');
+}
+
+function updateMobHeader(){
+  const proto=getActiveProtocol();
+  const btn=document.getElementById('mobProtoBtn');
+  if(btn) btn.textContent=proto?proto.name:'No Protocol';
+}
+
+// ════════════ TODAY ════════════
+function renderToday(){
+  renderProtoHeader();renderBodyStrip();renderChecklist();renderCheckinState();
+}
+
+function renderProtoHeader(){
+  const proto=getActiveProtocol();
+  const dot=document.getElementById('protoDot');
+  const nameEl=document.getElementById('protoName');
+  const metaEl=document.getElementById('protoMeta');
+  const weekEl=document.getElementById('protoWeek');
+  const fill=document.getElementById('protoProgressFill');
+  if(!proto){
+    if(dot) dot.style.background='var(--dim)';
+    if(nameEl) nameEl.textContent='No active protocol';
+    if(metaEl) metaEl.textContent='Go to Build tab to create and activate a protocol.';
+    if(weekEl) weekEl.textContent='';
+    if(fill) fill.style.width='0%';
+    return;
+  }
+  if(dot) dot.style.background=proto.color||'var(--p1)';
+  if(nameEl) nameEl.textContent=proto.name;
+  const parts=[];
+  if(proto.durationWeeks) parts.push(proto.durationWeeks+' weeks');
+  if(proto.startDate) parts.push('Started '+fmtDate(proto.startDate));
+  if(metaEl) metaEl.textContent=parts.join(' · ');
+  if(proto.startDate){
+    const rawW=weeksBetween(proto.startDate,today())+1;
+    const w=Math.max(1,Math.min(rawW,proto.durationWeeks||999));
+    if(weekEl) weekEl.textContent='Week '+w+(proto.durationWeeks?' of '+proto.durationWeeks:'');
+    const pct=proto.durationWeeks?Math.min(100,((w-1)/proto.durationWeeks)*100):0;
+    if(fill) fill.style.width=pct+'%';
+  }
+}
+
+function renderBodyStrip(){
+  if(!bodyLogs.length) return;
+  const proto=getActiveProtocol();
+  const wLogs=[...bodyLogs].filter(l=>l.source!=='dexa').sort((a,b)=>new Date(a.date)-new Date(b.date));
+  if(!wLogs.length) return;
+  const last=wLogs[wLogs.length-1];
+  const baseDate=proto?proto.startDate:wLogs[0].date;
+  const baseline=wLogs.find(l=>l.date>=baseDate)||wLogs[0];
+
+  function setCell(vid,did,key,unit,gd){
+    const el=document.getElementById(vid),del=document.getElementById(did);
+    if(!el||!del) return;
+    el.textContent=last[key]!=null?last[key]:'—';
+    if(baseline[key]!=null&&last[key]!=null){
+      const d=parseFloat((last[key]-baseline[key]).toFixed(1));
+      const s=d>0?'+':'';
+      del.textContent=s+d+' '+unit;
+      del.className='stat-sub '+(d*gd>0?'up':d===0?'neu':'dn');
+    } else {del.textContent=unit;del.className='stat-sub neu';}
+  }
+  setCell('tsWeight','tsWeightD','weight','lbs',-1);
+  setCell('tsMuscle','tsMuscleD','muscle','lbs',1);
+
+  const cal=getCalibration();
+  const fatEl=document.getElementById('tsFat'),fatDEl=document.getElementById('tsFatD'),srcEl=document.getElementById('tsFatSrc');
+  if(fatEl&&last.fatPct!=null){
+    if(cal){
+      const cf=parseFloat((last.fatPct-cal.avgFatOffset).toFixed(1));
+      fatEl.textContent='~'+cf;
+      if(srcEl) srcEl.textContent='cal';
+      if(fatDEl&&baseline.fatPct!=null){
+        const cb=parseFloat((baseline.fatPct-cal.avgFatOffset).toFixed(1));
+        const d=parseFloat((cf-cb).toFixed(1));
+        fatDEl.textContent=(d>0?'+':'')+d+'%';
+        fatDEl.className='stat-sub '+(d<0?'up':d>0?'dn':'neu');
+      }
+    } else {
+      fatEl.textContent=last.fatPct;if(srcEl)srcEl.textContent='';
+      if(fatDEl&&baseline.fatPct!=null){
+        const d=parseFloat((last.fatPct-baseline.fatPct).toFixed(1));
+        fatDEl.textContent=(d>0?'+':'')+d+'%';
+        fatDEl.className='stat-sub '+(d<0?'up':'dn');
+      }
+    }
+  }
+  const wEl=document.getElementById('tsWater');
+  if(wEl) wEl.textContent=last.waterPct!=null?last.waterPct:'—';
+}
+
+function toggleBCEntry(){
+  bcEntryOpen=!bcEntryOpen;
+  const form=document.getElementById('bcInlineEntry');
+  if(form) form.classList.toggle('open',bcEntryOpen);
+}
+function bcLiveCalc(){
+  const m=parseFloat(document.getElementById('tM').value)||0;
+  const f=parseFloat(document.getElementById('tF').value)||0;
+  const b=parseFloat(document.getElementById('tB').value)||0;
+  const row=document.getElementById('bcLiveRow');
+  if(!(m||f||b)){if(row)row.style.display='none';return;}
+  const w=parseFloat((m+f+b).toFixed(1));
+  const fp=w?parseFloat((f/w*100).toFixed(1)):0;
+  const lp=w?parseFloat(((m+b)/w*100).toFixed(1)):0;
+  const wt=document.getElementById('bcLiveWt');if(wt)wt.textContent=w;
+  const ft=document.getElementById('bcLiveFat');if(ft)ft.textContent=fp;
+  const le=document.getElementById('bcLiveLean');if(le)le.textContent=lp;
+  if(row) row.style.display='block';
+}
+function saveTodayBC(){
+  const muscle=parseFloat(document.getElementById('tM').value)||null;
+  const fat=parseFloat(document.getElementById('tF').value)||null;
+  const bone=parseFloat(document.getElementById('tB').value)||null;
+  const water=parseFloat(document.getElementById('tW').value)||null;
+  if(!muscle&&!fat&&!bone){toast('Enter at least M, F, or B ✗','var(--p5)');return;}
+  const weight=(muscle&&fat&&bone)?parseFloat((muscle+fat+bone).toFixed(1)):null;
+  const fatPct=weight?parseFloat((fat/weight*100).toFixed(1)):null;
+  const leanPct=weight?parseFloat(((muscle+bone)/weight*100).toFixed(1)):null;
+  const waterPct=(water&&weight)?parseFloat((water/weight*100).toFixed(1)):null;
+  const proto=getActiveProtocol();
+  bodyLogs.unshift({id:Date.now(),date:today(),source:'withings',
+    phase:proto?proto.name:'',weight,muscle,fat,bone,water,
+    fatPct,leanPct,lean:leanPct,waterPct,notes:''});
+  persist(KEYS.bodyLogs,bodyLogs);
+  ['tM','tF','tB','tW'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
+  const row=document.getElementById('bcLiveRow');if(row)row.style.display='none';
+  bcEntryOpen=false;
+  const form=document.getElementById('bcInlineEntry');if(form)form.classList.remove('open');
+  toast('Reading saved ✓');renderBodyStrip();
+}
+
+// ════════════ CHECKLIST ════════════
+function isCompoundDueToday(c){
+  // Strict: if daysOfWeek is set and non-empty, enforce it. Only fall back to daily if truly unset.
+  const dows=c.daysOfWeek;
+  if(Array.isArray(dows)&&dows.length>0) return dows.indexOf(todayDOW())!==-1;
+  return true; // no DOW constraint = daily
+}
+function isLoggedToday(name){
+  const t=today();
+  return logs.some(l=>l.date===t&&l.compound===name);
+}
+
+function renderChecklist(){
+  const proto=getActiveProtocol();
+  const wrap=document.getElementById('checklistWrap');
+  if(!wrap) return;
+  if(!proto||!proto.compounds||!proto.compounds.length){
+    wrap.innerHTML='<div class="callout warn"><strong>No active protocol.</strong> Go to Build to create and activate one.</div>';
+    return;
+  }
+  const due=proto.compounds.filter(c=>isCompoundDueToday(c));
+  if(!due.length){
+    wrap.innerHTML='<div style="font-family:var(--mono);font-size:11px;color:var(--dim);padding:16px;text-align:center">No compounds scheduled for today.</div>';
+    return;
+  }
+  let html='';
+  TIMING_WINDOWS.forEach(function(tw){
+    const group=due.filter(c=>(c.timingWindow||'other')===tw.key);
+    if(!group.length) return;
+    html+='<div class="timing-group"><div class="timing-group-hdr">'+tw.icon+' '+tw.label+'</div>';
+    group.forEach(function(c,i){
+      const uid=tw.key+'-'+i;
+      const logged=isLoggedToday(c.name);
+      const color=getPColor(c.name);
+      const dose=getEffectiveDose(c.name)||c.dose;
+      const pItem=pantry.find(p=>p.name===c.name);
+      const daysLeft=calcDaysLeft(pItem,c);
+      const low=daysLeft!==null&&daysLeft<(pItem?pItem.reorderDays||14:14);
+      const sites=['Abdomen','Thigh','Glute','N/A'];
+      const sitePills=sites.map(function(s){return'<button class="chip'+(c.site===s?' on':'')+'" onclick="chipOneRow(this)">'+s+'</button>';}).join('');
+      html+='<div class="cr'+(logged?' logged':'')+(low?' low-stock':'')+'" id="cr-'+uid+'">'
+        +'<div class="cr-main" onclick="toggleCR(\''+uid+'\')"><div class="cr-dot" style="background:'+color+'"></div>'
+        +'<div class="cr-info"><div class="cr-name">'+c.name+'</div>'
+        +'<div class="cr-meta">'+dose+' · '+(c.route||'')+(c.fasting?' · Fasted':'')+'</div></div>'
+        +'<div class="cr-right">'+(low?'<span title="'+(daysLeft===0?'Out of stock':daysLeft+' days left')+'" style="font-size:13px">⚠️</span>':'')
+        +'<div class="cr-check">'+(logged?'✓':'○')+'</div></div></div>'
+        +'<div class="cr-expand" id="cre-'+uid+'">'
+        +'<div class="cr-dose-row">'
+        +'<div class="dose-wrap" style="flex:1">'
+        +'<input class="cr-dose-input" id="dose-'+uid+'" value="'+numPart(dose)+'" type="text" inputmode="decimal" placeholder="'+numPart(c.dose)+'">'
+        +'<select id="doseunit-'+uid+'" class="unit-select">'
+        +'<option value="mcg"'+(unitPart(dose)==='mcg'?' selected':'')+'>mcg</option>'
+        +'<option value="mg"'+(unitPart(dose)==='mg'?' selected':'')+'>mg</option>'
+        +'</select></div>'
+        +'<button class="cr-log-btn" onclick="logCompound(\''+c.name+'\',\''+uid+'\')">'+(logged?'Log Again':'Log')+'</button>'
+        +'</div>'
+        +'<div class="cr-site-row">'+sitePills+'</div>'
+        +(low&&pItem?'<div style="font-family:var(--mono);font-size:10px;color:var(--warn);margin-top:8px">⚠ '+(daysLeft===0?'Out of stock':'~'+daysLeft+' days remaining')+' · <button onclick="openRestock(\''+pItem.id+'\')" style="background:none;border:none;color:var(--warn);font-family:var(--mono);font-size:10px;cursor:pointer;text-decoration:underline">Restock</button></div>':'')
+        +'</div></div>';
+    });
+    html+='</div>';
+  });
+  wrap.innerHTML=html;
+}
+
+function toggleCR(uid){
+  const el=document.getElementById('cre-'+uid);
+  if(el) el.classList.toggle('open');
+}
+function chipOneRow(el){
+  const row=el.closest('.cr-site-row');
+  if(row) row.querySelectorAll('.chip').forEach(function(c){c.classList.remove('on');});
+  el.classList.add('on');
+}
+
+function logCompound(name,uid){
+  const dose=getDoseValue('dose-'+uid,'doseunit-'+uid)||getEffectiveDose(name)||'—';
+  const siteEl=document.querySelector('#cre-'+uid+' .chip.on');
+  const site=siteEl?siteEl.textContent:'Abdomen';
+  const proto=getActiveProtocol();
+  const c=(proto&&proto.compounds)?proto.compounds.find(function(cp){return cp.name===name;})||{}:{};
+  const entry={id:Date.now(),date:today(),time:new Date().toTimeString().substring(0,5),
+    compound:name,dose:dose,route:c.route||'Subcutaneous',
+    fedState:c.fasting?'fasted':'fed',site:site,
+    protocolName:proto?proto.name:'',notes:''};
+  doseMem[name]={dose:dose,route:entry.route,fedState:entry.fedState};
+  persist(KEYS.doseMem,doseMem);
+  logs.unshift(entry);persist(KEYS.logs,logs);
+  deductStock(name,dose);
+  toast(name.split(' ')[0]+' logged ✓');
+  renderChecklist();
+}
+
+function openAddCompoundToday(){
+  const sel=document.getElementById('addTodaySelect');
+  const proto=getActiveProtocol();
+  const protoNames=new Set((proto&&proto.compounds?proto.compounds:[]).map(function(c){return c.name;}));
+  sel.innerHTML=pantry.filter(function(p){return p.active;}).map(function(p){
+    return '<option value="'+p.name+'">'+p.name+(protoNames.has(p.name)?' (in protocol)':'')+'</option>';
+  }).join('');
+  sel.onchange=function(){
+    const doseEl=document.getElementById('addTodayDose');
+    if(doseEl) doseEl.value=getEffectiveDose(sel.value)||'';
+  };
+  sel.dispatchEvent(new Event('change'));
+  openModal('addTodayModal');
+}
+function addCompoundTodayOnly(){
+  const name=document.getElementById('addTodaySelect').value;
+  const doseEl=document.getElementById('addTodayDose');
+  const dose=(doseEl?doseEl.value:'')||getEffectiveDose(name)||'—';
+  if(!name){toast('Select a compound ✗','var(--p5)');return;}
+  const entry={id:Date.now(),date:today(),time:new Date().toTimeString().substring(0,5),
+    compound:name,dose:dose,route:'Subcutaneous',fedState:'fasted',
+    site:'Abdomen',protocolName:'(today only)',notes:''};
+  doseMem[name]={dose:dose,route:'Subcutaneous',fedState:'fasted'};
+  persist(KEYS.doseMem,doseMem);
+  logs.unshift(entry);persist(KEYS.logs,logs);
+  toast(name+' logged for today ✓');
+  closeModal('addTodayModal');
+}
+function addCompoundToProtocol(){
+  const name=document.getElementById('addTodaySelect').value;
+  const doseEl=document.getElementById('addTodayDose');
+  const dose=(doseEl?doseEl.value:'')||getEffectiveDose(name)||'—';
+  if(!name){toast('Select a compound ✗','var(--p5)');return;}
+  const proto=getActiveProtocol();
+  if(!proto){toast('No active protocol ✗','var(--p5)');return;}
+  const newProto=JSON.parse(JSON.stringify(proto));
+  newProto.id='proto_'+Date.now();
+  newProto.name=proto.name+' (updated)';
+  const pItem=pantry.find(function(p){return p.name===name;})||{};
+  newProto.compounds.push({name:name,dose:dose,route:pItem.route||'Subcutaneous',
+    form:pItem.form||'vial',fasting:pItem.fasting||false,site:pItem.site||'Abdomen',
+    timing:'Upon Waking',timingWindow:'am',frequency:'daily',
+    daysOfWeek:[0,1,2,3,4,5,6],rationale:''});
+  protocols.push(newProto);activeProtoId=newProto.id;
+  persist(KEYS.protocols,protocols);persist(KEYS.activeProtoId,activeProtoId);
+  addCompoundTodayOnly();
+  closeModal('addTodayModal');
+  toast(name+' added to protocol & logged ✓');
+  renderToday();renderBuild();updateMobHeader();
+}
+
+// ════════════ CHECK-IN ════════════
+function toggleCheckin(){
+  checkinOpen=!checkinOpen;
+  const body=document.getElementById('checkinBody');
+  const hdr=document.getElementById('checkinHdr');
+  const chev=document.getElementById('checkinChev');
+  if(body) body.classList.toggle('open',checkinOpen);
+  if(hdr) hdr.classList.toggle('open',checkinOpen);
+  if(chev) chev.textContent=checkinOpen?'▴':'▾';
+}
+function renderCheckinState(){
+  const done=checkins.some(function(c){return c.date===today();});
+  const badge=document.getElementById('checkinBadge');
+  if(badge) badge.textContent=done?'✓ Done':'';
+}
+function saveCheckin(){
+  const t=today();
+  const sideEls=document.querySelectorAll('#ciSideChips .chip.warn-chip.on');
+  const fx=Array.from(sideEls).map(function(c){return c.textContent;}).join(', ')||'None';
+  const entry={id:Date.now(),date:t,
+    sleep:+document.getElementById('ciSleep').value,
+    energy:+document.getElementById('ciEnergy').value,
+    hunger:+document.getElementById('ciHunger').value,
+    recovery:+document.getElementById('ciRecovery').value,
+    sideEffects:fx,notes:document.getElementById('ciNotes').value};
+  checkins=checkins.filter(function(c){return c.date!==t;});
+  checkins.unshift(entry);persist(KEYS.checkins,checkins);
+  toast('Check-in saved ✓');
+  ['ciSleep','ciEnergy','ciRecovery'].forEach(function(id){const el=document.getElementById(id);if(el)el.value=7;});
+  const h=document.getElementById('ciHunger');if(h)h.value=5;
+  ['ciVSleep','ciVEnergy','ciVRecovery'].forEach(function(id){const el=document.getElementById(id);if(el)el.textContent='7';});
+  const vh=document.getElementById('ciVHunger');if(vh)vh.textContent='5';
+  const cn=document.getElementById('ciNotes');if(cn)cn.value='';
+  document.querySelectorAll('#ciSideChips .chip').forEach(function(c){c.classList.remove('on');});
+  renderCheckinState();toggleCheckin();
+}
+
+// ════════════ HISTORY ════════════
+function renderHistory(){
+  document.getElementById('hst1').textContent=logs.length;
+  if(logs.length>0){
+    const ciMap={};checkins.forEach(function(c){ciMap[c.date]=c;});
+    const allDates=[...new Set(logs.map(function(l){return l.date;}))];
+    const ciWithLogs=allDates.map(function(d){return ciMap[d];}).filter(Boolean);
+    if(ciWithLogs.length){
+      const avgS=(ciWithLogs.reduce(function(a,c){return a+c.sleep;},0)/ciWithLogs.length).toFixed(1);
+      const avgE=(ciWithLogs.reduce(function(a,c){return a+c.energy;},0)/ciWithLogs.length).toFixed(1);
+      const hst2=document.getElementById('hst2');if(hst2)hst2.textContent=avgS;
+      const hst3=document.getElementById('hst3');if(hst3)hst3.textContent=avgE;
+      const hst2s=document.getElementById('hst2s');if(hst2s){hst2s.textContent=+avgS>=7?'↑ good':'↓ watch';hst2s.className='stat-sub '+(+avgS>=7?'up':'dn');}
+      const hst3s=document.getElementById('hst3s');if(hst3s){hst3s.textContent=+avgE>=7?'↑ good':'↓ low';hst3s.className='stat-sub '+(+avgE>=7?'up':'dn');}
+    }
+    const cutoff=new Date();cutoff.setDate(cutoff.getDate()-14);
+    const days=new Set(logs.filter(function(l){return new Date(l.date)>=cutoff;}).map(function(l){return l.date;}));
+    const hst4=document.getElementById('hst4');if(hst4)hst4.textContent=Math.round(days.size/14*100)+'%';
+    const hst4s=document.getElementById('hst4s');if(hst4s)hst4s.textContent=days.size+'/14 days';
+  }
+  const feed=document.getElementById('histFeed');
+  if(!logs.length){
+    feed.innerHTML='<div class="empty"><span class="empty-big">No entries yet</span><p>Log compounds from the Today tab</p></div>';
+    return;
+  }
+  const byDate={};
+  logs.forEach(function(l){if(!byDate[l.date])byDate[l.date]=[];byDate[l.date].push(l);});
+  const dates=Object.keys(byDate).sort(function(a,b){return new Date(b)-new Date(a);});
+  feed.innerHTML=dates.map(function(date){
+    const entries=byDate[date];
+    const ci=checkins.find(function(c){return c.date===date;});
+    const dots=entries.map(function(l){return'<div class="day-dot" style="background:'+getPColor(l.compound)+'" title="'+l.compound+'"></div>';}).join('');
+    const scoreHtml=ci?'<div class="day-score" style="color:var(--p3)">💤 '+ci.sleep+'</div><div class="day-score" style="color:var(--p1)">⚡ '+ci.energy+'</div><div class="day-score" style="color:var(--p2)">🍽 '+ci.hunger+'</div>':'';
+    const entryRows=entries.map(function(l){
+      return'<div class="day-entry"><div class="day-entry-dot" style="background:'+getPColor(l.compound)+'"></div>'
+        +'<div class="day-entry-info"><div class="day-entry-name">'+l.compound+'</div>'
+        +'<div class="day-entry-meta">'+l.dose+' · '+(l.fedState||'')+' · '+(l.site||'')+' · '+(l.time||'')+'</div></div>'
+        +'<div class="day-entry-actions">'
+        +'<button class="day-entry-btn" onclick="openEditLog('+l.id+')">Edit</button>'
+        +'<button class="day-entry-btn del" onclick="deleteLogById('+l.id+')">Del</button>'
+        +'</div></div>';
+    }).join('');
+    const ciRow=ci?'<div style="padding:8px 0;border-top:1px solid var(--bd);margin-top:6px;font-family:var(--mono);font-size:10px;color:var(--dim)">Check-in · Sleep:'+ci.sleep+' Energy:'+ci.energy+' Hunger:'+ci.hunger+' Recovery:'+ci.recovery+(ci.sideEffects&&ci.sideEffects!=='None'?' · '+ci.sideEffects:'')+'</div>':'';
+    return'<div class="day-card"><div class="day-card-hdr" onclick="toggleDayCard(this)">'
+      +'<div class="day-date">'+fmtDate(date)+'</div><div class="day-dots">'+dots+'</div>'
+      +'<div class="day-scores">'+scoreHtml+'</div><span style="font-size:11px;color:var(--dim);margin-left:6px">▾</span>'
+      +'</div><div class="day-expand">'+entryRows+ciRow+'</div></div>';
+  }).join('');
+}
+
+function toggleDayCard(hdr){
+  const exp=hdr.nextElementSibling;
+  const open=exp.classList.toggle('open');
+  hdr.classList.toggle('open',open);
+  const chev=hdr.querySelector('span:last-child');
+  if(chev) chev.textContent=open?'▴':'▾';
+}
+function openEditLog(id){
+  const l=logs.find(function(l){return l.id===id;});if(!l) return;
+  document.getElementById('editLogId').value=id;
+  document.getElementById('editCompound').value=l.compound;
+  document.getElementById('editDose').value=l.dose;
+  document.getElementById('editDate').value=l.date;
+  document.getElementById('editTime').value=l.time||'';
+  document.getElementById('editFed').value=l.fedState||'fasted';
+  document.getElementById('editRoute').value=l.route||'Subcutaneous';
+  document.getElementById('editSite').value=l.site||'';
+  document.getElementById('editNotes').value=l.notes||'';
+  openModal('editLogModal');
+}
+function saveEditLog(){
+  const id=+document.getElementById('editLogId').value;
+  const idx=logs.findIndex(function(l){return l.id===id;});if(idx<0) return;
+  logs[idx]=Object.assign({},logs[idx],{
+    compound:document.getElementById('editCompound').value,
+    dose:document.getElementById('editDose').value,
+    date:document.getElementById('editDate').value,
+    time:document.getElementById('editTime').value,
+    fedState:document.getElementById('editFed').value,
+    route:document.getElementById('editRoute').value,
+    site:document.getElementById('editSite').value,
+    notes:document.getElementById('editNotes').value,
+  });
+  persist(KEYS.logs,logs);closeModal('editLogModal');toast('Updated ✓');renderHistory();
+}
+function deleteLogEntry(){
+  const id=+document.getElementById('editLogId').value;
+  deleteLogById(id);closeModal('editLogModal');
+}
+function deleteLogById(id){
+  if(!confirm('Delete this entry?')) return;
+  logs=logs.filter(function(l){return l.id!==id;});
+  persist(KEYS.logs,logs);toast('Deleted');renderHistory();
+}
+
+// ════════════ BODY COMP ════════════
+function setBodySource(src){
+  bodySource=src;
+  const sw=document.getElementById('srcWithings');if(sw)sw.classList.toggle('on',src==='withings');
+  const sd=document.getElementById('srcDexa');if(sd)sd.classList.toggle('on',src==='dexa');
+  const wf=document.getElementById('withingsFields');if(wf)wf.style.display=src==='withings'?'block':'none';
+  const df=document.getElementById('dexaFields');if(df)df.style.display=src==='dexa'?'block':'none';
+  const ss=document.getElementById('ssImportWrap');if(ss)ss.style.display=src==='withings'?'block':'none';
+  const di=document.getElementById('dexaImportWrap');if(di)di.style.display=src==='dexa'?'block':'none';
+}
+
+function bcFormCalc(){
+  const m=parseFloat(document.getElementById('bcMuscle').value)||0;
+  const f=parseFloat(document.getElementById('bcFat').value)||0;
+  const b=parseFloat(document.getElementById('bcBone').value)||0;
+  const row=document.getElementById('bcFormCalcRow');
+  if(!(m||f||b)){if(row)row.style.display='none';return;}
+  const w=parseFloat((m+f+b).toFixed(1));
+  const fp=w?parseFloat((f/w*100).toFixed(1)):0;
+  const lp=w?parseFloat(((m+b)/w*100).toFixed(1)):0;
+  const wt=document.getElementById('bcFormWt');if(wt)wt.textContent=w;
+  const ff=document.getElementById('bcFormFatPct');if(ff)ff.textContent=fp;
+  const fl=document.getElementById('bcFormLeanPct');if(fl)fl.textContent=lp;
+  if(row) row.style.display='block';
+}
+function saveBodyComp(){
+  const src=bodySource;
+  const date=document.getElementById('bcDate').value;
+  if(!date){toast('Add a date ✗','var(--p5)');return;}
+  const proto=getActiveProtocol();
+  const entry={id:Date.now(),date:date,source:src,phase:proto?proto.name:'',notes:document.getElementById('bcNotes').value};
+  if(src==='dexa'){
+    const fatPct=parseFloat(document.getElementById('dexaFatPct').value)||null;
+    const leanPct=parseFloat(document.getElementById('dexaLeanPct').value)||null;
+    if(!fatPct&&!leanPct){toast('Enter Fat% or Lean% ✗','var(--p5)');return;}
+    Object.assign(entry,{fatPct:fatPct,leanPct:leanPct,lean:leanPct,
+      weight:parseFloat(document.getElementById('dexaWeight').value)||null,
+      muscle:parseFloat(document.getElementById('dexaLeanLbs').value)||null,
+      fat:parseFloat(document.getElementById('dexaFatLbs').value)||null,
+      bone:null,water:null,waterPct:null,
+      visceral:parseFloat(document.getElementById('dexaVisceral').value)||null,
+      tscore:parseFloat(document.getElementById('dexaTscore').value)||null});
+  } else {
+    const muscle=parseFloat(document.getElementById('bcMuscle').value)||null;
+    const fat=parseFloat(document.getElementById('bcFat').value)||null;
+    const bone=parseFloat(document.getElementById('bcBone').value)||null;
+    const water=parseFloat(document.getElementById('bcWater').value)||null;
+    if(!muscle&&!fat&&!bone){toast('Enter M, F, or B ✗','var(--p5)');return;}
+    const weight=(muscle&&fat&&bone)?parseFloat((muscle+fat+bone).toFixed(1)):null;
+    const fatPct=weight?parseFloat((fat/weight*100).toFixed(1)):null;
+    const leanPct=weight?parseFloat(((muscle+bone)/weight*100).toFixed(1)):null;
+    const waterPct=(water&&weight)?parseFloat((water/weight*100).toFixed(1)):null;
+    Object.assign(entry,{weight:weight,muscle:muscle,fat:fat,bone:bone,water:water,
+      fatPct:fatPct,leanPct:leanPct,lean:leanPct,waterPct:waterPct});
+  }
+  bodyLogs.unshift(entry);persist(KEYS.bodyLogs,bodyLogs);
+  toast(src==='dexa'?'DEXA saved ✓':'Reading saved ✓');
+  clearBC();renderBodyComp();
+}
+function clearBC(){
+  ['bcMuscle','bcFat','bcBone','bcWater','bcNotes',
+   'dexaFatPct','dexaLeanPct','dexaWeight','dexaLeanLbs','dexaFatLbs','dexaVisceral','dexaTscore']
+   .forEach(function(id){const el=document.getElementById(id);if(el)el.value='';});
+  const r=document.getElementById('bcFormCalcRow');if(r)r.style.display='none';
+}
+
+
+
+function filterByPeriod(logs, days){
+  if(!days) return logs; // 0 = all
+  const cutoff=new Date();
+  cutoff.setDate(cutoff.getDate()-days);
+  const cutoffStr=cutoff.getFullYear()+'-'+String(cutoff.getMonth()+1).padStart(2,'0')+'-'+String(cutoff.getDate()).padStart(2,'0');
+  return logs.filter(function(l){return l.date>=cutoffStr;});
+}
+
+function setChartPeriod(chart,days){
+  chartPeriod[chart]=days;
+  // Update active tab styling
+  var tabsId=chart==='fat'?'fatPeriodTabs':'wtPeriodTabs';
+  var tabs=document.getElementById(tabsId);
+  if(tabs){
+    tabs.querySelectorAll('.cpt').forEach(function(btn){
+      btn.classList.toggle('on',+btn.dataset.days===days);
+    });
+  }
+  // Build sorted from global bodyLogs (not a closed-over variable)
+  var sorted=[...bodyLogs].sort(function(a,b){return new Date(a.date)-new Date(b.date);});
+  var filtered=filterByPeriod(sorted,days);
+  if(chart==='fat'){
+    renderBcSvg('bcFatSvg',filtered,'fat',126);
+  } else {
+    renderBcWtSvg('bcWtSvg',filtered,126);
+  }
+}
+
+function renderBodyComp(){
+  const sorted=[...bodyLogs].sort(function(a,b){return new Date(a.date)-new Date(b.date);});
+  const bcS5=document.getElementById('bcS5');if(bcS5)bcS5.textContent=bodyLogs.length;
+  if(sorted.length){
+    const wLogs=sorted.filter(function(l){return l.source!=='dexa';});
+    const last=(wLogs[wLogs.length-1])||sorted[sorted.length-1];
+    const first=wLogs[0]||sorted[0];
+    function setS(vid,did,key,gd){
+      const el=document.getElementById(vid),del=document.getElementById(did);if(!el||!del) return;
+      el.textContent=last[key]!=null?last[key]:'—';
+      if(first[key]!=null&&last[key]!=null){
+        const d=parseFloat((last[key]-first[key]).toFixed(1));
+        del.textContent=(d>0?'+':'')+d+' lbs';
+        del.className='stat-sub '+(d*gd>0?'up':d===0?'neu':'dn');
+      }
+    }
+    setS('bcS1','bcS1d','weight',-1);setS('bcS2','bcS2d','muscle',1);setS('bcS3','bcS3d','fat',-1);
+  }
+  // Apply current period filter to charts; feed always shows full history
+  const fatFiltered=filterByPeriod(sorted,chartPeriod.fat);
+  const wtFiltered=filterByPeriod(sorted,chartPeriod.wt);
+  renderBcSvg('bcFatSvg',fatFiltered,'fat',126);
+  renderBcWtSvg('bcWtSvg',wtFiltered,126);
+  renderCalibCard();
+  renderBcFeed(sorted);
+}
+
+function getPhaseColor(phase){
+  if(!phase) return 'var(--mid)';
+  var p=phase.toLowerCase();
+  if(p.indexOf('fat')!==-1||p.indexOf('loss')!==-1) return 'var(--p2)';
+  if(p.indexOf('recomp')!==-1||p.indexOf('muscle')!==-1) return 'var(--p1)';
+  if(p.indexOf('wash')!==-1) return 'var(--p4)';
+  if(p.indexOf('baseline')!==-1) return 'var(--dim)';
+  return 'var(--p3)';
+}
+function fmtShortDate(d){
+  // Parse YYYY-MM-DD string directly — avoids UTC timezone shift from new Date()
+  if(!d) return '';
+  var p=d.split('-');
+  var m=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  return m[+p[1]-1]+' '+p[2].replace(/^0/,'')+' '+p[0].slice(2);
+}
+function parseLocalDate(s){
+  // Parse YYYY-MM-DD without UTC shift
+  if(!s) return new Date(0);
+  var p=s.split('-');
+  return new Date(+p[0],+p[1]-1,+p[2]);
+}
+
+function renderPhaseBands(pts,W,H,pad,LABEL_H,minDate,totalMs){
+  var html='';
+  var COLORS={'fat loss phase':'rgba(245,166,35,0.08)','baseline':'rgba(102,94,84,0.07)','recomp':'rgba(61,214,140,0.07)'};
+  var bands=[],cur=null;
+  pts.forEach(function(p){
+    var ph=(p.phase||'').toLowerCase().trim();
+    var x=pad+((parseLocalDate(p.date)-minDate)/totalMs)*(W-pad*2);
+    if(!cur||cur.phase!==ph){if(cur)bands.push(cur);cur={phase:ph,label:p.phase||'',x1:x,x2:x};}
+    else{cur.x2=x;}
+  });
+  if(cur) bands.push(cur);
+  bands.forEach(function(b){
+    var color=COLORS[b.phase]||'rgba(46,196,182,0.05)';
+    var w=b.x2-b.x1;
+    if(w>8){
+      html+='<rect x="'+b.x1+'" y="'+pad+'" width="'+w+'" height="'+(H-pad-LABEL_H-pad)+'" fill="'+color+'" rx="2"/>';
+      if(w>60&&b.label){
+        html+='<text x="'+(b.x1+w/2)+'" y="'+(pad+10)+'" text-anchor="middle" font-family="IBM Plex Mono" font-size="8" fill="'+getPhaseColor(b.label)+'" opacity="0.6">'+b.label+'</text>';
+      }
+    }
+  });
+  return html;
+}
+function renderDexaMarkers(W,H,pad,LABEL_H,minDate,maxDate,totalMs){
+  var html='';
+  bodyLogs.filter(function(l){return l.source==='dexa';}).forEach(function(d){
+    var dDate=parseLocalDate(d.date);
+    if(dDate<minDate||dDate>maxDate) return;
+    var dx=pad+((dDate-minDate)/totalMs)*(W-pad*2);
+    html+='<line x1="'+dx+'" y1="'+pad+'" x2="'+dx+'" y2="'+(H-LABEL_H-pad)+'" stroke="var(--p3)" stroke-width="1.5" stroke-dasharray="4,3" opacity="0.8"/>';
+    html+='<text x="'+(dx+4)+'" y="'+(pad+10)+'" font-family="IBM Plex Mono" font-size="8" fill="var(--p3)">DEXA</text>';
+  });
+  return html;
+}
+function renderDateAxis(pts,W,H,pad,LABEL_H,minDate,totalMs){
+  if(!pts||pts.length<2) return '';
+  var html='';
+  var labelY=H-3;
+  function xForDate(d){return pad+((parseLocalDate(d)-minDate)/totalMs)*(W-pad*2);}
+  // Always label the actual first and last date from the data range
+  var first=pts[0],last=pts[pts.length-1];
+  var x0=xForDate(first.date),xN=xForDate(last.date);
+  html+='<text x="'+x0+'" y="'+labelY+'" text-anchor="start" font-family="IBM Plex Mono" font-size="9" fill="var(--dim)">'+fmtShortDate(first.date)+'</text>';
+  html+='<text x="'+xN+'" y="'+labelY+'" text-anchor="end" font-family="IBM Plex Mono" font-size="9" fill="var(--dim)">'+fmtShortDate(last.date)+'</text>';
+  // Mid label: only if range is wide enough and dates are meaningfully different
+  if(pts.length>4&&totalMs>7*24*3600*1000){
+    // Find the point closest to the temporal midpoint (not array midpoint)
+    var midMs=minDate.getTime()+totalMs/2;
+    var midPt=pts.reduce(function(best,p){
+      return Math.abs(parseLocalDate(p.date)-midMs)<Math.abs(new Date(best.date)-midMs)?p:best;
+    });
+    var xMid=xForDate(midPt.date);
+    // Only show if it won't overlap first/last labels (>80px gap)
+    if(xMid-x0>80&&xN-xMid>80){
+      html+='<text x="'+xMid+'" y="'+labelY+'" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" fill="var(--dim)">'+fmtShortDate(midPt.date)+'</text>';
+    }
+  }
+  return html;
+}
+
+function renderBcSvg(svgId,sorted,key,H){
+  var svg=document.getElementById(svgId);if(!svg) return;
+  var pts=sorted.filter(function(e){return e[key]!=null;});
+  if(pts.length<2){svg.innerHTML='<text x="380" y="'+(H/2+4)+'" text-anchor="middle" font-family="IBM Plex Mono" font-size="10" fill="var(--dim)" letter-spacing="2">Log 2+ entries to see trend</text>';return;}
+  var W=760,pad=22,LABEL_H=16;
+  var vals=pts.map(function(p){return p[key];});
+  var minV=Math.min.apply(null,vals),maxV=Math.max.apply(null,vals),range=maxV-minV||1;
+  var minDate=parseLocalDate(pts[0].date),maxDate=parseLocalDate(pts[pts.length-1].date);
+  var totalMs=maxDate-minDate||1;
+  function xOf(p){return pad+((parseLocalDate(p.date)-minDate)/totalMs)*(W-pad*2);}
+  function yOf(v){return H-pad-LABEL_H-((v-minV)/range)*(H-pad*2-LABEL_H);}
+  var html='';
+  html+=renderPhaseBands(pts,W,H,pad,LABEL_H,minDate,totalMs);
+  html+=renderDexaMarkers(W,H,pad,LABEL_H,minDate,maxDate,totalMs);
+  var line=pts.map(function(p){return xOf(p)+','+yOf(p[key]);}).join(' ');
+  html+='<polyline points="'+line+'" fill="none" stroke="var(--bd2)" stroke-width="1.5"/>';
+  pts.forEach(function(p){
+    var x=xOf(p),y=yOf(p[key]);
+    html+='<circle cx="'+x+'" cy="'+y+'" r="4" fill="'+getPhaseColor(p.phase)+'" opacity="0.9"><title>'+p.date+' · '+p[key]+'</title></circle>';
+  });
+  // Value labels first/last
+  var first=pts[0],last=pts[pts.length-1];
+  html+='<text x="'+xOf(first)+'" y="'+(yOf(first[key])-6)+'" text-anchor="start" font-family="IBM Plex Mono" font-size="9" fill="'+getPhaseColor(first.phase)+'">'+first[key]+'</text>';
+  html+='<text x="'+xOf(last)+'" y="'+(yOf(last[key])-6)+'" text-anchor="end" font-family="IBM Plex Mono" font-size="9" fill="'+getPhaseColor(last.phase)+'">'+last[key]+'</text>';
+  html+=renderDateAxis(pts,W,H,pad,LABEL_H,minDate,totalMs);
+  svg.innerHTML=html;
+}
+
+function renderBcWtSvg(svgId,sorted,H){
+  var svg=document.getElementById(svgId);if(!svg) return;
+  var wPts=sorted.filter(function(e){return e.weight!=null&&e.source!=='dexa';});
+  var mPts=sorted.filter(function(e){return e.muscle!=null&&e.source!=='dexa';});
+  if(wPts.length<2){svg.innerHTML='<text x="380" y="'+(H/2+4)+'" text-anchor="middle" font-family="IBM Plex Mono" font-size="10" fill="var(--dim)" letter-spacing="2">Log 2+ entries</text>';return;}
+  var W=760,pad=22,LABEL_H=16;
+  var allPts=wPts;
+  var minDate=parseLocalDate(allPts[0].date),maxDate=parseLocalDate(allPts[allPts.length-1].date);
+  var totalMs=maxDate-minDate||1;
+  function xOf(p){return pad+((parseLocalDate(p.date)-minDate)/totalMs)*(W-pad*2);}
+  var allV=wPts.map(function(p){return p.weight;}).concat(mPts.map(function(p){return p.muscle;})).filter(Boolean);
+  var minV=Math.min.apply(null,allV),maxV=Math.max.apply(null,allV),range=maxV-minV||1;
+  function yOf(v){return H-pad-LABEL_H-((v-minV)/range)*(H-pad*2-LABEL_H);}
+  var html='';
+  html+=renderPhaseBands(wPts,W,H,pad,LABEL_H,minDate,totalMs);
+  html+=renderDexaMarkers(W,H,pad,LABEL_H,minDate,maxDate,totalMs);
+  var wLine=wPts.map(function(p){return xOf(p)+','+yOf(p.weight);}).join(' ');
+  html+='<polyline points="'+wLine+'" fill="none" stroke="var(--dim)" stroke-width="1.5" opacity="0.4"/>';
+  wPts.forEach(function(p){
+    html+='<circle cx="'+xOf(p)+'" cy="'+yOf(p.weight)+'" r="4" fill="'+getPhaseColor(p.phase)+'" opacity="0.85"><title>'+p.date+' · Weight: '+p.weight+'</title></circle>';
+  });
+  mPts.forEach(function(p){
+    var wp=wPts.find(function(w){return w.date===p.date;});
+    if(!wp) return;
+    html+='<circle cx="'+xOf(p)+'" cy="'+yOf(p.muscle)+'" r="4" fill="var(--p4)" opacity="0.85"><title>'+p.date+' · Muscle: '+p.muscle+'</title></circle>';
+  });
+  // Legend
+  html+='<circle cx="'+pad+'" cy="'+(pad+4)+'" r="4" fill="var(--p2)" opacity="0.85"/>';
+  html+='<text x="'+(pad+8)+'" y="'+(pad+8)+'" font-family="IBM Plex Mono" font-size="8" fill="var(--dim)">Weight</text>';
+  html+='<circle cx="'+(pad+58)+'" cy="'+(pad+4)+'" r="4" fill="var(--p4)" opacity="0.85"/>';
+  html+='<text x="'+(pad+66)+'" y="'+(pad+8)+'" font-family="IBM Plex Mono" font-size="8" fill="var(--dim)">Muscle</text>';
+  html+=renderDateAxis(wPts,W,H,pad,LABEL_H,minDate,totalMs);
+  svg.innerHTML=html;
+}
+
+
+function openEditBody(id){
+  const e=bodyLogs.find(function(l){return l.id===id;});if(!e) return;
+  document.getElementById('editBodyId').value=id;
+  document.getElementById('editBodyDate').value=e.date||'';
+  document.getElementById('editBodySource').value=e.source||'withings';
+  document.getElementById('editBodyMuscle').value=e.muscle!=null?e.muscle:'';
+  document.getElementById('editBodyFat').value=e.fat!=null?e.fat:'';
+  document.getElementById('editBodyBone').value=e.bone!=null?e.bone:'';
+  document.getElementById('editBodyWater').value=e.water!=null?e.water:'';
+  document.getElementById('editBodyFatPct').value=e.fatPct!=null?e.fatPct:'';
+  document.getElementById('editBodyPhase').value=e.phase||'';
+  document.getElementById('editBodyNotes').value=e.notes||'';
+  openModal('editBodyModal');
+}
+function saveEditBody(){
+  const id=+document.getElementById('editBodyId').value;
+  const idx=bodyLogs.findIndex(function(l){return l.id===id;});if(idx<0) return;
+  const muscle=parseFloat(document.getElementById('editBodyMuscle').value)||null;
+  const fat=parseFloat(document.getElementById('editBodyFat').value)||null;
+  const bone=parseFloat(document.getElementById('editBodyBone').value)||null;
+  const water=parseFloat(document.getElementById('editBodyWater').value)||null;
+  const overrideFatPct=parseFloat(document.getElementById('editBodyFatPct').value)||null;
+  const weight=(muscle!=null&&fat!=null&&bone!=null)?parseFloat((muscle+fat+bone).toFixed(1)):bodyLogs[idx].weight;
+  const fatPct=overrideFatPct||(weight&&fat!=null?parseFloat((fat/weight*100).toFixed(1)):null);
+  const leanPct=(weight&&muscle!=null&&bone!=null)?parseFloat(((muscle+bone)/weight*100).toFixed(1)):null;
+  bodyLogs[idx]=Object.assign({},bodyLogs[idx],{
+    date:document.getElementById('editBodyDate').value,
+    source:document.getElementById('editBodySource').value,
+    muscle:muscle,fat:fat,bone:bone,water:water,
+    weight:weight,fatPct:fatPct,leanPct:leanPct,lean:leanPct,
+    waterPct:(water&&weight)?parseFloat((water/weight*100).toFixed(1)):null,
+    phase:document.getElementById('editBodyPhase').value,
+    notes:document.getElementById('editBodyNotes').value,
+  });
+  bodyLogs.sort(function(a,b){return new Date(b.date)-new Date(a.date);});
+  persist(KEYS.bodyLogs,bodyLogs);
+  closeModal('editBodyModal');toast('Measurement updated ✓');renderBodyComp();renderBodyStrip();
+}
+function deleteBodyEntry(){
+  const id=+document.getElementById('editBodyId').value;
+  deleteBodyLog(id);closeModal('editBodyModal');
+}
+function deleteBodyLog(id){
+  if(!confirm('Delete this measurement?')) return;
+  bodyLogs=bodyLogs.filter(function(l){return l.id!==id;});
+  persist(KEYS.bodyLogs,bodyLogs);toast('Deleted');renderBodyComp();renderBodyStrip();
+}
+
+function renderBcFeed(sorted){
+  const feed=document.getElementById('bcFeed');if(!feed) return;
+  if(!bodyLogs.length){feed.innerHTML='<div class="empty"><span class="empty-big">No measurements yet</span><p>Enter readings above or import a screenshot</p></div>';return;}
+  feed.innerHTML=[...bodyLogs].sort(function(a,b){return new Date(b.date)-new Date(a.date);}).map(function(e){
+    const srcColor=e.source==='dexa'?'var(--p3)':'var(--mid)';
+    const srcLabel=e.source==='dexa'?'DEXA':'Withings';
+    const ms=[
+      e.muscle!=null?'<div class="bc-m"><div class="bc-m-lbl">M·Muscle</div><div class="bc-m-val mu">'+e.muscle+'lbs</div></div>':'',
+      e.fat!=null?'<div class="bc-m"><div class="bc-m-lbl">F·Fat</div><div class="bc-m-val fat">'+e.fat+'lbs</div></div>':'',
+      e.bone!=null?'<div class="bc-m"><div class="bc-m-lbl">B·Bone</div><div class="bc-m-val">'+e.bone+'lbs</div></div>':'',
+      e.weight!=null?'<div class="bc-m"><div class="bc-m-lbl">Total</div><div class="bc-m-val">'+e.weight+'lbs</div></div>':'',
+      e.fatPct!=null?'<div class="bc-m"><div class="bc-m-lbl">Fat%</div><div class="bc-m-val fat">'+e.fatPct+'%</div></div>':'',
+    ].join('');
+    return'<div class="bc-feed-row"><div style="font-family:var(--mono);font-size:10px;color:var(--dim);min-width:50px">'+fmtDate(e.date)+'</div>'
+      +'<div class="bc-metrics">'+ms+'</div>'
+      +'<div style="display:flex;flex-direction:column;gap:4px;flex-shrink:0;align-items:flex-end">'
+      +'<span class="src-badge" style="color:'+srcColor+';border-color:'+srcColor+';background:'+srcColor+'18">'+srcLabel+'</span>'
+      +(e.phase?'<span class="src-badge" style="color:var(--dim);border-color:var(--bd)">'+e.phase+'</span>':'')
+      +'<div style="display:flex;gap:4px;margin-top:2px">'
+      +'<button onclick="openEditBody('+e.id+')" style="font-family:var(--mono);font-size:9px;padding:3px 8px;border-radius:3px;border:1px solid var(--bd);background:none;color:var(--dim);cursor:pointer">Edit</button>'
+      +'<button onclick="deleteBodyLog('+e.id+')" style="font-family:var(--mono);font-size:9px;padding:3px 8px;border-radius:3px;border:1px solid var(--p5);background:none;color:var(--p5);cursor:pointer">Del</button>'
+      +'</div>'
+      +'</div></div>';
+  }).join('');
+}
+
+function getCalibration(){
+  const dexaLogs=bodyLogs.filter(function(l){return l.source==='dexa'&&l.fatPct!=null;});
+  if(!dexaLogs.length) return null;
+  const offsets=dexaLogs.map(function(dexa){
+    const dexaDate=new Date(dexa.date);
+    const nearby=bodyLogs.filter(function(l){return l.source!=='dexa'&&l.fatPct!=null;})
+      .sort(function(a,b){return Math.abs(new Date(a.date)-dexaDate)-Math.abs(new Date(b.date)-dexaDate);});
+    if(!nearby.length) return null;
+    if(Math.abs(new Date(nearby[0].date)-dexaDate)>14*24*3600*1000) return null;
+    return{fatOffset:parseFloat((nearby[0].fatPct-dexa.fatPct).toFixed(2)),
+           leanOffset:parseFloat(((nearby[0].leanPct||0)-(dexa.leanPct||0)).toFixed(2))};
+  }).filter(Boolean);
+  if(!offsets.length) return null;
+  const avgFatOffset=parseFloat((offsets.reduce(function(s,o){return s+o.fatOffset;},0)/offsets.length).toFixed(2));
+  const avgLeanOffset=parseFloat((offsets.reduce(function(s,o){return s+o.leanOffset;},0)/offsets.length).toFixed(2));
+  return{avgFatOffset:avgFatOffset,avgLeanOffset:avgLeanOffset,scanCount:dexaLogs.length};
+}
+
+function renderCalibCard(){
+  const el=document.getElementById('calibCard');if(!el) return;
+  const cal=getCalibration();
+  if(!cal){el.innerHTML='';return;}
+  el.innerHTML='<div style="background:var(--sf);border:1px solid var(--p3);border-radius:8px;padding:14px 16px">'
+    +'<div style="font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--p3);margin-bottom:10px">Withings ↔ DEXA · '+cal.scanCount+' scan'+(cal.scanCount>1?'s':'')+'</div>'
+    +'<div style="display:flex;gap:20px">'
+    +'<div><div style="font-family:var(--mono);font-size:9px;color:var(--dim)">Fat offset</div>'
+    +'<div style="font-family:var(--serif);font-style:italic;font-size:22px;color:'+(cal.avgFatOffset>0?'var(--p5)':'var(--p1)')+'">'+( cal.avgFatOffset>0?'+':'')+cal.avgFatOffset+'%</div></div>'
+    +'<div><div style="font-family:var(--mono);font-size:9px;color:var(--dim)">Lean offset</div>'
+    +'<div style="font-family:var(--serif);font-style:italic;font-size:22px;color:'+(cal.avgLeanOffset>0?'var(--p1)':'var(--p5)')+'">'+( cal.avgLeanOffset>0?'+':'')+cal.avgLeanOffset+'%</div></div>'
+    +'</div><div style="font-family:var(--mono);font-size:9px;color:var(--dim);margin-top:8px">Home screen Fat% shows ~DEXA calibrated values.</div></div>';
+}
+
+// ════════════ PANTRY ════════════
+// ── Inline unit helpers ──
+function numPart(dose){return String(dose||'').replace(/[a-zA-Z]+$/,'').trim();}
+function unitPart(dose){const s=String(dose||'').toLowerCase();return s.indexOf('mcg')!==-1?'mcg':'mg';}
+function makeDoseField(inputId,selectId,val,onchangeExpr){
+  // Builds a dose-wrap input+select HTML string safely — no escaping nightmares
+  var num=numPart(val||'');
+  var unit=unitPart(val||'');
+  var mcgSel=unit==='mcg'?' selected':'';
+  var mgSel=unit==='mg'?' selected':'';
+  return '<div class="dose-wrap">'
+    +'<input type="text" id="'+inputId+'" value="'+num+'" inputmode="decimal" oninput="'+onchangeExpr+'" onchange="'+onchangeExpr+'" placeholder="e.g. 250">'
+    +'<select id="'+selectId+'" class="unit-select" onchange="'+onchangeExpr+'">'
+    +'<option value="mcg"'+mcgSel+'>mcg</option>'
+    +'<option value="mg"'+mgSel+'>mg</option>'
+    +'</select></div>';
+}
+
+function getDoseValue(inputId,selectId){
+  const inp=document.getElementById(inputId);
+  const sel=document.getElementById(selectId);
+  if(!inp) return '';
+  const num=numPart(inp.value);
+  const unit=sel?sel.value:unitPart(inp.value)||'mg';
+  return num?num+unit:'';
+}
+
+// Parse dose string to mg (handles mcg, mg, IU treated as mg, bare numbers)
+function parseDoseMg(doseStr){
+  const s=String(doseStr||'').trim().toLowerCase();
+  const n=parseFloat(s)||0;
+  if(!n) return 0;
+  if(s.indexOf('mcg')!==-1) return n/1000;
+  return n; // mg, IU, bare number — treat as mg
+}
+
+function calcDaysLeft(pItem,protoCmp){
+  if(!pItem) return null;
+  const dows=(protoCmp&&protoCmp.daysOfWeek?protoCmp.daysOfWeek:[0,1,2,3,4,5,6]).length||7;
+  // ── ORAL: caps remaining ÷ (caps per dose × doses per week) ──
+  if(pItem.form==='oral'){
+    const capsRem=pItem.capsRemaining;
+    if(capsRem==null||capsRem<0) return null;
+    if(capsRem===0) return 0;
+    if(!dows) return null;
+    // caps per dose = round(dose_mg / capDose_mg), default 1 if not set
+    const rawDose=String(doseMem[pItem.name]?doseMem[pItem.name].dose:pItem.dose||'');
+    const doseMgVal=parseDoseMg(rawDose);
+    const capDoseMg=pItem.capDose||null;
+    const capsPerDose=(doseMgVal&&capDoseMg)?Math.max(1,Math.round(doseMgVal/capDoseMg)):1;
+    const capsPerWeek=capsPerDose*dows;
+    if(!capsPerWeek) return null;
+    return Math.floor((capsRem/capsPerWeek)*7);
+  }
+  // ── INJECTABLE: (full vials × mg/vial) + open vial mg ÷ dose per injection ──
+  if(!pItem.vialMg) return null;
+  const fullMg=(pItem.vials||0)*pItem.vialMg;
+  const openMg=pItem.openVialMg||0;
+  const totalMg=fullMg+openMg;
+  if(totalMg<=0) return null;
+  const rawDose=String(doseMem[pItem.name]?doseMem[pItem.name].dose:pItem.dose||'');
+  const doseMg=parseDoseMg(rawDose);
+  if(!doseMg) return null;
+  const mgPerWeek=doseMg*dows;
+  if(!mgPerWeek) return null;
+  return Math.floor((totalMg/mgPerWeek)*7);
+}
+
+function deductStock(name,doseStr){
+  const item=pantry.find(function(p){return p.name===name;});
+  if(!item) return;
+  if(item.form==='oral'){
+    if(item.capsRemaining==null||item.capsRemaining<=0) return;
+    // Deduct correct number of caps based on dose / capDose
+    const doseMgVal=parseDoseMg(doseStr);
+    const capDoseMg=item.capDose||null;
+    const capsToDeduct=(doseMgVal&&capDoseMg)?Math.max(1,Math.round(doseMgVal/capDoseMg)):1;
+    item.capsRemaining=Math.max(0,item.capsRemaining-capsToDeduct);
+    persist(KEYS.pantry,pantry);return;
+  }
+  // Injectable: deduct from open vial first, then full vials
+  if(!item.vialMg) return;
+  const doseMg=parseDoseMg(doseStr);
+  if(!doseMg) return;
+  let rem=(item.openVialMg||0)-doseMg;
+  if(rem>=0){
+    item.openVialMg=parseFloat(rem.toFixed(3));
+  } else {
+    // Open vial exhausted — draw from full vials
+    item.openVialMg=0;
+    const drawn=Math.abs(rem);
+    const vialsNeeded=drawn/item.vialMg;
+    item.vials=parseFloat(Math.max(0,(item.vials||0)-vialsNeeded).toFixed(3));
+    // Remainder goes into new open vial
+    const newOpen=item.vials>0?item.vialMg-drawn%item.vialMg:0;
+    if(newOpen>0&&newOpen<item.vialMg){item.openVialMg=parseFloat(newOpen.toFixed(3));item.vials=Math.max(0,parseFloat((item.vials-1).toFixed(3)));}
+  }
+  persist(KEYS.pantry,pantry);
+}
+
+function renderPantry(){
+  const grid=document.getElementById('pantryGrid');if(!grid) return;
+  const proto=getActiveProtocol();
+  grid.innerHTML=pantry.map(function(c){
+    const pcmp=proto&&proto.compounds?proto.compounds.find(function(p){return p.name===c.name;}):null;
+    const daysLeft=calcDaysLeft(c,pcmp);
+    const low=daysLeft!==null&&daysLeft<(c.reorderDays||14);
+    const out=daysLeft===0;
+    const formLabel={vial:'Vial',oral:'Oral',prefilled:'Pre-filled',cream:'Topical'}[c.form]||c.form;
+    const doseDisplay=(doseMem[c.name]&&doseMem[c.name].dose)||c.dose;
+    return'<div class="pc'+(c.active?'':' inactive')+(low?' low-stock':'')+'" id="pc-'+c.id+'">'
+      +'<div class="pc-top"><div class="pc-dot" style="background:'+(c.color||'var(--mid)')+'"></div>'
+      +'<div class="pc-name-wrap"><div class="pc-name">'+c.name+'</div>'
+      +'<div class="pc-form">'+formLabel+' · '+c.route+' · '+doseDisplay+'</div></div>'
+      +'<div class="pc-actions">'
+      +'<button class="pc-toggle'+(c.active?' on':'')+'" onclick="togglePantry(\''+c.id+'\')">'+(c.active?'Active':'Off')+'</button>'
+      +'<button class="pc-edit-btn" onclick="openPantryEdit(\''+c.id+'\')">Edit</button>'
+      +'</div></div>'
+      +'<div class="pc-stock">'
+      +(c.form==='oral'
+        // ── ORAL: dose per cap + caps remaining + expiry ──
+        ?'<div class="stock-f"><label>mg / capsule</label><input type="number" inputmode="decimal" value="'+(c.capDose||'')+'" placeholder="20" min="0" step="1" onchange="updateStock(\''+c.id+'\',\'capDose\',this.value)" title="dose per capsule"></div>'
+          +'<div class="stock-f"><label>Capsules remaining</label><input type="number" inputmode="decimal" value="'+(c.capsRemaining!=null?c.capsRemaining:'')+'" placeholder="e.g. 51" min="0" step="1" onchange="updateStock(\''+c.id+'\',\'capsRemaining\',this.value)"></div>'
+          +'<div class="stock-f"><label>Expiry</label><input type="date" value="'+(c.expiry||'')+'" onchange="updateStock(\''+c.id+'\',\'expiry\',this.value)"></div>'
+        // ── INJECTABLE: mg/vial + full vials + open vial mg + expiry ──
+        :'<div class="stock-f"><label>mg / vial</label><input type="number" inputmode="decimal" value="'+(c.vialMg||'')+'" placeholder="5" min="0" step="0.1" onchange="updateStock(\''+c.id+'\',\'vialMg\',this.value)"></div>'
+          +'<div class="stock-f"><label>Full vials</label><input type="number" inputmode="decimal" value="'+(c.vials||0)+'" placeholder="0" min="0" step="1" onchange="updateStock(\''+c.id+'\',\'vials\',this.value)"></div>'
+          +'<div class="stock-f"><label>Open vial (mg left)</label><input type="number" inputmode="decimal" value="'+(c.openVialMg||'')+'" placeholder="e.g. 3.2" min="0" step="0.1" onchange="updateStock(\''+c.id+'\',\'openVialMg\',this.value)" title="mg left in your open vial"></div>'
+          +'<div class="stock-f"><label>Expiry</label><input type="date" value="'+(c.expiry||'')+'" onchange="updateStock(\''+c.id+'\',\'expiry\',this.value)"></div>'
+      )
+      +'<div>'+(daysLeft!==null?'<div class="days-rem '+(out?'out':low?'low':'ok')+'">'+(out?'⚠ Out':low?'⚠ ~'+daysLeft+'d':'✓ ~'+daysLeft+'d')+'</div>':'<div class="days-rem" style="color:var(--dim)">add stock</div>')
+      +'<button class="restock-btn" onclick="openRestock(\''+c.id+'\')" style="margin-top:5px">+ Restock</button></div>'
+      +'</div>'
+      +(low?'<div style="font-family:var(--mono);font-size:10px;color:var(--warn);margin-top:8px;padding-top:8px;border-top:1px solid var(--bd)">⚠ '+(out?'Out of stock':'Low stock')+' — ~'+daysLeft+' days at current protocol dose.</div>':'')
+      +'</div>';
+  }).join('');
+}
+
+function togglePantry(id){
+  const item=pantry.find(function(p){return p.id===id;});if(!item) return;
+  item.active=!item.active;persist(KEYS.pantry,pantry);renderPantry();
+}
+function updateStock(id,field,value){
+  const item=pantry.find(function(p){return p.id===id;});if(!item) return;
+  item[field]=field==='expiry'?value:(parseFloat(value)||0);
+  persist(KEYS.pantry,pantry);renderPantry();
+}
+function togglePantryAddForm(){
+  const form=document.getElementById('pantryAddForm');
+  const lbl=document.getElementById('pantryAddToggleLabel');
+  const open=form.classList.toggle('open');
+  if(lbl) lbl.textContent=open?'Close':'Add custom compound';
+}
+function addCompound(){
+  const name=document.getElementById('newName').value.trim();
+  if(!name){toast('Enter a name ✗','var(--p5)');return;}
+  const cat=document.getElementById('newCat').value;
+  const item={id:'custom_'+Date.now(),name:name,
+    form:document.getElementById('newForm').value,cat:cat,
+    dose:document.getElementById('newDose').value||'—',
+    route:document.getElementById('newRoute').value,
+    site:'Abdomen',fasting:false,
+    notes:document.getElementById('newNotes').value,
+    active:true,color:CAT_COLORS[cat]||'var(--mid)',
+    vialMg:null,vials:0,expiry:'',reorderDays:14,stockLog:[]};
+  pantry.push(item);persist(KEYS.pantry,pantry);
+  ['newName','newDose','newNotes'].forEach(function(id){const el=document.getElementById(id);if(el)el.value='';});
+  toast(name+' added ✓');renderPantry();togglePantryAddForm();
+}
+
+function openPantryEdit(id){
+  const item=pantry.find(function(p){return p.id===id;});if(!item) return;
+  document.getElementById('editPantryId').value=id;
+  document.getElementById('epName').value=item.name;
+  const rawDoseEp=(doseMem[item.name]&&doseMem[item.name].dose)||item.dose||'';
+  const numEp=rawDoseEp.replace(/[a-zA-Z]+$/,'').trim();
+  const unitEp=rawDoseEp.toLowerCase().indexOf('mcg')!==-1?'mcg':'mg';
+  document.getElementById('epDose').value=numEp;
+  const epUnitSel=document.getElementById('epDoseUnit');if(epUnitSel)epUnitSel.value=unitEp;
+  document.getElementById('epRoute').value=item.route||'Subcutaneous';
+  document.getElementById('epForm').value=item.form||'vial';
+  document.getElementById('epSite').value=item.site||'Abdomen';
+  document.getElementById('epFasting').value=item.fasting?'true':'false';
+  document.getElementById('epNotes').value=item.notes||'';
+  openModal('editPantryModal');
+}
+function savePantryEdit(){
+  const id=document.getElementById('editPantryId').value;
+  const item=pantry.find(function(p){return p.id===id;});if(!item) return;
+  const newName=document.getElementById('epName').value.trim();
+  const newDose=getDoseValue('epDose','epDoseUnit');
+  item.route=document.getElementById('epRoute').value;
+  item.form=document.getElementById('epForm').value;
+  item.site=document.getElementById('epSite').value;
+  item.fasting=document.getElementById('epFasting').value==='true';
+  item.notes=document.getElementById('epNotes').value;
+  if(newName&&newName!==item.name){
+    if(doseMem[item.name]){doseMem[newName]=doseMem[item.name];delete doseMem[item.name];}
+    item.name=newName;
+  }
+  if(newDose){doseMem[item.name]=Object.assign({},doseMem[item.name]||{},{dose:newDose});persist(KEYS.doseMem,doseMem);}
+  persist(KEYS.pantry,pantry);closeModal('editPantryModal');toast('Updated ✓');renderPantry();
+}
+
+function openRestock(id){
+  const item=pantry.find(function(p){return p.id===id;});if(!item) return;
+  document.getElementById('restockId').value=id;
+  const rt=document.getElementById('restockTitle');if(rt)rt.textContent='Restock — '+item.name;
+  document.getElementById('restockQty').value='';
+  document.getElementById('restockExpiry').value='';
+  document.getElementById('restockNotes').value='';
+  // Update the label to match form type
+  const ql=document.getElementById('restockQtyLabel');
+  if(ql) ql.textContent=item.form==='oral'?'Capsules adding':'Vials adding';
+  openModal('restockModal');
+}
+function saveRestock(){
+  const id=document.getElementById('restockId').value;
+  const item=pantry.find(function(p){return p.id===id;});if(!item) return;
+  const adding=parseFloat(document.getElementById('restockQty').value)||0;
+  const expiry=document.getElementById('restockExpiry').value;
+  const notes=document.getElementById('restockNotes').value;
+  if(item.form==='oral'){
+    // Oral: restockQty = number of capsules being added
+    item.capsRemaining=(item.capsRemaining||0)+adding;
+  } else {
+    // Injectable: restockQty = number of vials being added
+    item.vials=(item.vials||0)+adding;
+  }
+  if(expiry) item.expiry=expiry;
+  item.stockLog=item.stockLog||[];
+  item.stockLog.push({date:today(),time:new Date().toTimeString().substring(0,5),added:adding,expiry:expiry,notes:notes,form:item.form});
+  persist(KEYS.pantry,pantry);
+  const unit=item.form==='oral'?'caps':'vials';
+  closeModal('restockModal');toast('Restocked +'+adding+' '+unit+' of '+item.name+' ✓');
+  renderPantry();renderChecklist();
+}
+
+// ════════════ BUILD ════════════
+function renderBuild(){
+  const saved=document.getElementById('savedProtocols');
+  if(saved){
+    if(!protocols.length){
+      saved.innerHTML='<div class="empty"><span class="empty-big">No protocols yet</span><p>Build your first protocol below</p></div>';
+    } else {
+      saved.innerHTML=protocols.map(function(p){
+        return'<div class="spc'+(activeProtoId===p.id?' active':'')+'">'
+          +'<div class="spc-top"><div class="spc-dot" style="background:'+(p.color||'var(--mid)')+'"></div>'
+          +'<div class="spc-info"><div class="spc-name">'+p.name+'</div>'
+          +'<div class="spc-meta">'+(p.durationWeeks||'—')+' wk · '+((p.compounds||[]).length)+' compounds'+(p.startDate?' · '+fmtDate(p.startDate):'')+(activeProtoId===p.id?' · ✓ Active':'')+'</div></div>'
+          +'<div class="spc-actions">'
+          +'<button class="spc-btn activate-btn'+(activeProtoId===p.id?' is-active':'')+'" onclick="activateProtocol(\''+p.id+'\')">'+(activeProtoId===p.id?'Active':'Activate')+'</button>'
+          +'<button class="spc-btn edit-btn" onclick="openProtoEditor(\''+p.id+'\')">Edit</button>'
+          +'<button class="spc-btn dup-btn" onclick="dupProtocol(\''+p.id+'\')">Dup</button>'
+          +'<button class="spc-btn del-btn" onclick="deleteProtocol(\''+p.id+'\')">Del</button>'
+          +'</div></div></div>';
+      }).join('');
+    }
+  }
+  updateStepIndicators();
+}
+
+function goToStep(n){
+  if(n===1&&!selectedGoals.length){toast('Select at least one goal first ✗','var(--p5)');return;}
+  if(n===2) buildCustomizeStep();
+  if(n===3) buildReviewStep();
+  document.querySelectorAll('.build-step').forEach(function(el,i){el.classList.toggle('on',i===n);});
+  currentBuildStep=n;
+  updateStepIndicators();
+  const mainEl=document.getElementById('mainEl');if(mainEl)mainEl.scrollTop=0;
+}
+function updateStepIndicators(){
+  for(var i=0;i<4;i++){
+    const ind=document.getElementById('step-ind-'+i);if(!ind) continue;
+    ind.classList.toggle('on',i===currentBuildStep);
+    ind.classList.toggle('done',i<currentBuildStep);
+  }
+}
+function toggleGoal(el){
+  el.classList.toggle('on');
+  const goal=el.dataset.goal;
+  if(el.classList.contains('on')){if(selectedGoals.indexOf(goal)===-1)selectedGoals.push(goal);}
+  else selectedGoals=selectedGoals.filter(function(g){return g!==goal;});
+}
+
+async function runBuildStep1(){
+  if(!selectedGoals.length){toast('Select at least one goal ✗','var(--p5)');return;}
+  const btn=document.getElementById('buildBtn');
+  btn.textContent='Generating…';btn.disabled=true;
+  try{
+    const activePantryList=pantry.filter(function(p){return p.active;})
+      .map(function(p){return p.name+'('+((doseMem[p.name]&&doseMem[p.name].dose)||p.dose)+','+p.route+','+p.form+')';}).join(', ');
+    const goals=selectedGoals.join(', ');
+    const context=document.getElementById('builderContext').value;
+    const prompt='Research peptide protocol designer. Pantry: '+activePantryList+'\nGoals: '+goals+'\n'+(context?'Context: '+context:'')+'\n\nReturn ONLY JSON array of suggested compounds (prioritize pantry items), no markdown:\n[{"name":"exact name","inPantry":true,"dose":"dose","route":"route","form":"oral or vial","fasting":true,"site":"Abdomen","timing":"Upon Waking","timingWindow":"am","frequency":"daily","daysOfWeek":[0,1,2,3,4,5,6],"rationale":"1 sentence","priority":1}]\ntimingWindow: am/preworkout/weekly/pm/other. Priority 1=highest. Max 8 compounds. Include both pantry and non-pantry relevant compounds.';
+    const resp=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({model:'claude-sonnet-4-6',max_tokens:1500,messages:[{role:'user',content:prompt}]})});
+    const data=await resp.json();
+    if(data.error) throw new Error(data.error.message);
+    const raw=(data.content&&data.content.find(function(b){return b.type==='text';})||{}).text||'';
+    const s=raw.indexOf('['),e=raw.lastIndexOf(']');
+    if(s===-1) throw new Error('No data');
+    buildCompounds=JSON.parse(raw.substring(s,e+1)).map(function(c){return Object.assign({},c,{selected:c.inPantry});});
+  }catch(err){
+    buildCompounds=buildStaticSuggestions(selectedGoals,pantry.filter(function(p){return p.active;}));
+  }
+  renderSuggestions();goToStep(1);
+  btn.textContent='Generate Suggestions →';btn.disabled=false;
+}
+
+function renderSuggestions(){
+  const pantryEl=document.getElementById('suggPantry');
+  const otherEl=document.getElementById('suggOther');
+  const pantryItems=buildCompounds.filter(function(c){return c.inPantry;});
+  const otherItems=buildCompounds.filter(function(c){return !c.inPantry;});
+  pantryEl.innerHTML=pantryItems.length?pantryItems.map(function(c,i){return suggCard(c,i,false);}).join('')
+    :'<div style="font-family:var(--mono);font-size:11px;color:var(--dim);padding:10px 0">No pantry compounds matched these goals.</div>';
+  otherEl.innerHTML=otherItems.length?otherItems.map(function(c,i){return suggCard(c,pantryItems.length+i,true);}).join('')
+    :'<div style="font-family:var(--mono);font-size:11px;color:var(--dim);padding:10px 0">No additional suggestions.</div>';
+}
+
+function suggCard(c,i,notInPantry){
+  const color=getPColor(c.name)||CAT_COLORS['other'];
+  return'<div class="sugg-card'+(c.selected?' selected':'')+(notInPantry?' not-in-pantry':'')+'" id="sugg-'+i+'">'
+    +'<div class="sugg-dot" style="background:'+color+'"></div>'
+    +'<div class="sugg-info"><div class="sugg-name">'+c.name+'</div>'
+    +'<div class="sugg-detail">'+(c.dose||'—')+' · '+(c.timing||'—')+' · '+(c.frequency||'daily')+'<br>'+(c.rationale||'')+'</div></div>'
+    +'<div class="sugg-right">'
+    +'<button class="sugg-select-btn" onclick="toggleSuggestion('+i+')">'+(c.selected?'✓ Selected':'Select')+'</button>'
+    +(notInPantry?'<button class="sugg-add-pantry" onclick="addSuggToPantry(\''+c.name+'\')">+ Pantry</button>':'')
+    +'</div></div>';
+}
+
+function toggleSuggestion(i){
+  if(buildCompounds[i]) buildCompounds[i].selected=!buildCompounds[i].selected;
+  renderSuggestions();
+}
+
+function addSuggToPantry(name){
+  const dbItem=COMPOUND_DB.find(function(c){return c.name===name;});
+  if(pantry.find(function(p){return p.name===name;})){toast(name+' already in pantry');return;}
+  pantry.push({id:'db_'+Date.now(),name:name,
+    form:(dbItem&&dbItem.form)||'vial',cat:(dbItem&&dbItem.cat)||'other',
+    dose:(dbItem&&dbItem.dose)||'—',route:(dbItem&&dbItem.route)||'Subcutaneous',
+    site:(dbItem&&dbItem.site)||'Abdomen',fasting:(dbItem&&dbItem.fasting)||false,
+    notes:(dbItem&&dbItem.rationale)||'',active:true,
+    color:(dbItem&&dbItem.color)||CAT_COLORS[(dbItem&&dbItem.cat)]||'var(--mid)',
+    vialMg:null,vials:0,expiry:'',reorderDays:14,stockLog:[]});
+  persist(KEYS.pantry,pantry);
+  const bc=buildCompounds.find(function(c){return c.name===name;});
+  if(bc){bc.inPantry=true;bc.selected=true;}
+  toast(name+' added to pantry ✓');renderSuggestions();
+}
+
+function buildCustomizeStep(){
+  const selected=buildCompounds.filter(function(c){return c.selected;});
+  if(!selected.length){toast('Select at least one compound ✗','var(--p5)');return;}
+  const nameInput=document.getElementById('newProtoName');
+  if(nameInput&&!nameInput.value){
+    const goal=selectedGoals[0]||'Custom';
+    nameInput.value=goal.split(' ').slice(0,2).join(' ')+' Protocol';
+  }
+  const startInput=document.getElementById('newProtoStart');if(startInput&&!startInput.value)startInput.value=today();
+  const durInput=document.getElementById('newProtoDuration');if(durInput&&!durInput.value)durInput.value='12';
+  renderCustomizeCompounds(selected);
+}
+
+function renderCustomizeCompounds(compounds){
+  const wrap=document.getElementById('customizeCompounds');if(!wrap) return;
+  wrap.innerHTML=compounds.map(function(c,i){
+    const freqOptions=['daily','5 on/2 off','3x/week','2x/week','weekly','every other day','custom']
+      .map(function(f){return'<option'+(c.frequency===f?' selected':'')+'>'+f+'</option>';}).join('');
+    const twOptions=TIMING_WINDOWS
+      .map(function(tw){return'<option value="'+tw.key+'"'+((c.timingWindow||'am')===tw.key?' selected':'')+'>'+tw.label+'</option>';}).join('');
+    const routeOptions=['Subcutaneous','Oral','Intramuscular','Sublingual','Intranasal','Topical']
+      .map(function(r){return'<option'+(c.route===r?' selected':'')+'>'+r+'</option>';}).join('');
+    const dowPills=DAYS.map(function(d,j){return'<button class="dow-pill'+((c.daysOfWeek||[0,1,2,3,4,5,6]).indexOf(j)!==-1?' on':'')+'" onclick="toggleDow('+i+','+j+',this)">'+d+'</button>';}).join('');
+    return'<div class="review-compound"><div class="rc-hdr" onclick="toggleRC(this)">'
+      +'<div class="rc-dot" style="background:'+(getPColor(c.name)||'var(--mid)')+'"></div>'
+      +'<div class="rc-name">'+c.name+'</div>'
+      +'<div class="rc-summary">'+(c.dose||'—')+' · '+(c.timing||'—')+'</div>'
+      +'<button class="rc-remove" onclick="event.stopPropagation();removeCustomizeCompound('+i+')">✕</button>'
+      +'</div><div class="rc-body">'
+      +'<div class="g2"><div class="field"><label>Dose</label>'
+      +makeDoseField('bdose-'+i,'bunit-'+i,c.dose||'','updateBC('+i+",'dose',getDoseValue('bdose-'+i,'bunit-'+i))")+'</div>'
+      +'<div class="field"><label>Route</label><select onchange="updateBC('+i+',\'route\',this.value)">'+routeOptions+'</select></div></div>'
+      +'<div class="field"><label>Route</label><select onchange="updateBC('+i+',\'route\',this.value)">'+routeOptions+'</select></div></div>'
+      +'<div class="g2"><div class="field"><label>Timing</label><select onchange="updateBC('+i+',\'timingWindow\',this.value)">'+twOptions+'</select></div>'
+      +'<div class="field"><label>Frequency</label><select onchange="updateBCFreq('+i+',this.value)">'+freqOptions+'</select></div></div>'
+      +'<div class="g2"><div class="field"><label>Site</label><select onchange="updateBC('+i+',\'site\',this.value)">'
+      +['Abdomen','Thigh','Glute','Deltoid','N/A'].map(function(s){return'<option'+(c.site===s?' selected':'')+'>'+s+'</option>';}).join('')
+      +'</select></div><div class="field"><label>Fasting</label><select onchange="updateBC('+i+',\'fasting\',this.value===\'true\')">'
+      +'<option value="true"'+(c.fasting?' selected':'')+'>Yes — fasted</option>'
+      +'<option value="false"'+(!c.fasting?' selected':'')+'>No</option></select></div></div>'
+      +'<div class="field"><label>Days of Week</label><div class="dow-pills" id="dow-'+i+'">'+dowPills+'</div></div>'
+      +'<div class="field"><label>Rationale</label><input type="text" value="'+(c.rationale||'')+'" oninput="updateBC('+i+',\'rationale\',this.value)"></div>'
+      +'</div></div>';
+  }).join('');
+}
+
+function toggleRC(hdr){
+  const body=hdr.nextElementSibling;
+  body.classList.toggle('open');
+  hdr.classList.toggle('open',body.classList.contains('open'));
+}
+function updateBC(i,field,val){
+  const selected=buildCompounds.filter(function(c){return c.selected;});
+  if(selected[i]) selected[i][field]=val;
+}
+function updateBCFreq(i,val){
+  updateBC(i,'frequency',val);
+  const defaults={daily:[0,1,2,3,4,5,6],'5 on/2 off':[5,6,0,1,2],'3x/week':[1,3,5],'2x/week':[1,4],weekly:[1],'every other day':[0,2,4,6]};
+  if(defaults[val]){
+    const selected=buildCompounds.filter(function(c){return c.selected;});
+    if(selected[i]) selected[i].daysOfWeek=defaults[val];
+    const wrap=document.getElementById('dow-'+i);
+    if(wrap) wrap.querySelectorAll('.dow-pill').forEach(function(pill,j){
+      pill.classList.toggle('on',defaults[val].indexOf(j)!==-1);
+    });
+  }
+}
+function toggleDow(compIdx,dayIdx,btn){
+  const selected=buildCompounds.filter(function(c){return c.selected;});
+  if(!selected[compIdx]) return;
+  const dows=selected[compIdx].daysOfWeek||[0,1,2,3,4,5,6];
+  if(dows.indexOf(dayIdx)!==-1) selected[compIdx].daysOfWeek=dows.filter(function(d){return d!==dayIdx;});
+  else selected[compIdx].daysOfWeek=[].concat(dows,[dayIdx]).sort(function(a,b){return a-b;});
+  btn.classList.toggle('on',selected[compIdx].daysOfWeek.indexOf(dayIdx)!==-1);
+}
+function removeCustomizeCompound(i){
+  const selected=buildCompounds.filter(function(c){return c.selected;});
+  if(selected[i]) selected[i].selected=false;
+  buildCustomizeStep();
+}
+
+function openAddToNewProtocol(){
+  const list=document.getElementById('addToProtoList');
+  const inProto=new Set(buildCompounds.filter(function(c){return c.selected;}).map(function(c){return c.name;}));
+  list.innerHTML=pantry.map(function(p){
+    return'<div style="display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--bd)">'
+      +'<div style="width:8px;height:8px;border-radius:50%;background:'+(p.color||'var(--mid)')+';flex-shrink:0"></div>'
+      +'<div style="flex:1;font-family:var(--serif);font-style:italic;font-size:14px">'+p.name+'</div>'
+      +(inProto.has(p.name)?'<span style="font-family:var(--mono);font-size:9px;color:var(--p1)">✓ Added</span>'
+        :'<button onclick="addCompoundToNewProto(\''+p.name+'\')" style="font-family:var(--mono);font-size:9px;padding:5px 10px;background:var(--p1d);border:1px solid var(--p1);border-radius:3px;color:var(--p1);cursor:pointer">Add</button>')
+      +'</div>';
+  }).join('');
+  openModal('addToProtoModal');
+}
+function addCompoundToNewProto(name){
+  const pItem=pantry.find(function(p){return p.name===name;})||{};
+  buildCompounds.push({name:name,inPantry:true,selected:true,
+    dose:(doseMem[name]&&doseMem[name].dose)||pItem.dose||'—',
+    route:pItem.route||'Subcutaneous',form:pItem.form||'vial',
+    fasting:pItem.fasting||false,site:pItem.site||'Abdomen',
+    timing:'Upon Waking',timingWindow:'am',frequency:'daily',
+    daysOfWeek:[0,1,2,3,4,5,6],rationale:''});
+  closeModal('addToProtoModal');buildCustomizeStep();toast(name+' added ✓');
+}
+
+function buildReviewStep(){
+  const name=document.getElementById('newProtoName').value||'New Protocol';
+  const start=document.getElementById('newProtoStart').value||today();
+  const dur=parseInt(document.getElementById('newProtoDuration').value)||12;
+  const color=document.getElementById('newProtoColor').value||'var(--p1)';
+  const notes=document.getElementById('newProtoNotes').value||'';
+  const selectedComps=buildCompounds.filter(function(c){return c.selected;});
+  const compHtml=selectedComps.map(function(c){
+    return'<div style="display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid var(--bd)">'
+      +'<div style="width:8px;height:8px;border-radius:50%;background:'+(getPColor(c.name)||'var(--mid)')+';flex-shrink:0;margin-top:5px"></div>'
+      +'<div><div style="font-family:var(--serif);font-style:italic;font-size:15px;margin-bottom:2px">'+c.name+'</div>'
+      +'<div style="font-family:var(--mono);font-size:10px;color:var(--dim)">'+c.dose+' · '+c.timing+' · '+c.frequency+(c.fasting?' · Fasted':'')+' · '+c.site+'</div>'
+      +'</div></div>';
+  }).join('');
+  document.getElementById('reviewSummary').innerHTML=
+    '<div style="background:var(--sf);border:1px solid var(--bd);border-radius:8px;padding:16px;margin-bottom:12px">'
+    +'<div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">'
+    +'<div style="width:12px;height:12px;border-radius:50%;background:'+color+';flex-shrink:0"></div>'
+    +'<div><div style="font-family:var(--serif);font-style:italic;font-size:20px">'+name+'</div>'
+    +'<div style="font-family:var(--mono);font-size:10px;color:var(--dim)">'+dur+' weeks · Started '+fmtDate(start)+' · '+selectedComps.length+' compounds</div>'
+    +'</div></div>'+compHtml
+    +(notes?'<div style="font-family:var(--mono);font-size:11px;color:var(--mid);margin-top:10px;padding-top:10px;border-top:1px solid var(--bd)">'+notes+'</div>':'')
+    +'</div>';
+
+  const conflicts=detectConflicts(selectedComps);
+  const conflictSection=document.getElementById('conflictSection');
+  if(conflicts.length){
+    conflictSection.innerHTML=
+      '<div style="font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--p5);margin-bottom:8px">⚠ Conflicts — acknowledge to proceed</div>'
+      +conflicts.map(function(c,i){
+        return'<div class="conflict-item"><div class="conflict-check"><input type="checkbox" id="conf-'+i+'" onchange="checkConflicts()"></div>'
+          +'<div class="conflict-text">'+c+'</div></div>';
+      }).join('');
+    const btn=document.getElementById('finalSaveBtn');
+    if(btn){btn.disabled=true;btn.style.opacity='0.5';}
+  } else {
+    conflictSection.innerHTML='<div class="callout" style="margin-bottom:0"><strong>No conflicts detected</strong> — ready to save.</div>';
+    const btn=document.getElementById('finalSaveBtn');if(btn){btn.disabled=false;btn.style.opacity='1';}
+  }
+}
+
+function checkConflicts(){
+  const boxes=document.querySelectorAll('#conflictSection input[type=checkbox]');
+  const allChecked=Array.from(boxes).every(function(b){return b.checked;});
+  const btn=document.getElementById('finalSaveBtn');
+  if(btn){btn.disabled=!allChecked;btn.style.opacity=allChecked?'1':'0.5';}
+}
+
+function detectConflicts(compounds){
+  const names=compounds.map(function(c){return c.name.toLowerCase();});
+  const conflicts=[];
+  const PAIRS=[
+    [['tesamorelin'],['cjc-1295'],'Tesamorelin + CJC-1295: both GHRH analogues — pituitary receptor desensitization risk. Run in separate protocols.'],
+    [['tirzepatide'],['retatrutide'],'Tirzepatide + Retatrutide: both GLP-1 agonists — do not stack.'],
+    [['tirzepatide'],['semaglutide'],'Tirzepatide + Semaglutide: both GLP-1 agonists — do not stack.'],
+    [['retatrutide'],['semaglutide'],'Retatrutide + Semaglutide: both GLP-1 agonists — do not stack.'],
+    [['retatrutide'],['cagrilintide'],'Retatrutide + Cagrilintide: aggressive appetite suppression — monitor for excessive caloric restriction.'],
+  ];
+  PAIRS.forEach(function(pair){
+    const a=pair[0],b=pair[1],msg=pair[2];
+    if(a.some(function(x){return names.some(function(n){return n.indexOf(x)!==-1;});}))
+      if(b.some(function(x){return names.some(function(n){return n.indexOf(x)!==-1;});}))
+        conflicts.push(msg);
+  });
+  return conflicts;
+}
+
+function finalSaveProtocol(){
+  const name=document.getElementById('newProtoName').value||'New Protocol';
+  const start=document.getElementById('newProtoStart').value||today();
+  const dur=parseInt(document.getElementById('newProtoDuration').value)||12;
+  const color=document.getElementById('newProtoColor').value||'var(--p1)';
+  const notes=document.getElementById('newProtoNotes').value||'';
+  const compounds=buildCompounds.filter(function(c){return c.selected;}).map(function(c){
+    return{name:c.name,dose:c.dose||'—',route:c.route||'Subcutaneous',
+      form:c.form||'vial',fasting:!!c.fasting,site:c.site||'Abdomen',
+      timing:c.timing||'Upon Waking',timingWindow:c.timingWindow||'am',
+      frequency:c.frequency||'daily',daysOfWeek:c.daysOfWeek||[0,1,2,3,4,5,6],
+      rationale:c.rationale||''};
+  });
+  const proto={id:'proto_'+Date.now(),name:name,color:color,startDate:start,
+    durationWeeks:dur,notes:notes,compounds:compounds};
+  protocols.push(proto);activeProtoId=proto.id;
+  persist(KEYS.protocols,protocols);persist(KEYS.activeProtoId,activeProtoId);
+  toast('"'+name+'" saved & activated ✓');
+  clearBuilderState();renderBuild();renderToday();updateMobHeader();goToStep(0);
+}
+
+function clearBuilderState(){
+  selectedGoals=[];buildCompounds=[];
+  document.querySelectorAll('.goal-btn').forEach(function(b){b.classList.remove('on');});
+  const ctx=document.getElementById('builderContext');if(ctx)ctx.value='';
+  ['newProtoName','newProtoStart','newProtoDuration','newProtoNotes'].forEach(function(id){
+    const el=document.getElementById(id);if(el)el.value='';
+  });
+}
+
+// ════════════ PROTOCOL EDITOR ════════════
+function openProtoEditor(id){
+  const proto=protocols.find(function(p){return p.id===id;});if(!proto) return;
+  editingProtoId=id;
+  const wrap=document.getElementById('protoEditorWrap');
+  const bs=document.getElementById('builderSection');
+  if(bs) bs.style.display='none';
+  if(wrap){wrap.style.display='block';renderProtoEditor(proto);}
+  const mainEl=document.getElementById('mainEl');if(mainEl)mainEl.scrollTop=0;
+}
+
+function renderProtoEditor(proto){
+  const wrap=document.getElementById('protoEditorWrap');if(!wrap) return;
+  wrap.innerHTML='<div style="margin-bottom:14px;display:flex;align-items:center;gap:10px;flex-wrap:wrap">'
+    +'<button onclick="closeProtoEditor()" class="btn ghost sm">← Back to Build</button>'
+    +'<div style="font-family:var(--serif);font-style:italic;font-size:18px;flex:1">'+proto.name+'</div>'
+    +'</div>'
+    +'<div class="bc-form-card" style="margin-bottom:12px">'
+    +'<div class="g3"><div class="field"><label>Protocol Name</label><input type="text" id="epN_'+proto.id+'" value="'+proto.name+'" oninput="liveUpdateProto(\''+proto.id+'\',\'name\',this.value)"></div>'
+    +'<div class="field"><label>Start Date</label><input type="date" id="epS_'+proto.id+'" value="'+(proto.startDate||'')+'" onchange="liveUpdateProto(\''+proto.id+'\',\'startDate\',this.value)"></div>'
+    +'<div class="field"><label>Duration (weeks)</label><input type="number" inputmode="decimal" id="epD_'+proto.id+'" value="'+(proto.durationWeeks||12)+'" min="1" onchange="liveUpdateProto(\''+proto.id+'\',\'durationWeeks\',+this.value)"></div></div>'
+    +'<div class="g2"><div class="field"><label>Color</label><select id="epC_'+proto.id+'" onchange="liveUpdateProto(\''+proto.id+'\',\'color\',this.value)">'
+    +'<option value="var(--p2)"'+(proto.color==='var(--p2)'?' selected':'')+'>Amber</option>'
+    +'<option value="var(--p1)"'+(proto.color==='var(--p1)'?' selected':'')+'>Emerald</option>'
+    +'<option value="var(--p3)"'+(proto.color==='var(--p3)'?' selected':'')+'>Teal</option>'
+    +'<option value="var(--p4)"'+(proto.color==='var(--p4)'?' selected':'')+'>Violet</option>'
+    +'<option value="var(--p5)"'+(proto.color==='var(--p5)'?' selected':'')+'>Coral</option></select></div>'
+    +'<div class="field"><label>Notes</label><input type="text" id="epNo_'+proto.id+'" value="'+(proto.notes||'')+'" oninput="liveUpdateProto(\''+proto.id+'\',\'notes\',this.value)"></div></div></div>'
+    +'<div class="editor-tabs"><button class="editor-tab on" id="etab-sched" onclick="switchEditorTab(\'sched\')">📅 Schedule</button>'
+    +'<button class="editor-tab" id="etab-edit" onclick="switchEditorTab(\'edit\')">✏️ Edit All</button></div>'
+    +'<div id="editor-sched-view">'+renderEditorScheduleView(proto)+'</div>'
+    +'<div id="editor-edit-view" style="display:none">'+renderEditorEditView(proto)+'</div>'
+    +'<div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">'
+    +'<button class="btn sm" onclick="openAddCompoundToEditor(\''+proto.id+'\')">+ Add Compound</button>'
+    +'<button class="btn ghost sm" onclick="dupProtocol(\''+proto.id+'\')">Duplicate Protocol</button></div>';
+}
+
+function switchEditorTab(tab){
+  const ts=document.getElementById('etab-sched');if(ts)ts.classList.toggle('on',tab==='sched');
+  const te=document.getElementById('etab-edit');if(te)te.classList.toggle('on',tab==='edit');
+  const sv=document.getElementById('editor-sched-view');if(sv)sv.style.display=tab==='sched'?'block':'none';
+  const ev=document.getElementById('editor-edit-view');if(ev)ev.style.display=tab==='edit'?'block':'none';
+}
+
+function renderEditorScheduleView(proto){
+  if(!proto.compounds||!proto.compounds.length) return'<div class="empty"><span class="empty-big">No compounds</span><p>Add compounds below</p></div>';
+  let html='';
+  TIMING_WINDOWS.forEach(function(tw){
+    const group=(proto.compounds||[]).filter(function(c){return(c.timingWindow||'other')===tw.key;});
+    if(!group.length) return;
+    html+='<div class="timing-group"><div class="timing-group-hdr">'+tw.icon+' '+tw.label+'</div>';
+    group.forEach(function(c){
+      html+='<div style="background:var(--sf);border:1px solid var(--bd);border-radius:6px;padding:10px 14px;margin-bottom:5px;display:flex;align-items:center;gap:10px">'
+        +'<div style="width:8px;height:8px;border-radius:50%;background:'+getPColor(c.name)+';flex-shrink:0"></div>'
+        +'<div style="flex:1"><div style="font-family:var(--serif);font-style:italic;font-size:14px">'+c.name+'</div>'
+        +'<div style="font-family:var(--mono);font-size:10px;color:var(--dim)">'+c.dose+' · '+c.frequency+(c.fasting?' · Fasted':'')+' · '+c.site+'</div></div></div>';
+    });
+    html+='</div>';
+  });
+  return html;
+}
+
+function renderEditorEditView(proto){
+  if(!proto.compounds||!proto.compounds.length) return'';
+  return proto.compounds.map(function(c,i){
+    const freqOptions=['daily','5 on/2 off','3x/week','2x/week','weekly','every other day','custom']
+      .map(function(f){return'<option'+(c.frequency===f?' selected':'')+'>'+f+'</option>';}).join('');
+    const twOptions=TIMING_WINDOWS
+      .map(function(tw){return'<option value="'+tw.key+'"'+((c.timingWindow||'am')===tw.key?' selected':'')+'>'+tw.label+'</option>';}).join('');
+    const dowPills=DAYS.map(function(d,j){return'<button class="dow-pill'+((c.daysOfWeek||[0,1,2,3,4,5,6]).indexOf(j)!==-1?' on':'')+'" onclick="toggleEditorDow(\''+proto.id+'\','+i+','+j+',this)">'+d+'</button>';}).join('');
+    return'<div class="review-compound"><div class="rc-hdr" onclick="toggleRC(this)">'
+      +'<div class="rc-dot" style="background:'+getPColor(c.name)+'"></div>'
+      +'<div class="rc-name">'+c.name+'</div>'
+      +'<div class="rc-summary">'+c.dose+' · '+c.frequency+'</div>'
+      +'<button class="rc-remove" onclick="event.stopPropagation();removeEditorCompound(\''+proto.id+'\','+i+')">✕</button>'
+      +'</div><div class="rc-body">'
+      +'<div class="g2"><div class="field"><label>Dose</label>'
+      +makeDoseField('edose-'+proto.id+'-'+i,'eunit-'+proto.id+'-'+i,c.dose||'','updateEditorCompound(\''+proto.id+'\','+i+',\'dose\',getDoseValue(\'edose-'+proto.id+'-'+i+'\',\'eunit-'+proto.id+'-'+i+'\'))')+'</div>'
+      +'<div class="field"><label>Route</label><select onchange="updateEditorCompound(\''+proto.id+'\','+i+',\'route\',this.value)">'
+      +['Subcutaneous','Oral','Intramuscular','Sublingual','Intranasal','Topical'].map(function(r){return'<option'+(c.route===r?' selected':'')+'>'+r+'</option>';}).join('')+'</select></div></div>'
+      +'<div class="g2"><div class="field"><label>Timing</label><select onchange="updateEditorCompound(\''+proto.id+'\','+i+',\'timingWindow\',this.value)">'+twOptions+'</select></div>'
+      +'<div class="field"><label>Frequency</label><select onchange="updateEditorFreq(\''+proto.id+'\','+i+',this.value)">'+freqOptions+'</select></div></div>'
+      +'<div class="g2"><div class="field"><label>Site</label><select onchange="updateEditorCompound(\''+proto.id+'\','+i+',\'site\',this.value)">'
+      +['Abdomen','Thigh','Glute','Deltoid','N/A'].map(function(s){return'<option'+(c.site===s?' selected':'')+'>'+s+'</option>';}).join('')+'</select></div>'
+      +'<div class="field"><label>Fasting</label><select onchange="updateEditorCompound(\''+proto.id+'\','+i+',\'fasting\',this.value===\'true\')">'
+      +'<option value="true"'+(c.fasting?' selected':'')+'>Yes</option><option value="false"'+(!c.fasting?' selected':'')+'>No</option></select></div></div>'
+      +'<div class="field"><label>Days</label><div class="dow-pills">'+dowPills+'</div></div>'
+      +'<div class="field"><label>Rationale</label><input type="text" value="'+(c.rationale||'')+'" oninput="updateEditorCompound(\''+proto.id+'\','+i+',\'rationale\',this.value)"></div>'
+      +'</div></div>';
+  }).join('');
+}
+
+function liveUpdateProto(id,field,val){
+  const proto=protocols.find(function(p){return p.id===id;});if(!proto) return;
+  proto[field]=val;persist(KEYS.protocols,protocols);
+  if(activeProtoId===id) updateMobHeader();
+}
+function updateEditorCompound(protoId,i,field,val){
+  const proto=protocols.find(function(p){return p.id===protoId;});
+  if(!proto||!proto.compounds[i]) return;
+  proto.compounds[i][field]=val;persist(KEYS.protocols,protocols);
+  if(activeProtoId===protoId) renderChecklist();
+}
+function updateEditorFreq(protoId,i,val){
+  updateEditorCompound(protoId,i,'frequency',val);
+  const defaults={daily:[0,1,2,3,4,5,6],'5 on/2 off':[5,6,0,1,2],'3x/week':[1,3,5],'2x/week':[1,4],weekly:[1],'every other day':[0,2,4,6]};
+  if(defaults[val]) updateEditorCompound(protoId,i,'daysOfWeek',defaults[val]);
+}
+function toggleEditorDow(protoId,ci,di,btn){
+  const proto=protocols.find(function(p){return p.id===protoId;});
+  if(!proto||!proto.compounds[ci]) return;
+  const dows=proto.compounds[ci].daysOfWeek||[0,1,2,3,4,5,6];
+  proto.compounds[ci].daysOfWeek=dows.indexOf(di)!==-1?dows.filter(function(d){return d!==di;}):[].concat(dows,[di]).sort(function(a,b){return a-b;});
+  btn.classList.toggle('on',proto.compounds[ci].daysOfWeek.indexOf(di)!==-1);
+  persist(KEYS.protocols,protocols);
+}
+function removeEditorCompound(protoId,i){
+  const proto=protocols.find(function(p){return p.id===protoId;});if(!proto) return;
+  if(!confirm('Remove '+proto.compounds[i].name+'?')) return;
+  proto.compounds.splice(i,1);persist(KEYS.protocols,protocols);
+  renderProtoEditor(proto);if(activeProtoId===protoId) renderChecklist();
+}
+function openAddCompoundToEditor(protoId){
+  const proto=protocols.find(function(p){return p.id===protoId;});if(!proto) return;
+  const inProto=new Set((proto.compounds||[]).map(function(c){return c.name;}));
+  const list=document.getElementById('addToProtoList');
+  list.innerHTML=pantry.map(function(p){
+    return'<div style="display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--bd)">'
+      +'<div style="width:8px;height:8px;border-radius:50%;background:'+(p.color||'var(--mid)')+';flex-shrink:0"></div>'
+      +'<div style="flex:1;font-family:var(--serif);font-style:italic;font-size:14px">'+p.name+'</div>'
+      +(inProto.has(p.name)?'<span style="font-family:var(--mono);font-size:9px;color:var(--p1)">✓ In Protocol</span>'
+        :'<button onclick="addCompoundToEditor(\''+protoId+'\',\''+p.name+'\')" style="font-family:var(--mono);font-size:9px;padding:5px 10px;background:var(--p1d);border:1px solid var(--p1);border-radius:3px;color:var(--p1);cursor:pointer">Add</button>')
+      +'</div>';
+  }).join('');
+  openModal('addToProtoModal');
+}
+function addCompoundToEditor(protoId,name){
+  const proto=protocols.find(function(p){return p.id===protoId;});if(!proto) return;
+  const pItem=pantry.find(function(p){return p.name===name;})||{};
+  proto.compounds.push({name:name,dose:(doseMem[name]&&doseMem[name].dose)||pItem.dose||'—',
+    route:pItem.route||'Subcutaneous',form:pItem.form||'vial',
+    fasting:pItem.fasting||false,site:pItem.site||'Abdomen',
+    timing:'Upon Waking',timingWindow:'am',frequency:'daily',
+    daysOfWeek:[0,1,2,3,4,5,6],rationale:''});
+  persist(KEYS.protocols,protocols);
+  closeModal('addToProtoModal');renderProtoEditor(proto);
+  if(activeProtoId===protoId) renderChecklist();
+  toast(name+' added ✓');
+}
+function closeProtoEditor(){
+  editingProtoId=null;
+  const wrap=document.getElementById('protoEditorWrap');if(wrap)wrap.style.display='none';
+  const bs=document.getElementById('builderSection');if(bs)bs.style.display='block';
+  renderBuild();
+  // Refresh Today so protocol changes (dose/DOW/frequency) are immediately reflected
+  renderToday();
+}
+function dupProtocol(id){
+  const proto=protocols.find(function(p){return p.id===id;});if(!proto) return;
+  const copy=JSON.parse(JSON.stringify(proto));
+  copy.id='proto_'+Date.now();copy.name=proto.name+' (copy)';
+  protocols.push(copy);persist(KEYS.protocols,protocols);
+  toast(copy.name+' duplicated ✓');renderBuild();
+}
+function deleteProtocol(id){
+  if(!confirm('Delete this protocol?')) return;
+  protocols=protocols.filter(function(p){return p.id!==id;});
+  if(activeProtoId===id){
+    activeProtoId=protocols[0]?protocols[0].id:null;
+    persist(KEYS.activeProtoId,activeProtoId);
+  }
+  persist(KEYS.protocols,protocols);
+  toast('Protocol deleted');renderBuild();renderToday();updateMobHeader();
+}
+
+// ════════════ STATIC SUGGESTIONS FALLBACK ════════════
+function buildStaticSuggestions(goals,activePantry){
+  const pantryNames=new Set(activePantry.map(function(p){return p.name;}));
+  const wantsFat=goals.some(function(g){return/fat|appetite|weight/i.test(g);});
+  const wantsLean=goals.some(function(g){return/lean|muscle/i.test(g);});
+  const wantsSleep=goals.some(function(g){return/sleep|gh/i.test(g);});
+  const wantsHeal=goals.some(function(g){return/recovery|heal/i.test(g);});
+  const wantsLong=goals.some(function(g){return/longevity|aging/i.test(g);});
+  const wantsMetab=goals.some(function(g){return/metaboli|energy/i.test(g);});
+  const wantsImmune=goals.some(function(g){return/immune/i.test(g);});
+  return COMPOUND_DB.filter(function(c){
+    if(wantsFat&&c.goals.some(function(g){return/fat|appetite/i.test(g);})) return true;
+    if(wantsLean&&c.goals.some(function(g){return/lean/i.test(g);})) return true;
+    if(wantsSleep&&c.goals.some(function(g){return/sleep/i.test(g);})) return true;
+    if(wantsHeal&&c.goals.some(function(g){return/recovery/i.test(g);})) return true;
+    if(wantsLong&&c.goals.some(function(g){return/longevity/i.test(g);})) return true;
+    if(wantsMetab&&c.goals.some(function(g){return/metabolic/i.test(g);})) return true;
+    if(wantsImmune&&c.goals.some(function(g){return/immune/i.test(g);})) return true;
+    return false;
+  }).map(function(c){
+    const twLabel={am:'Upon Waking',preworkout:'Pre-Workout',weekly:'Weekly',pm:'Pre-Sleep',other:'Other'};
+    return{name:c.name,inPantry:pantryNames.has(c.name),selected:pantryNames.has(c.name),
+      dose:c.dose,route:c.route,form:c.form,fasting:c.fasting,site:c.site,
+      timing:twLabel[c.timingWindow]||'Upon Waking',
+      timingWindow:c.timingWindow||'am',frequency:c.frequency||'daily',
+      daysOfWeek:c.daysOfWeek||[0,1,2,3,4,5,6],rationale:c.rationale,
+      priority:pantryNames.has(c.name)?1:2};
+  }).sort(function(a,b){return a.priority-b.priority;});
+}
+
+// ════════════ EXPORT / IMPORT ════════════
+function exportData(){
+  const backup={version:10,exported:new Date().toISOString(),
+    logs:logs,doseMem:doseMem,bodyLogs:bodyLogs,checkins:checkins,
+    pantry:pantry,protocols:protocols,activeProtoId:activeProtoId};
+  const blob=new Blob([JSON.stringify(backup,null,2)],{type:'application/json'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);
+  a.download='protocol-backup-'+today()+'.json';a.click();
+  toast('Backup downloaded ✓');
+}
+function importData(input){
+  const file=input.files[0];if(!file) return;
+  const r=new FileReader();
+  r.onload=async function(e){
+    try{
+      const b=JSON.parse(e.target.result);
+      if(b.logs){logs=b.logs;await persist(KEYS.logs,logs);}
+      if(b.doseMem){doseMem=b.doseMem;await persist(KEYS.doseMem,doseMem);}
+      if(b.bodyLogs){bodyLogs=b.bodyLogs;await persist(KEYS.bodyLogs,bodyLogs);}
+      if(b.checkins){checkins=b.checkins;await persist(KEYS.checkins,checkins);}
+      if(b.pantry){pantry=b.pantry;await persist(KEYS.pantry,pantry);}
+      if(b.protocols){protocols=b.protocols;await persist(KEYS.protocols,protocols);}
+      if(b.activeProtoId!==undefined){activeProtoId=b.activeProtoId;await persist(KEYS.activeProtoId,activeProtoId);}
+      toast('Restored: '+logs.length+' entries ✓');nav('today');
+    }catch(err){toast('Import failed — invalid backup file ✗','var(--p5)');}
+  };
+  r.readAsText(file);
+}
+
+// ════════════ INIT ════════════
+// ════════════ RESTORE PROMPT ════════════
+function dismissRestorePrompt(){
+  closeModal('restorePromptModal');
+  // Seed defaults for a fresh start
+  seedDefaults();
+}
+async function restoreFromPrompt(input){
+  closeModal('restorePromptModal');
+  await importData(input);
+}
+async function seedDefaults(){
+  // Only called when confirmed fresh start — never called if any data exists
+  if(!pantry||!pantry.length){pantry=DEFAULT_PANTRY;await persist(KEYS.pantry,pantry);}
+  pantry=pantry.map(function(p){return Object.assign({vialMg:null,vials:0,openVialMg:0,capsRemaining:null,capDose:null,expiry:'',reorderDays:14,stockLog:[],site:'Abdomen',fasting:false},p);});
+  if(!bodyLogs.length){
+    // ── Pre-loaded Withings readings ──
+    const wRaw=[
+      // Mar 2026
+      {date:'2026-03-19',muscle:125.8,fat:34.7,bone:7.3},
+      {date:'2026-03-18',muscle:127.3,fat:33.9,bone:7.3},
+      {date:'2026-03-17',muscle:127.1,fat:34.5,bone:7.3},
+      {date:'2026-03-16',muscle:124.1,fat:37.9,bone:7.3},
+      {date:'2026-03-15',muscle:125.7,fat:36.1,bone:7.2},
+      {date:'2026-03-15',muscle:125.5,fat:36.2,bone:7.3},
+      {date:'2026-03-14',muscle:130.4,fat:29.0,bone:7.7},
+      {date:'2026-03-13',muscle:129.0,fat:31.9,bone:7.3},
+      {date:'2026-03-12',muscle:129.3,fat:32.3,bone:7.3},
+      {date:'2026-03-11',muscle:132.0,fat:31.0,bone:7.3},
+      {date:'2026-03-10',muscle:129.8,fat:33.3,bone:7.3},
+      // Oct 2025 — late (Oct 20-31)
+      {date:'2025-10-31',muscle:123.1,fat:36.4,bone:7.3},
+      {date:'2025-10-31',muscle:123.0,fat:36.6,bone:7.3},
+      {date:'2025-10-30',muscle:124.0,fat:35.5,bone:7.3},
+      {date:'2025-10-29',muscle:124.5,fat:35.3,bone:7.3},
+      {date:'2025-10-27',muscle:122.5,fat:37.2,bone:7.3},
+      {date:'2025-10-26',muscle:123.6,fat:37.0,bone:7.3},
+      {date:'2025-10-25',muscle:122.6,fat:38.6,bone:7.3},
+      {date:'2025-10-24',muscle:125.2,fat:36.9,bone:7.3},
+      {date:'2025-10-23',muscle:125.2,fat:36.8,bone:7.2},
+      {date:'2025-10-22',muscle:124.9,fat:37.3,bone:7.3},
+      {date:'2025-10-21',muscle:124.5,fat:37.5,bone:7.3},
+      {date:'2025-10-20',muscle:123.5,fat:38.8,bone:7.3},
+      // Oct 2025 — early (Oct 1-19)
+      {date:'2025-10-19',muscle:121.8,fat:39.6,bone:7.3},
+      {date:'2025-10-18',muscle:124.0,fat:39.2,bone:7.3},
+      {date:'2025-10-18',muscle:124.2,fat:38.9,bone:7.3},
+      {date:'2025-10-17',muscle:127.6,fat:37.6,bone:7.2},
+      {date:'2025-10-16',muscle:127.9,fat:37.2,bone:7.3},
+      {date:'2025-10-13',muscle:124.8,fat:39.1,bone:7.2},
+      {date:'2025-10-06',muscle:126.5,fat:37.8,bone:7.3},
+      {date:'2025-10-05',muscle:124.6,fat:39.2,bone:7.2},
+      {date:'2025-10-05',muscle:125.8,fat:37.8,bone:7.3},
+      {date:'2025-10-04',muscle:127.1,fat:37.8,bone:7.3},
+      {date:'2025-10-02',muscle:127.7,fat:37.0,bone:7.3},
+      {date:'2025-10-01',muscle:125.2,fat:37.7,bone:7.3},
+    ];
+    bodyLogs=wRaw.map(function(r,i){
+      const weight=parseFloat((r.muscle+r.fat+r.bone).toFixed(1));
+      return{id:1700000000000+i,date:r.date,source:'withings',phase:'',weight:weight,
+        muscle:r.muscle,fat:r.fat,bone:r.bone,water:null,
+        fatPct:parseFloat((r.fat/weight*100).toFixed(1)),
+        leanPct:parseFloat(((r.muscle+r.bone)/weight*100).toFixed(1)),
+        lean:parseFloat(((r.muscle+r.bone)/weight*100).toFixed(1)),
+        waterPct:null,notes:'Withings · M:'+r.muscle+' F:'+r.fat+' B:'+r.bone};
+    });
+    // ── DEXA — Oct 31 2025 (DexaFit Denver) ──
+    bodyLogs.push({id:1699999999000,date:'2025-10-31',source:'dexa',phase:'Baseline',
+      weight:170,muscle:124.7,fat:38.3,bone:6.5,water:null,
+      fatPct:22.6,leanPct:74.0,lean:74.0,waterPct:null,
+      visceral:0.07,tscore:2.10,
+      notes:'DexaFit Denver · Body Score A+ · Lean:124.7 Fat:38.3 Visceral:0.07 T-Score:2.1'});
+    bodyLogs.sort(function(a,b){return new Date(b.date)-new Date(a.date);});
+    await persist(KEYS.bodyLogs,bodyLogs);
+  }
+  if(!protocols.length){protocols=[DEFAULT_PROTOCOL];await persist(KEYS.protocols,protocols);}
+  if(!activeProtoId){activeProtoId=protocols[0]?protocols[0].id:null;await persist(KEYS.activeProtoId,activeProtoId);}
+  finishInit();
+}
+
+async function loadHistoricalData(){
+  // Merges all pre-loaded readings into existing bodyLogs — skips exact duplicates (same date+M+F+B)
+  const HIST_W=[
+    {date:'2026-03-19',muscle:125.8,fat:34.7,bone:7.3},
+    {date:'2026-03-18',muscle:127.3,fat:33.9,bone:7.3},
+    {date:'2026-03-17',muscle:127.1,fat:34.5,bone:7.3},
+    {date:'2026-03-16',muscle:124.1,fat:37.9,bone:7.3},
+    {date:'2026-03-15',muscle:125.7,fat:36.1,bone:7.2},
+    {date:'2026-03-15',muscle:125.5,fat:36.2,bone:7.3},
+    {date:'2026-03-14',muscle:130.4,fat:29.0,bone:7.7},
+    {date:'2026-03-13',muscle:129.0,fat:31.9,bone:7.3},
+    {date:'2026-03-12',muscle:129.3,fat:32.3,bone:7.3},
+    {date:'2026-03-11',muscle:132.0,fat:31.0,bone:7.3},
+    {date:'2026-03-10',muscle:129.8,fat:33.3,bone:7.3},
+    {date:'2025-10-31',muscle:123.1,fat:36.4,bone:7.3},
+    {date:'2025-10-31',muscle:123.0,fat:36.6,bone:7.3},
+    {date:'2025-10-30',muscle:124.0,fat:35.5,bone:7.3},
+    {date:'2025-10-29',muscle:124.5,fat:35.3,bone:7.3},
+    {date:'2025-10-27',muscle:122.5,fat:37.2,bone:7.3},
+    {date:'2025-10-26',muscle:123.6,fat:37.0,bone:7.3},
+    {date:'2025-10-25',muscle:122.6,fat:38.6,bone:7.3},
+    {date:'2025-10-24',muscle:125.2,fat:36.9,bone:7.3},
+    {date:'2025-10-23',muscle:125.2,fat:36.8,bone:7.2},
+    {date:'2025-10-22',muscle:124.9,fat:37.3,bone:7.3},
+    {date:'2025-10-21',muscle:124.5,fat:37.5,bone:7.3},
+    {date:'2025-10-20',muscle:123.5,fat:38.8,bone:7.3},
+    {date:'2025-10-19',muscle:121.8,fat:39.6,bone:7.3},
+    {date:'2025-10-18',muscle:124.0,fat:39.2,bone:7.3},
+    {date:'2025-10-18',muscle:124.2,fat:38.9,bone:7.3},
+    {date:'2025-10-17',muscle:127.6,fat:37.6,bone:7.2},
+    {date:'2025-10-16',muscle:127.9,fat:37.2,bone:7.3},
+    {date:'2025-10-13',muscle:124.8,fat:39.1,bone:7.2},
+    {date:'2025-10-06',muscle:126.5,fat:37.8,bone:7.3},
+    {date:'2025-10-05',muscle:124.6,fat:39.2,bone:7.2},
+    {date:'2025-10-05',muscle:125.8,fat:37.8,bone:7.3},
+    {date:'2025-10-04',muscle:127.1,fat:37.8,bone:7.3},
+    {date:'2025-10-02',muscle:127.7,fat:37.0,bone:7.3},
+    {date:'2025-10-01',muscle:125.2,fat:37.7,bone:7.3},
+  ];
+  const HIST_DEXA={id:1699999999000,date:'2025-10-31',source:'dexa',phase:'Baseline',
+    weight:170,muscle:124.7,fat:38.3,bone:6.5,water:null,
+    fatPct:22.6,leanPct:74.0,lean:74.0,waterPct:null,
+    visceral:0.07,tscore:2.10,
+    notes:'DexaFit Denver · Body Score A+ · Lean:124.7 Fat:38.3 Visceral:0.07 T-Score:2.1'};
+
+  let added=0;
+  HIST_W.forEach(function(r,i){
+    // Skip if exact duplicate already exists (same date, muscle, fat, bone)
+    const exists=bodyLogs.some(function(l){
+      return l.source==='withings'&&l.date===r.date&&l.muscle===r.muscle&&l.fat===r.fat&&l.bone===r.bone;
+    });
+    if(exists) return;
+    const weight=parseFloat((r.muscle+r.fat+r.bone).toFixed(1));
+    bodyLogs.push({id:1700000000000+i+Math.random(),date:r.date,source:'withings',phase:'',weight:weight,
+      muscle:r.muscle,fat:r.fat,bone:r.bone,water:null,
+      fatPct:parseFloat((r.fat/weight*100).toFixed(1)),
+      leanPct:parseFloat(((r.muscle+r.bone)/weight*100).toFixed(1)),
+      lean:parseFloat(((r.muscle+r.bone)/weight*100).toFixed(1)),
+      waterPct:null,notes:'Withings · M:'+r.muscle+' F:'+r.fat+' B:'+r.bone});
+    added++;
+  });
+  // DEXA — add if not already present
+  const dexaExists=bodyLogs.some(function(l){return l.source==='dexa'&&l.date==='2025-10-31';});
+  if(!dexaExists){bodyLogs.push(HIST_DEXA);added++;}
+  bodyLogs.sort(function(a,b){return new Date(b.date)-new Date(a.date);});
+  await persist(KEYS.bodyLogs,bodyLogs);
+  toast('✓ Loaded '+added+' historical entries');
+  renderBodyComp();
+  renderBodyStrip();
+}
+
+async function initApp(){
+  const results=await Promise.all([
+    load(KEYS.logs,[]),load(KEYS.doseMem,{}),load(KEYS.bodyLogs,[]),
+    load(KEYS.checkins,[]),load(KEYS.pantry,null),
+    load(KEYS.protocols,[]),load(KEYS.activeProtoId,null),
+  ]);
+  logs=results[0];doseMem=results[1];bodyLogs=results[2];
+  checkins=results[3];pantry=results[4];protocols=results[5];activeProtoId=results[6];
+
+  // Determine if this is a genuinely fresh session (no user data at all)
+  const hasAnyData=!!(
+    (logs&&logs.length)||
+    (bodyLogs&&bodyLogs.length)||
+    (protocols&&protocols.length)||
+    (pantry&&pantry.length&&pantry.some(function(p){return p.id&&p.id.indexOf('default')===-1&&p.id.indexOf('db_')===-1;}))
+  );
+
+  if(!hasAnyData){
+    // Show restore prompt — do NOT seed defaults until user chooses
+    openModal('restorePromptModal');
+    return;
+  }
+
+  // Data exists — migrate pantry fields safely, never overwrite
+  if(!pantry||!pantry.length){pantry=DEFAULT_PANTRY;await persist(KEYS.pantry,pantry);}
+  pantry=pantry.map(function(p){return Object.assign({vialMg:null,vials:0,capsRemaining:null,capDose:null,expiry:'',reorderDays:14,stockLog:[],site:'Abdomen',fasting:false},p);});
+  if(!protocols.length){protocols=[DEFAULT_PROTOCOL];await persist(KEYS.protocols,protocols);}
+  if(!activeProtoId){activeProtoId=protocols[0]?protocols[0].id:null;await persist(KEYS.activeProtoId,activeProtoId);}
+  finishInit();
+}
+
+function finishInit(){
+  // Retroactively tag Mar 15 2026+ body logs as Fat Loss Phase
+  const fatLossStart='2026-03-15';
+  let phaseTagged=0;
+  bodyLogs=bodyLogs.map(function(l){
+    if(l.date>=fatLossStart&&(!l.phase||l.phase==='')){
+      phaseTagged++;
+      return Object.assign({},l,{phase:'Fat Loss Phase'});
+    }
+    return l;
+  });
+  if(phaseTagged>0) persist(KEYS.bodyLogs,bodyLogs);
+  const bcDate=document.getElementById('bcDate');if(bcDate)bcDate.value=today();
+  updateMobHeader();nav('today');
+}
+
+initApp();
+</script>
+</body>
+</html>
