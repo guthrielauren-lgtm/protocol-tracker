@@ -324,6 +324,12 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;heigh
 .unit-select{font-family:var(--mono);font-size:11px;padding:0 8px;background:var(--sf2);border:1px solid var(--bd);border-radius:0 6px 6px 0;color:var(--mid);cursor:pointer;min-width:52px;-webkit-appearance:none;appearance:none;text-align:center}
 .unit-select:focus{border-color:var(--p1);outline:none}
 @media(max-width:767px){.dose-wrap input{font-size:16px;padding:13px 12px}.unit-select{font-size:14px;min-width:58px}}
+/* Chart period tabs */
+.chart-period-tabs{display:flex;gap:3px;margin-bottom:8px}
+.cpt{font-family:var(--mono);font-size:9px;letter-spacing:.08em;padding:5px 10px;border:1px solid var(--bd);border-radius:4px;background:none;color:var(--dim);cursor:pointer;transition:all .15s;-webkit-tap-highlight-color:transparent}
+.cpt:hover{border-color:var(--bd2);color:var(--mid)}
+.cpt.on{background:var(--p3d);border-color:var(--p3);color:var(--p3)}
+@media(max-width:767px){.cpt{font-size:11px;padding:8px 12px;border-radius:6px}}
 </style>
 </head>
 <body>
@@ -508,8 +514,30 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;heigh
     <div class="stat-cell"><div class="stat-lbl">Entries</div><div class="stat-num" id="bcS5">0</div><div class="stat-sub">logged</div></div>
   </div>
   <div id="calibCard" style="margin-bottom:10px"></div>
-  <div class="trend-card"><div class="trend-ttl">Fat (lbs) Over Time</div><svg class="trend-svg" height="126" id="bcFatSvg" viewBox="0 0 760 126" preserveAspectRatio="none"></svg></div>
-  <div class="trend-card"><div class="trend-ttl">Weight + Muscle (lbs)</div><svg class="trend-svg" height="126" id="bcWtSvg" viewBox="0 0 760 126" preserveAspectRatio="none"></svg></div>
+  <div class="trend-card">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+      <div class="trend-ttl" style="margin-bottom:0">Fat (lbs) Over Time</div>
+      <div class="chart-period-tabs" id="fatPeriodTabs">
+        <button class="cpt" data-days="30" onclick="setChartPeriod('fat',30)">30d</button>
+        <button class="cpt on" data-days="90" onclick="setChartPeriod('fat',90)">90d</button>
+        <button class="cpt" data-days="180" onclick="setChartPeriod('fat',180)">6mo</button>
+        <button class="cpt" data-days="0" onclick="setChartPeriod('fat',0)">All</button>
+      </div>
+    </div>
+    <svg class="trend-svg" height="126" id="bcFatSvg" viewBox="0 0 760 126" preserveAspectRatio="none"></svg>
+  </div>
+  <div class="trend-card">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+      <div class="trend-ttl" style="margin-bottom:0">Weight + Muscle (lbs)</div>
+      <div class="chart-period-tabs" id="wtPeriodTabs">
+        <button class="cpt" data-days="30" onclick="setChartPeriod('wt',30)">30d</button>
+        <button class="cpt on" data-days="90" onclick="setChartPeriod('wt',90)">90d</button>
+        <button class="cpt" data-days="180" onclick="setChartPeriod('wt',180)">6mo</button>
+        <button class="cpt" data-days="0" onclick="setChartPeriod('wt',0)">All</button>
+      </div>
+    </div>
+    <svg class="trend-svg" height="126" id="bcWtSvg" viewBox="0 0 760 126" preserveAspectRatio="none"></svg>
+  </div>
   <div class="sec-lbl" style="margin-top:16px">Measurement History</div>
   <div id="bcFeed"></div>
 </div>
@@ -796,6 +824,7 @@ async function load(key,fb=null){
 
 // ════════════ STATE ════════════
 let logs=[],doseMem={},bodyLogs=[],checkins=[],pantry=[],protocols=[],activeProtoId=null;
+let chartPeriod={fat:90,wt:90}; // days to show; 0 = all
 let selectedGoals=[];
 let buildCompounds=[];
 let bodySource='withings';
@@ -876,7 +905,10 @@ const TIMING_WINDOWS=[
 ];
 
 function fmtDate(d){if(!d)return'—';const p=d.split('-');return MONTHS[+p[1]-1]+' '+(+p[2]);}
-function today(){return new Date().toISOString().split('T')[0];}
+function today(){
+  const d=new Date();
+  return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+}
 function todayDOW(){return new Date().getDay();}
 function weeksBetween(a,b){return Math.floor((new Date(b)-new Date(a))/(7*24*3600*1000));}
 function chipMulti(el){el.classList.toggle('on');}
@@ -1423,6 +1455,34 @@ function clearBC(){
 
 
 
+function filterByPeriod(logs, days){
+  if(!days) return logs; // 0 = all
+  const cutoff=new Date();
+  cutoff.setDate(cutoff.getDate()-days);
+  const cutoffStr=cutoff.getFullYear()+'-'+String(cutoff.getMonth()+1).padStart(2,'0')+'-'+String(cutoff.getDate()).padStart(2,'0');
+  return logs.filter(function(l){return l.date>=cutoffStr;});
+}
+
+function setChartPeriod(chart, days){
+  chartPeriod[chart]=days;
+  // Update active tab styling
+  const tabsId=chart==='fat'?'fatPeriodTabs':'wtPeriodTabs';
+  const tabs=document.getElementById(tabsId);
+  if(tabs){
+    tabs.querySelectorAll('.cpt').forEach(function(btn){
+      btn.classList.toggle('on',+btn.dataset.days===days);
+    });
+  }
+  // Re-render just the affected chart
+  const sorted=[...bodyLogs].sort(function(a,b){return new Date(a.date)-new Date(b.date);});
+  const filtered=filterByPeriod(sorted,days);
+  if(chart==='fat'){
+    renderBcSvg('bcFatSvg',filtered,'fat',126);
+  } else {
+    renderBcWtSvg('bcWtSvg',filtered,126);
+  }
+}
+
 function renderBodyComp(){
   const sorted=[...bodyLogs].sort(function(a,b){return new Date(a.date)-new Date(b.date);});
   const bcS5=document.getElementById('bcS5');if(bcS5)bcS5.textContent=bodyLogs.length;
@@ -1441,8 +1501,11 @@ function renderBodyComp(){
     }
     setS('bcS1','bcS1d','weight',-1);setS('bcS2','bcS2d','muscle',1);setS('bcS3','bcS3d','fat',-1);
   }
-  renderBcSvg('bcFatSvg',sorted,'fat',126);
-  renderBcWtSvg('bcWtSvg',sorted,126);
+  // Apply current period filter to charts; feed always shows full history
+  const fatFiltered=filterByPeriod(sorted,chartPeriod.fat);
+  const wtFiltered=filterByPeriod(sorted,chartPeriod.wt);
+  renderBcSvg('bcFatSvg',fatFiltered,'fat',126);
+  renderBcWtSvg('bcWtSvg',wtFiltered,126);
   renderCalibCard();
   renderBcFeed(sorted);
 }
