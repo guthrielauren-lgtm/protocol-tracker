@@ -317,12 +317,13 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;heigh
 .editor-tab.on{background:var(--p4d);border-color:var(--p4);color:var(--p4)}
 .spinner{width:26px;height:26px;border:2px solid var(--bd);border-top-color:var(--p1);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 12px}
 @keyframes spin{to{transform:rotate(360deg)}}
-/* Unit selector */
-.unit-row{display:flex;gap:5px;margin-top:5px}
-.unit-chip{font-family:var(--mono);font-size:10px;padding:5px 11px;border:1px solid var(--bd);border-radius:4px;background:none;color:var(--dim);cursor:pointer;transition:all .15s;-webkit-tap-highlight-color:transparent}
-.unit-chip:hover{border-color:var(--p1);color:var(--p1)}
-.unit-chip.on{background:var(--p1d);border-color:var(--p1);color:var(--p1)}
-@media(max-width:767px){.unit-chip{font-size:12px;padding:8px 14px;border-radius:6px}}
+/* Inline unit suffix select */
+.dose-wrap{display:flex;gap:0;align-items:stretch}
+.dose-wrap input{border-radius:6px 0 0 6px;border-right:none;flex:1}
+.dose-wrap input:focus{border-color:var(--p1);z-index:1}
+.unit-select{font-family:var(--mono);font-size:11px;padding:0 8px;background:var(--sf2);border:1px solid var(--bd);border-radius:0 6px 6px 0;color:var(--mid);cursor:pointer;min-width:52px;-webkit-appearance:none;appearance:none;text-align:center}
+.unit-select:focus{border-color:var(--p1);outline:none}
+@media(max-width:767px){.dose-wrap input{font-size:16px;padding:13px 12px}.unit-select{font-size:14px;min-width:58px}}
 </style>
 </head>
 <body>
@@ -467,20 +468,8 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;heigh
         </div>
       </div>
     </div>
-    <!-- Quick-paste field: visible for Withings only -->
-    <div id="ssImportWrap" style="margin-bottom:14px">
-      <div class="field" style="margin-bottom:6px">
-        <label>Quick Paste — M F B (or M:x F:x B:x W:x)</label>
-        <div style="display:flex;gap:8px;align-items:center">
-          <input type="text" id="quickPaste" inputmode="decimal" placeholder="e.g. 125.8 34.7 7.3  or  127.3 33.9 7.3 82.4" style="flex:1" oninput="quickPastePreview()" onkeydown="if(event.key==='Enter')quickPasteApply()">
-          <button onclick="quickPasteApply()" class="btn sm" style="flex-shrink:0">Apply</button>
-        </div>
-      </div>
-      <div id="quickPasteHint" style="font-family:var(--mono);font-size:10px;color:var(--dim);margin-bottom:4px">Type M F B values separated by spaces — fills the fields below automatically.</div>
-      <div id="importStatus" style="font-family:var(--mono);font-size:11px;margin-top:4px;display:none"></div>
-    </div>
-    <!-- DEXA: no importer, just the callout -->
-    <div id="dexaImportWrap" style="display:none;margin-bottom:14px"></div>
+    <div id="ssImportWrap" style="display:none"></div>
+    <div id="dexaImportWrap" style="display:none"></div>
     <div id="withingsFields">
       <div class="g4" style="margin-bottom:8px">
         <div class="field"><label>M · Muscle (lbs)</label><input type="number" inputmode="decimal" id="bcMuscle" placeholder="127.3" step="0.1" oninput="bcFormCalc()"></div>
@@ -511,13 +500,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;heigh
     <div class="field" style="margin-bottom:12px"><label>Notes</label><input type="text" id="bcNotes" placeholder="e.g. fasted, post-workout, facility name"></div>
     <div class="btn-row"><button class="btn" onclick="saveBodyComp()">Save</button><button class="btn ghost" onclick="clearBC()">Clear</button></div>
   </div>
-  <!-- One-time historical data loader -->
-  <div id="loadHistWrap" style="margin-bottom:10px">
-    <button id="loadHistBtn" class="btn warn-btn" onclick="loadHistoricalData()" style="width:100%;justify-content:center">
-      ↓ Load Historical Data (Oct 2025 + DEXA)
-    </button>
-    <div style="font-family:var(--mono);font-size:10px;color:var(--dim);margin-top:5px;text-align:center">Merges 37 pre-loaded entries — skips duplicates. Safe to run anytime.</div>
-  </div>
+
   <div class="stats-band">
     <div class="stat-cell"><div class="stat-lbl">Weight</div><div class="stat-num" id="bcS1">—</div><div class="stat-sub" id="bcS1d">lbs</div></div>
     <div class="stat-cell"><div class="stat-lbl">Muscle</div><div class="stat-num" id="bcS2">—</div><div class="stat-sub" id="bcS2d">lbs</div></div>
@@ -525,8 +508,8 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;heigh
     <div class="stat-cell"><div class="stat-lbl">Entries</div><div class="stat-num" id="bcS5">0</div><div class="stat-sub">logged</div></div>
   </div>
   <div id="calibCard" style="margin-bottom:10px"></div>
-  <div class="trend-card"><div class="trend-ttl">Fat (lbs) Over Time</div><svg class="trend-svg" height="110" id="bcFatSvg" viewBox="0 0 760 110" preserveAspectRatio="none"></svg></div>
-  <div class="trend-card"><div class="trend-ttl">Weight + Muscle (lbs)</div><svg class="trend-svg" height="110" id="bcWtSvg" viewBox="0 0 760 110" preserveAspectRatio="none"></svg></div>
+  <div class="trend-card"><div class="trend-ttl">Fat (lbs) Over Time</div><svg class="trend-svg" height="126" id="bcFatSvg" viewBox="0 0 760 126" preserveAspectRatio="none"></svg></div>
+  <div class="trend-card"><div class="trend-ttl">Weight + Muscle (lbs)</div><svg class="trend-svg" height="126" id="bcWtSvg" viewBox="0 0 760 126" preserveAspectRatio="none"></svg></div>
   <div class="sec-lbl" style="margin-top:16px">Measurement History</div>
   <div id="bcFeed"></div>
 </div>
@@ -725,7 +708,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;heigh
     <input type="hidden" id="editPantryId">
     <div class="g2">
       <div class="field"><label>Name</label><input type="text" id="epName"></div>
-      <div class="field"><label>Default Dose</label><input type="text" id="epDose" inputmode="decimal"><div class="unit-row" id="units-ep"><button class="unit-chip" data-unit="mcg" onclick="applyUnit('epDose','mcg','units-ep')">mcg</button><button class="unit-chip" data-unit="mg" onclick="applyUnit('epDose','mg','units-ep')">mg</button></div></div>
+      <div class="field"><label>Default Dose</label><div class="dose-wrap"><input type="text" id="epDose" inputmode="decimal" placeholder="e.g. 250"><select id="epDoseUnit" class="unit-select"><option value="mcg">mcg</option><option value="mg">mg</option></select></div></div>
     </div>
     <div class="g2">
       <div class="field"><label>Route</label><select id="epRoute"><option>Subcutaneous</option><option>Oral</option><option>Intramuscular</option><option>Sublingual</option><option>Intranasal</option><option>Topical</option></select></div>
@@ -737,6 +720,38 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;heigh
     </div>
     <div class="field" style="margin-bottom:12px"><label>Notes / Mechanism</label><input type="text" id="epNotes"></div>
     <div class="btn-row"><button class="btn" onclick="savePantryEdit()">Save</button><button class="btn ghost" onclick="closeModal('editPantryModal')">Cancel</button></div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="editBodyModal">
+  <div class="modal">
+    <div class="modal-title">Edit Measurement <button class="modal-close" onclick="closeModal('editBodyModal')">✕</button></div>
+    <input type="hidden" id="editBodyId">
+    <div class="g2" style="margin-bottom:10px">
+      <div class="field"><label>Date</label><input type="date" id="editBodyDate"></div>
+      <div class="field"><label>Source</label>
+        <select id="editBodySource">
+          <option value="withings">Withings</option>
+          <option value="dexa">DEXA</option>
+        </select>
+      </div>
+    </div>
+    <div class="g4" style="margin-bottom:10px">
+      <div class="field"><label>Muscle (lbs)</label><input type="number" inputmode="decimal" id="editBodyMuscle" step="0.1"></div>
+      <div class="field"><label>Fat (lbs)</label><input type="number" inputmode="decimal" id="editBodyFat" step="0.1"></div>
+      <div class="field"><label>Bone (lbs)</label><input type="number" inputmode="decimal" id="editBodyBone" step="0.1"></div>
+      <div class="field"><label>Water (lbs)</label><input type="number" inputmode="decimal" id="editBodyWater" step="0.1"></div>
+    </div>
+    <div class="g2" style="margin-bottom:10px">
+      <div class="field"><label>Fat % (override)</label><input type="number" inputmode="decimal" id="editBodyFatPct" step="0.1" placeholder="auto-calc if blank"></div>
+      <div class="field"><label>Phase / Protocol</label><input type="text" id="editBodyPhase"></div>
+    </div>
+    <div class="field" style="margin-bottom:14px"><label>Notes</label><input type="text" id="editBodyNotes"></div>
+    <div style="display:flex;gap:8px">
+      <button class="btn" onclick="saveEditBody()">Save</button>
+      <button class="btn ghost" onclick="closeModal('editBodyModal')">Cancel</button>
+      <button class="btn danger" onclick="deleteBodyEntry()">Delete</button>
+    </div>
   </div>
 </div>
 
@@ -819,7 +834,7 @@ const CAT_COLORS={gh:'var(--p1)',metabolic:'var(--p2)',healing:'#60a5fa',longevi
 const DEFAULT_PANTRY=[
   {id:'tirz',  name:'Tirzepatide',   form:'prefilled',cat:'metabolic',dose:'5mg',   route:'Subcutaneous',site:'Thigh',  fasting:false,active:true,color:'var(--p2)',notes:'GLP-1/GIP dual agonist. Weekly.',vialMg:null,vials:0,expiry:'',reorderDays:14,stockLog:[]},
   {id:'amino', name:'5-Amino-1MQ',   form:'oral',     cat:'metabolic',dose:'50mg',  route:'Oral',         site:'N/A',   fasting:true, active:true,color:'var(--p3)',notes:'NNMT inhibitor. AM fasted.',vialMg:null,vials:0,expiry:'',reorderDays:14,stockLog:[]},
-  {id:'slupp', name:'SLU-PP-332',    form:'oral',     cat:'metabolic',dose:'20mg',  route:'Oral',         site:'N/A',   fasting:false,active:true,color:'var(--p4)',notes:'ERR agonist. Pre-workout.',vialMg:null,vials:0,expiry:'',reorderDays:14,stockLog:[]},
+  {id:'slupp', name:'SLU-PP-332',    form:'oral',     cat:'metabolic',dose:'750mcg',route:'Oral',         site:'N/A',   fasting:false,active:true,color:'var(--p4)',notes:'ERR agonist. Pre-workout. 250mcg/cap × 3 caps = 750mcg/day.',vialMg:null,vials:0,capsRemaining:null,capDose:0.25,expiry:'',reorderDays:14,stockLog:[]},
   {id:'tesa',  name:'Tesamorelin',   form:'vial',     cat:'gh',       dose:'2mg',   route:'Subcutaneous',site:'Abdomen',fasting:true, active:true,color:'var(--p5)',notes:'GHRH analogue. Visceral fat.',vialMg:2,vials:0,expiry:'',reorderDays:14,stockLog:[]},
   {id:'ipa',   name:'Ipamorelin',    form:'vial',     cat:'gh',       dose:'250mcg',route:'Subcutaneous',site:'Abdomen',fasting:true, active:true,color:'var(--p1)',notes:'GH secretagogue. Pre-sleep.',vialMg:5,vials:0,expiry:'',reorderDays:14,stockLog:[]},
   {id:'cjc',   name:'CJC-1295',      form:'vial',     cat:'gh',       dose:'100mcg',route:'Subcutaneous',site:'Abdomen',fasting:true, active:true,color:'var(--p1)',notes:'GHRH. Stack with Ipa, not Tesa.',vialMg:2,vials:0,expiry:'',reorderDays:14,stockLog:[]},
@@ -843,7 +858,7 @@ const DEFAULT_PROTOCOL={
   compounds:[
     {name:'5-Amino-1MQ', dose:'50mg',  route:'Oral',        form:'oral',    fasting:true, site:'N/A',    timing:'Upon Waking',timingWindow:'am',        frequency:'daily',  daysOfWeek:[0,1,2,3,4,5,6],rationale:'NNMT inhibitor.'},
     {name:'Tesamorelin', dose:'2mg',   route:'Subcutaneous',form:'vial',    fasting:true, site:'Abdomen',timing:'Upon Waking',timingWindow:'am',        frequency:'daily',  daysOfWeek:[0,1,2,3,4,5,6],rationale:'Visceral fat reduction.'},
-    {name:'SLU-PP-332',  dose:'20mg',  route:'Oral',        form:'oral',    fasting:false,site:'N/A',    timing:'Pre-Workout', timingWindow:'preworkout',frequency:'daily',  daysOfWeek:[0,1,2,3,4,5,6],rationale:'ERR agonist.'},
+    {name:'SLU-PP-332',  dose:'750mcg',route:'Oral',        form:'oral',    fasting:false,site:'N/A',    timing:'Pre-Workout', timingWindow:'preworkout',frequency:'daily',  daysOfWeek:[0,1,2,3,4,5,6],rationale:'ERR agonist. 250mcg/cap × 3 caps.'},
     {name:'Tirzepatide', dose:'5mg',   route:'Subcutaneous',form:'prefilled',fasting:false,site:'Thigh', timing:'Weekly',      timingWindow:'weekly',    frequency:'weekly', daysOfWeek:[1],             rationale:'GLP-1/GIP agonist.'},
     {name:'MOTS-c',      dose:'5mg',   route:'Subcutaneous',form:'vial',    fasting:true, site:'Abdomen',timing:'Upon Waking',timingWindow:'am',        frequency:'3x/week',daysOfWeek:[1,3,5],         rationale:'Metabolic flexibility.'},
   ]
@@ -1111,12 +1126,14 @@ function renderChecklist(){
         +'<div class="cr-right">'+(low?'<span title="'+(daysLeft===0?'Out of stock':daysLeft+' days left')+'" style="font-size:13px">⚠️</span>':'')
         +'<div class="cr-check">'+(logged?'✓':'○')+'</div></div></div>'
         +'<div class="cr-expand" id="cre-'+uid+'">'
-        +'<div class="cr-dose-row"><input class="cr-dose-input" id="dose-'+uid+'" value="'+dose+'" type="text" inputmode="decimal" placeholder="'+c.dose+'">'
-        +'<button class="cr-log-btn" onclick="logCompound(\''+c.name+'\',\''+uid+'\')">'+(logged?'Log Again':'Log')+'</button></div>'
-        +'<div class="unit-row" id="units-cr-'+uid+'">'
-        +'<div class="unit-row" id="units-cr-'+uid+'">'
-        +'<button class="unit-chip" data-unit="mcg" onclick="applyUnit(\'dose-'+uid+'\',\'mcg\',\'units-cr-'+uid+'\')">'+'mcg'+'</button>'
-        +'<button class="unit-chip" data-unit="mg" onclick="applyUnit(\'dose-'+uid+'\',\'mg\',\'units-cr-'+uid+'\')">'+'mg'+'</button>'
+        +'<div class="cr-dose-row">'
+        +'<div class="dose-wrap" style="flex:1">'
+        +'<input class="cr-dose-input" id="dose-'+uid+'" value="'+numPart(dose)+'" type="text" inputmode="decimal" placeholder="'+numPart(c.dose)+'">'
+        +'<select id="doseunit-'+uid+'" class="unit-select">'
+        +'<option value="mcg"'+(unitPart(dose)==='mcg'?' selected':'')+'>mcg</option>'
+        +'<option value="mg"'+(unitPart(dose)==='mg'?' selected':'')+'>mg</option>'
+        +'</select></div>'
+        +'<button class="cr-log-btn" onclick="logCompound(\''+c.name+'\',\''+uid+'\')">'+(logged?'Log Again':'Log')+'</button>'
         +'</div>'
         +'<div class="cr-site-row">'+sitePills+'</div>'
         +(low&&pItem?'<div style="font-family:var(--mono);font-size:10px;color:var(--warn);margin-top:8px">⚠ '+(daysLeft===0?'Out of stock':'~'+daysLeft+' days remaining')+' · <button onclick="openRestock(\''+pItem.id+'\')" style="background:none;border:none;color:var(--warn);font-family:var(--mono);font-size:10px;cursor:pointer;text-decoration:underline">Restock</button></div>':'')
@@ -1138,8 +1155,7 @@ function chipOneRow(el){
 }
 
 function logCompound(name,uid){
-  const doseEl=document.getElementById('dose-'+uid);
-  const dose=doseEl?doseEl.value:getEffectiveDose(name)||'—';
+  const dose=getDoseValue('dose-'+uid,'doseunit-'+uid)||getEffectiveDose(name)||'—';
   const siteEl=document.querySelector('#cre-'+uid+' .chip.on');
   const site=siteEl?siteEl.textContent:'Abdomen';
   const proto=getActiveProtocol();
@@ -1349,52 +1365,6 @@ function setBodySource(src){
   const ss=document.getElementById('ssImportWrap');if(ss)ss.style.display=src==='withings'?'block':'none';
   const di=document.getElementById('dexaImportWrap');if(di)di.style.display=src==='dexa'?'block':'none';
 }
-// ════════════ QUICK PASTE ════════════
-function parseQuickPaste(raw){
-  // Handles: "125.8 34.7 7.3" or "125.8 34.7 7.3 82.4" or "M:125.8 F:34.7 B:7.3 W:82.4"
-  // or "M: 125.8 F: 34.7 B: 7.3" — flexible whitespace and labels
-  if(!raw||!raw.trim()) return null;
-  // Strip labels like M: F: B: W:
-  const cleaned=raw.replace(/[MmFfBbWw]\s*:/g,'').replace(/lb[s]?/gi,'').trim();
-  // Split on whitespace or commas
-  const parts=cleaned.split(/[\s,]+/).map(function(p){return parseFloat(p);}).filter(function(n){return!isNaN(n);});
-  if(parts.length<3) return null;
-  return{muscle:parts[0],fat:parts[1],bone:parts[2],water:parts[3]||null};
-}
-function quickPastePreview(){
-  const raw=document.getElementById('quickPaste').value;
-  const hint=document.getElementById('quickPasteHint');
-  const parsed=parseQuickPaste(raw);
-  if(parsed&&hint){
-    const w=parseFloat((parsed.muscle+parsed.fat+parsed.bone).toFixed(1));
-    const fp=parseFloat((parsed.fat/w*100).toFixed(1));
-    hint.style.color='var(--p1)';
-    hint.textContent='✓ M:'+parsed.muscle+' F:'+parsed.fat+' B:'+parsed.bone+(parsed.water?' W:'+parsed.water:'')+' → '+w+'lbs / '+fp+'% fat';
-  } else if(hint){
-    hint.style.color='var(--dim)';
-    hint.textContent='Type M F B values separated by spaces — fills the fields below automatically.';
-  }
-}
-function quickPasteApply(){
-  const raw=document.getElementById('quickPaste').value;
-  const parsed=parseQuickPaste(raw);
-  const status=document.getElementById('importStatus');
-  if(!parsed){
-    if(status){status.style.display='block';status.style.color='var(--p5)';status.textContent='✗ Could not parse. Try: 125.8 34.7 7.3';}
-    return;
-  }
-  // Fill the M/F/B/W form fields
-  const mEl=document.getElementById('bcMuscle');if(mEl)mEl.value=parsed.muscle;
-  const fEl=document.getElementById('bcFat');if(fEl)fEl.value=parsed.fat;
-  const bEl=document.getElementById('bcBone');if(bEl)bEl.value=parsed.bone;
-  const wEl=document.getElementById('bcWater');if(wEl)wEl.value=parsed.water||'';
-  bcFormCalc();
-  // Clear paste field and reset hint
-  const qp=document.getElementById('quickPaste');if(qp)qp.value='';
-  const hint=document.getElementById('quickPasteHint');
-  if(hint){hint.style.color='var(--p1)';hint.textContent='✓ Fields filled — review and tap Save.';}
-  if(status){status.style.display='block';status.style.color='var(--p1)';status.textContent='✓ Filled M:'+parsed.muscle+' F:'+parsed.fat+' B:'+parsed.bone+(parsed.water?' W:'+parsed.water:'')+'  — tap Save to log';}
-}
 
 function bcFormCalc(){
   const m=parseFloat(document.getElementById('bcMuscle').value)||0;
@@ -1451,126 +1421,7 @@ function clearBC(){
   const r=document.getElementById('bcFormCalcRow');if(r)r.style.display='none';
 }
 
-async function importWithingsScreenshot(input){
-  const file=input.files[0];if(!file) return;
-  const spinner=null; // removed
-  const status=document.getElementById('importStatus');
-  if(status){status.style.display='block';status.style.color='var(--mid)';status.textContent='Reading image…';}
-  try{
-    // Read file directly as base64 — no Canvas, no object URLs (both blocked in sandbox)
-    const base64=await new Promise(function(res,rej){
-      const reader=new FileReader();
-      reader.onload=function(e){
-        // result is data:*/*;base64,<data> — strip the prefix
-        const dataUrl=e.target.result;
-        const comma=dataUrl.indexOf(',');
-        if(comma===-1){rej(new Error('FileReader returned unexpected format'));return;}
-        res(dataUrl.substring(comma+1));
-      };
-      reader.onerror=function(){rej(new Error('FileReader failed: '+reader.error));};
-      reader.readAsDataURL(file);
-    });
-    if(status) status.textContent='Sending to Claude…';
-    const prompt='Look at this Withings Body+ scale screenshot. '
-      +'List every measurement row as JSON. Each object needs: date (YYYY-MM-DD), muscle (lbs), fat (lbs), bone (lbs), water (lbs or null). '
-      +'Today is '+today()+'. Convert relative dates like Today/Yesterday/Mon accordingly. '
-      +'Output the JSON array and nothing else. No explanation, no markdown, no code fences. Start your response with [ and end with ].';
-    const resp=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({model:'claude-sonnet-4-6',max_tokens:1200,
-        system:'You are a data extraction tool. Output only a JSON array. No prose, no markdown, no code fences.',
-        messages:[{role:'user',content:[
-          {type:'image',source:{type:'base64',media_type:'image/jpeg',data:base64}},
-          {type:'text',text:prompt}
-        ]}]})});
-    if(!resp.ok){
-      const errText=await resp.text();
-      throw new Error('HTTP '+resp.status+': '+errText.substring(0,120));
-    }
-    const data=await resp.json();
-    if(data.error) throw new Error(data.error.type+': '+data.error.message);
-    const rawText=(data.content&&data.content.find(function(b){return b.type==='text';})||{}).text||'';
-    if(!rawText){throw new Error('Empty response from API');}
-    // Robust JSON extraction — handles prose prefix, code fences, or bare array
-    const s=rawText.indexOf('['),e=rawText.lastIndexOf(']');
-    if(s===-1||e===-1||e<s){
-      throw new Error('No JSON found. Response: '+rawText.substring(0,160));
-    }
-    const rows=JSON.parse(rawText.substring(s,e+1));
-    let imported=0,skipped=0;
-    const proto=getActiveProtocol();
-    rows.forEach(function(r,i){
-      if(!r.date||(!r.muscle&&!r.fat&&!r.bone)){skipped++;return;}
-      if(bodyLogs.find(function(l){return l.date===r.date&&l.source==='withings';})){skipped++;return;}
-      const muscle=parseFloat(r.muscle)||null,fat=parseFloat(r.fat)||null,bone=parseFloat(r.bone)||null,water=r.water?parseFloat(r.water):null;
-      const weight=(muscle!=null&&fat!=null&&bone!=null)?parseFloat((muscle+fat+bone).toFixed(1)):null;
-      bodyLogs.push({id:Date.now()+i,date:r.date,source:'withings',phase:proto?proto.name:'',
-        weight:weight,muscle:muscle,fat:fat,bone:bone,water:water,
-        fatPct:weight&&fat!=null?parseFloat((fat/weight*100).toFixed(1)):null,
-        leanPct:weight&&muscle!=null&&bone!=null?parseFloat(((muscle+bone)/weight*100).toFixed(1)):null,
-        lean:weight&&muscle!=null&&bone!=null?parseFloat(((muscle+bone)/weight*100).toFixed(1)):null,
-        waterPct:(water!=null&&weight)?parseFloat((water/weight*100).toFixed(1)):null,
-        notes:'Withings import · M:'+muscle+' F:'+fat+' B:'+bone+(water?' W:'+water:'')});
-      imported++;
-    });
-    bodyLogs.sort(function(a,b){return new Date(b.date)-new Date(a.date);});
-    persist(KEYS.bodyLogs,bodyLogs);
-    if(status){
-      status.style.display='block';
-      if(imported>0){status.style.color='var(--p1)';status.textContent='✓ Imported '+imported+' new entr'+(imported===1?'y':'ies')+(skipped?' ('+skipped+' skipped)':'');}
-      else if(rows.length){status.style.color='var(--warn)';status.textContent='Parsed '+rows.length+' rows — all dates already logged';}
-      else{status.style.color='var(--warn)';status.textContent='No measurements found in image';}
-    }
-    renderBodyComp();
-  }catch(err){
-    if(status){status.style.display='block';status.style.color='var(--p5)';status.textContent='✗ '+err.message;}
-    console.error('Withings import error:',err);
-  }finally{
-    // spinner removed
-    input.value='';
-  }
-}
 
-async function importDexaReport(input){
-  const file=input.files[0];if(!file) return;
-  const spinner=null; // removed
-  const status=document.getElementById('importStatus'); // reuse withings status el
-  if(status) status.style.display='none';
-  try{
-    const base64=await new Promise(function(res,rej){const r=new FileReader();r.onload=function(){res(r.result.split(',')[1]);};r.onerror=rej;r.readAsDataURL(file);});
-    const isPdf=file.type==='application/pdf';
-    const contentBlock=isPdf
-      ?{type:'document',source:{type:'base64',media_type:'application/pdf',data:base64}}
-      :{type:'image',source:{type:'base64',media_type:file.type,data:base64}};
-    const resp=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({model:'claude-sonnet-4-6',max_tokens:600,
-        messages:[{role:'user',content:[
-          contentBlock,
-          {type:'text',text:'This is a DEXA body composition report. Extract: total body fat percentage, lean mass percentage, total weight (lbs), lean mass (lbs), fat mass (lbs), visceral fat rating (if present), bone density T-score (if present), and scan date. Return ONLY JSON, no markdown:\n{"date":"YYYY-MM-DD","fatPct":0.0,"leanPct":0.0,"weight":0.0,"leanLbs":0.0,"fatLbs":0.0,"visceral":null,"tscore":null}\nIf date not found use today: '+today()+'. Use null for missing values.'}
-        ]}]})});
-    const data=await resp.json();
-    if(data.error) throw new Error(data.error.message);
-    const raw=(data.content&&data.content.find(function(b){return b.type==='text';})||{}).text||'';
-    const s=raw.indexOf('{'),e=raw.lastIndexOf('}');
-    if(s===-1) throw new Error('No data found');
-    const r=JSON.parse(raw.substring(s,e+1));
-    if(r.fatPct) document.getElementById('dexaFatPct').value=r.fatPct;
-    if(r.leanPct) document.getElementById('dexaLeanPct').value=r.leanPct;
-    if(r.weight) document.getElementById('dexaWeight').value=r.weight;
-    if(r.leanLbs) document.getElementById('dexaLeanLbs').value=r.leanLbs;
-    if(r.fatLbs) document.getElementById('dexaFatLbs').value=r.fatLbs;
-    if(r.visceral) document.getElementById('dexaVisceral').value=r.visceral;
-    if(r.tscore) document.getElementById('dexaTscore').value=r.tscore;
-    if(r.date) document.getElementById('bcDate').value=r.date;
-    if(status){status.style.display='block';status.textContent='✓ Fields populated — review and save';}
-  }catch(e){
-    if(status){status.style.display='block';status.style.color='var(--p5)';status.textContent='Could not read report. Enter values manually below.';}
-  }finally{
-    // spinner removed
-    input.value='';
-  }
-}
 
 function renderBodyComp(){
   const sorted=[...bodyLogs].sort(function(a,b){return new Date(a.date)-new Date(b.date);});
@@ -1590,53 +1441,184 @@ function renderBodyComp(){
     }
     setS('bcS1','bcS1d','weight',-1);setS('bcS2','bcS2d','muscle',1);setS('bcS3','bcS3d','fat',-1);
   }
-  renderBcSvg('bcFatSvg',sorted,'fat',110);
-  renderBcWtSvg('bcWtSvg',sorted,110);
+  renderBcSvg('bcFatSvg',sorted,'fat',126);
+  renderBcWtSvg('bcWtSvg',sorted,126);
   renderCalibCard();
   renderBcFeed(sorted);
 }
 
-function renderBcSvg(svgId,sorted,key,H){
-  const svg=document.getElementById(svgId);if(!svg) return;
-  const pts=sorted.filter(function(e){return e[key]!=null;});
-  if(pts.length<2){svg.innerHTML='<text x="380" y="'+(H/2+4)+'" text-anchor="middle" font-family="IBM Plex Mono" font-size="10" fill="var(--dim)" letter-spacing="2">Log 2+ entries to see trend</text>';return;}
-  const W=760,pad=22;
-  const vals=pts.map(function(p){return p[key];});
-  const minV=Math.min.apply(null,vals),maxV=Math.max.apply(null,vals),range=maxV-minV||1;
-  const xStep=(W-pad*2)/(pts.length-1),yScale=(H-pad*2)/range;
-  const line=pts.map(function(p,i){return(pad+i*xStep)+','+(H-pad-(p[key]-minV)*yScale);}).join(' ');
-  const phaseColor=function(pt){return({baseline:'var(--dim)',fat:'var(--p2)',recomp:'var(--p1)',washout:'var(--p4)'})[pt.phase]||'var(--mid)';};
-  let html='<polyline points="'+line+'" fill="none" stroke="var(--bd2)" stroke-width="1.5"/>';
-  pts.forEach(function(p,i){
-    const x=pad+i*xStep,y=H-pad-(p[key]-minV)*yScale;
-    html+='<circle cx="'+x+'" cy="'+y+'" r="4.5" fill="'+phaseColor(p)+'" opacity="0.9"><title>'+p.date+'·'+key+':'+p[key]+'</title></circle>';
-    if(i===0||i===pts.length-1){const a=i===0?'start':'end';html+='<text x="'+x+'" y="'+(y-8)+'" text-anchor="'+a+'" font-family="IBM Plex Mono" font-size="9" fill="'+phaseColor(p)+'">'+p[key]+'</text>';}
+function getPhaseColor(phase){
+  if(!phase) return 'var(--mid)';
+  var p=phase.toLowerCase();
+  if(p.indexOf('fat')!==-1||p.indexOf('loss')!==-1) return 'var(--p2)';
+  if(p.indexOf('recomp')!==-1||p.indexOf('muscle')!==-1) return 'var(--p1)';
+  if(p.indexOf('wash')!==-1) return 'var(--p4)';
+  if(p.indexOf('baseline')!==-1) return 'var(--dim)';
+  return 'var(--p3)';
+}
+function fmtShortDate(d){
+  if(!d) return '';
+  var p=d.split('-');
+  var m=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  return m[+p[1]-1]+' '+p[0].slice(2);
+}
+function renderPhaseBands(pts,W,H,pad,LABEL_H,minDate,totalMs){
+  var html='';
+  var COLORS={'fat loss phase':'rgba(245,166,35,0.08)','baseline':'rgba(102,94,84,0.07)','recomp':'rgba(61,214,140,0.07)'};
+  var bands=[],cur=null;
+  pts.forEach(function(p){
+    var ph=(p.phase||'').toLowerCase().trim();
+    var x=pad+((new Date(p.date)-minDate)/totalMs)*(W-pad*2);
+    if(!cur||cur.phase!==ph){if(cur)bands.push(cur);cur={phase:ph,label:p.phase||'',x1:x,x2:x};}
+    else{cur.x2=x;}
   });
+  if(cur) bands.push(cur);
+  bands.forEach(function(b){
+    var color=COLORS[b.phase]||'rgba(46,196,182,0.05)';
+    var w=b.x2-b.x1;
+    if(w>8){
+      html+='<rect x="'+b.x1+'" y="'+pad+'" width="'+w+'" height="'+(H-pad-LABEL_H-pad)+'" fill="'+color+'" rx="2"/>';
+      if(w>60&&b.label){
+        html+='<text x="'+(b.x1+w/2)+'" y="'+(pad+10)+'" text-anchor="middle" font-family="IBM Plex Mono" font-size="8" fill="'+getPhaseColor(b.label)+'" opacity="0.6">'+b.label+'</text>';
+      }
+    }
+  });
+  return html;
+}
+function renderDexaMarkers(W,H,pad,LABEL_H,minDate,maxDate,totalMs){
+  var html='';
+  bodyLogs.filter(function(l){return l.source==='dexa';}).forEach(function(d){
+    var dDate=new Date(d.date);
+    if(dDate<minDate||dDate>maxDate) return;
+    var dx=pad+((dDate-minDate)/totalMs)*(W-pad*2);
+    html+='<line x1="'+dx+'" y1="'+pad+'" x2="'+dx+'" y2="'+(H-LABEL_H-pad)+'" stroke="var(--p3)" stroke-width="1.5" stroke-dasharray="4,3" opacity="0.8"/>';
+    html+='<text x="'+(dx+4)+'" y="'+(pad+10)+'" font-family="IBM Plex Mono" font-size="8" fill="var(--p3)">DEXA</text>';
+  });
+  return html;
+}
+function renderDateAxis(pts,W,H,pad,LABEL_H,minDate,totalMs){
+  var html='';
+  function xOf(p){return pad+((new Date(p.date)-minDate)/totalMs)*(W-pad*2);}
+  var first=pts[0],last=pts[pts.length-1],mid=pts[Math.floor(pts.length/2)];
+  var labelY=H-3;
+  html+='<text x="'+xOf(first)+'" y="'+labelY+'" text-anchor="start" font-family="IBM Plex Mono" font-size="9" fill="var(--dim)">'+fmtShortDate(first.date)+'</text>';
+  if(pts.length>4){
+    html+='<text x="'+xOf(mid)+'" y="'+labelY+'" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" fill="var(--dim)">'+fmtShortDate(mid.date)+'</text>';
+  }
+  html+='<text x="'+xOf(last)+'" y="'+labelY+'" text-anchor="end" font-family="IBM Plex Mono" font-size="9" fill="var(--dim)">'+fmtShortDate(last.date)+'</text>';
+  return html;
+}
+
+function renderBcSvg(svgId,sorted,key,H){
+  var svg=document.getElementById(svgId);if(!svg) return;
+  var pts=sorted.filter(function(e){return e[key]!=null;});
+  if(pts.length<2){svg.innerHTML='<text x="380" y="'+(H/2+4)+'" text-anchor="middle" font-family="IBM Plex Mono" font-size="10" fill="var(--dim)" letter-spacing="2">Log 2+ entries to see trend</text>';return;}
+  var W=760,pad=22,LABEL_H=16;
+  var vals=pts.map(function(p){return p[key];});
+  var minV=Math.min.apply(null,vals),maxV=Math.max.apply(null,vals),range=maxV-minV||1;
+  var minDate=new Date(pts[0].date),maxDate=new Date(pts[pts.length-1].date);
+  var totalMs=maxDate-minDate||1;
+  function xOf(p){return pad+((new Date(p.date)-minDate)/totalMs)*(W-pad*2);}
+  function yOf(v){return H-pad-LABEL_H-((v-minV)/range)*(H-pad*2-LABEL_H);}
+  var html='';
+  html+=renderPhaseBands(pts,W,H,pad,LABEL_H,minDate,totalMs);
+  html+=renderDexaMarkers(W,H,pad,LABEL_H,minDate,maxDate,totalMs);
+  var line=pts.map(function(p){return xOf(p)+','+yOf(p[key]);}).join(' ');
+  html+='<polyline points="'+line+'" fill="none" stroke="var(--bd2)" stroke-width="1.5"/>';
+  pts.forEach(function(p){
+    var x=xOf(p),y=yOf(p[key]);
+    html+='<circle cx="'+x+'" cy="'+y+'" r="4" fill="'+getPhaseColor(p.phase)+'" opacity="0.9"><title>'+p.date+' · '+p[key]+'</title></circle>';
+  });
+  // Value labels first/last
+  var first=pts[0],last=pts[pts.length-1];
+  html+='<text x="'+xOf(first)+'" y="'+(yOf(first[key])-6)+'" text-anchor="start" font-family="IBM Plex Mono" font-size="9" fill="'+getPhaseColor(first.phase)+'">'+first[key]+'</text>';
+  html+='<text x="'+xOf(last)+'" y="'+(yOf(last[key])-6)+'" text-anchor="end" font-family="IBM Plex Mono" font-size="9" fill="'+getPhaseColor(last.phase)+'">'+last[key]+'</text>';
+  html+=renderDateAxis(pts,W,H,pad,LABEL_H,minDate,totalMs);
   svg.innerHTML=html;
 }
 
 function renderBcWtSvg(svgId,sorted,H){
-  const svg=document.getElementById(svgId);if(!svg) return;
-  const wPts=sorted.filter(function(e){return e.weight!=null;});
-  const mPts=sorted.filter(function(e){return e.muscle!=null;});
+  var svg=document.getElementById(svgId);if(!svg) return;
+  var wPts=sorted.filter(function(e){return e.weight!=null&&e.source!=='dexa';});
+  var mPts=sorted.filter(function(e){return e.muscle!=null&&e.source!=='dexa';});
   if(wPts.length<2){svg.innerHTML='<text x="380" y="'+(H/2+4)+'" text-anchor="middle" font-family="IBM Plex Mono" font-size="10" fill="var(--dim)" letter-spacing="2">Log 2+ entries</text>';return;}
-  const W=760,pad=22;
-  const allV=wPts.map(function(p){return p.weight;}).concat(mPts.map(function(p){return p.muscle;})).filter(Boolean);
-  const minV=Math.min.apply(null,allV),maxV=Math.max.apply(null,allV),range=maxV-minV||1;
-  const xStep=(W-pad*2)/(wPts.length-1);
-  const wLine=wPts.map(function(p,i){return(pad+i*xStep)+','+(H-pad-(p.weight-minV)/range*(H-pad*2));}).join(' ');
-  let html='<polyline points="'+wLine+'" fill="none" stroke="var(--dim)" stroke-width="1.5" opacity="0.5"/>';
-  const phaseColor=function(p){return({baseline:'var(--dim)',fat:'var(--p2)',recomp:'var(--p1)',washout:'var(--p4)'})[p.phase]||'var(--mid)';};
-  wPts.forEach(function(p,i){
-    const x=pad+i*xStep,y=H-pad-(p.weight-minV)/range*(H-pad*2);
-    html+='<circle cx="'+x+'" cy="'+y+'" r="4" fill="'+phaseColor(p)+'" opacity="0.85"><title>'+p.date+'·'+p.weight+'lbs</title></circle>';
+  var W=760,pad=22,LABEL_H=16;
+  var allPts=wPts;
+  var minDate=new Date(allPts[0].date),maxDate=new Date(allPts[allPts.length-1].date);
+  var totalMs=maxDate-minDate||1;
+  function xOf(p){return pad+((new Date(p.date)-minDate)/totalMs)*(W-pad*2);}
+  var allV=wPts.map(function(p){return p.weight;}).concat(mPts.map(function(p){return p.muscle;})).filter(Boolean);
+  var minV=Math.min.apply(null,allV),maxV=Math.max.apply(null,allV),range=maxV-minV||1;
+  function yOf(v){return H-pad-LABEL_H-((v-minV)/range)*(H-pad*2-LABEL_H);}
+  var html='';
+  html+=renderPhaseBands(wPts,W,H,pad,LABEL_H,minDate,totalMs);
+  html+=renderDexaMarkers(W,H,pad,LABEL_H,minDate,maxDate,totalMs);
+  var wLine=wPts.map(function(p){return xOf(p)+','+yOf(p.weight);}).join(' ');
+  html+='<polyline points="'+wLine+'" fill="none" stroke="var(--dim)" stroke-width="1.5" opacity="0.4"/>';
+  wPts.forEach(function(p){
+    html+='<circle cx="'+xOf(p)+'" cy="'+yOf(p.weight)+'" r="4" fill="'+getPhaseColor(p.phase)+'" opacity="0.85"><title>'+p.date+' · Weight: '+p.weight+'</title></circle>';
   });
   mPts.forEach(function(p){
-    const wi=wPts.findIndex(function(w){return w.date===p.date;});if(wi<0)return;
-    const x=pad+wi*xStep,y=H-pad-(p.muscle-minV)/range*(H-pad*2);
-    html+='<circle cx="'+x+'" cy="'+y+'" r="4" fill="var(--p4)" opacity="0.85"><title>'+p.date+'·Muscle:'+p.muscle+'</title></circle>';
+    var wp=wPts.find(function(w){return w.date===p.date;});
+    if(!wp) return;
+    html+='<circle cx="'+xOf(p)+'" cy="'+yOf(p.muscle)+'" r="4" fill="var(--p4)" opacity="0.85"><title>'+p.date+' · Muscle: '+p.muscle+'</title></circle>';
   });
+  // Legend
+  html+='<circle cx="'+pad+'" cy="'+(pad+4)+'" r="4" fill="var(--p2)" opacity="0.85"/>';
+  html+='<text x="'+(pad+8)+'" y="'+(pad+8)+'" font-family="IBM Plex Mono" font-size="8" fill="var(--dim)">Weight</text>';
+  html+='<circle cx="'+(pad+58)+'" cy="'+(pad+4)+'" r="4" fill="var(--p4)" opacity="0.85"/>';
+  html+='<text x="'+(pad+66)+'" y="'+(pad+8)+'" font-family="IBM Plex Mono" font-size="8" fill="var(--dim)">Muscle</text>';
+  html+=renderDateAxis(wPts,W,H,pad,LABEL_H,minDate,totalMs);
   svg.innerHTML=html;
+}
+
+
+function openEditBody(id){
+  const e=bodyLogs.find(function(l){return l.id===id;});if(!e) return;
+  document.getElementById('editBodyId').value=id;
+  document.getElementById('editBodyDate').value=e.date||'';
+  document.getElementById('editBodySource').value=e.source||'withings';
+  document.getElementById('editBodyMuscle').value=e.muscle!=null?e.muscle:'';
+  document.getElementById('editBodyFat').value=e.fat!=null?e.fat:'';
+  document.getElementById('editBodyBone').value=e.bone!=null?e.bone:'';
+  document.getElementById('editBodyWater').value=e.water!=null?e.water:'';
+  document.getElementById('editBodyFatPct').value=e.fatPct!=null?e.fatPct:'';
+  document.getElementById('editBodyPhase').value=e.phase||'';
+  document.getElementById('editBodyNotes').value=e.notes||'';
+  openModal('editBodyModal');
+}
+function saveEditBody(){
+  const id=+document.getElementById('editBodyId').value;
+  const idx=bodyLogs.findIndex(function(l){return l.id===id;});if(idx<0) return;
+  const muscle=parseFloat(document.getElementById('editBodyMuscle').value)||null;
+  const fat=parseFloat(document.getElementById('editBodyFat').value)||null;
+  const bone=parseFloat(document.getElementById('editBodyBone').value)||null;
+  const water=parseFloat(document.getElementById('editBodyWater').value)||null;
+  const overrideFatPct=parseFloat(document.getElementById('editBodyFatPct').value)||null;
+  const weight=(muscle!=null&&fat!=null&&bone!=null)?parseFloat((muscle+fat+bone).toFixed(1)):bodyLogs[idx].weight;
+  const fatPct=overrideFatPct||(weight&&fat!=null?parseFloat((fat/weight*100).toFixed(1)):null);
+  const leanPct=(weight&&muscle!=null&&bone!=null)?parseFloat(((muscle+bone)/weight*100).toFixed(1)):null;
+  bodyLogs[idx]=Object.assign({},bodyLogs[idx],{
+    date:document.getElementById('editBodyDate').value,
+    source:document.getElementById('editBodySource').value,
+    muscle:muscle,fat:fat,bone:bone,water:water,
+    weight:weight,fatPct:fatPct,leanPct:leanPct,lean:leanPct,
+    waterPct:(water&&weight)?parseFloat((water/weight*100).toFixed(1)):null,
+    phase:document.getElementById('editBodyPhase').value,
+    notes:document.getElementById('editBodyNotes').value,
+  });
+  bodyLogs.sort(function(a,b){return new Date(b.date)-new Date(a.date);});
+  persist(KEYS.bodyLogs,bodyLogs);
+  closeModal('editBodyModal');toast('Measurement updated ✓');renderBodyComp();renderBodyStrip();
+}
+function deleteBodyEntry(){
+  const id=+document.getElementById('editBodyId').value;
+  deleteBodyLog(id);closeModal('editBodyModal');
+}
+function deleteBodyLog(id){
+  if(!confirm('Delete this measurement?')) return;
+  bodyLogs=bodyLogs.filter(function(l){return l.id!==id;});
+  persist(KEYS.bodyLogs,bodyLogs);toast('Deleted');renderBodyComp();renderBodyStrip();
 }
 
 function renderBcFeed(sorted){
@@ -1654,9 +1636,13 @@ function renderBcFeed(sorted){
     ].join('');
     return'<div class="bc-feed-row"><div style="font-family:var(--mono);font-size:10px;color:var(--dim);min-width:50px">'+fmtDate(e.date)+'</div>'
       +'<div class="bc-metrics">'+ms+'</div>'
-      +'<div style="display:flex;flex-direction:column;gap:4px;flex-shrink:0">'
+      +'<div style="display:flex;flex-direction:column;gap:4px;flex-shrink:0;align-items:flex-end">'
       +'<span class="src-badge" style="color:'+srcColor+';border-color:'+srcColor+';background:'+srcColor+'18">'+srcLabel+'</span>'
       +(e.phase?'<span class="src-badge" style="color:var(--dim);border-color:var(--bd)">'+e.phase+'</span>':'')
+      +'<div style="display:flex;gap:4px;margin-top:2px">'
+      +'<button onclick="openEditBody('+e.id+')" style="font-family:var(--mono);font-size:9px;padding:3px 8px;border-radius:3px;border:1px solid var(--bd);background:none;color:var(--dim);cursor:pointer">Edit</button>'
+      +'<button onclick="deleteBodyLog('+e.id+')" style="font-family:var(--mono);font-size:9px;padding:3px 8px;border-radius:3px;border:1px solid var(--p5);background:none;color:var(--p5);cursor:pointer">Del</button>'
+      +'</div>'
       +'</div></div>';
   }).join('');
 }
@@ -1694,22 +1680,30 @@ function renderCalibCard(){
 }
 
 // ════════════ PANTRY ════════════
-// ── Unit selector helper ──
-function applyUnit(inputId,unit,chipRowId){
-  const el=document.getElementById(inputId);
-  if(!el) return;
-  // Strip existing unit suffix, append new unit
-  let val=el.value.trim().replace(/\s*(mcg|mg|IU|ml|units)\s*$/i,'');
-  if(!val) val='';
-  el.value=val+unit;
-  // Update chip active state
-  if(chipRowId){
-    const row=document.getElementById(chipRowId);
-    if(row) row.querySelectorAll('.unit-chip').forEach(function(c){
-      c.classList.toggle('on',c.dataset.unit===unit);
-    });
-  }
-  el.focus();
+// ── Inline unit helpers ──
+function numPart(dose){return String(dose||'').replace(/[a-zA-Z]+$/,'').trim();}
+function unitPart(dose){const s=String(dose||'').toLowerCase();return s.indexOf('mcg')!==-1?'mcg':'mg';}
+function makeDoseField(inputId,selectId,val,onchangeExpr){
+  // Builds a dose-wrap input+select HTML string safely — no escaping nightmares
+  var num=numPart(val||'');
+  var unit=unitPart(val||'');
+  var mcgSel=unit==='mcg'?' selected':'';
+  var mgSel=unit==='mg'?' selected':'';
+  return '<div class="dose-wrap">'
+    +'<input type="text" id="'+inputId+'" value="'+num+'" inputmode="decimal" oninput="'+onchangeExpr+'" onchange="'+onchangeExpr+'" placeholder="e.g. 250">'
+    +'<select id="'+selectId+'" class="unit-select" onchange="'+onchangeExpr+'">'
+    +'<option value="mcg"'+mcgSel+'>mcg</option>'
+    +'<option value="mg"'+mgSel+'>mg</option>'
+    +'</select></div>';
+}
+
+function getDoseValue(inputId,selectId){
+  const inp=document.getElementById(inputId);
+  const sel=document.getElementById(selectId);
+  if(!inp) return '';
+  const num=numPart(inp.value);
+  const unit=sel?sel.value:unitPart(inp.value)||'mg';
+  return num?num+unit:'';
 }
 
 // Parse dose string to mg (handles mcg, mg, IU treated as mg, bare numbers)
@@ -1724,13 +1718,20 @@ function parseDoseMg(doseStr){
 function calcDaysLeft(pItem,protoCmp){
   if(!pItem) return null;
   const dows=(protoCmp&&protoCmp.daysOfWeek?protoCmp.daysOfWeek:[0,1,2,3,4,5,6]).length||7;
-  // ── ORAL: caps remaining ÷ doses per week ──
+  // ── ORAL: caps remaining ÷ (caps per dose × doses per week) ──
   if(pItem.form==='oral'){
     const capsRem=pItem.capsRemaining;
     if(capsRem==null||capsRem<0) return null;
     if(capsRem===0) return 0;
     if(!dows) return null;
-    return Math.floor((capsRem/dows)*7);
+    // caps per dose = round(dose_mg / capDose_mg), default 1 if not set
+    const rawDose=String(doseMem[pItem.name]?doseMem[pItem.name].dose:pItem.dose||'');
+    const doseMgVal=parseDoseMg(rawDose);
+    const capDoseMg=pItem.capDose||null;
+    const capsPerDose=(doseMgVal&&capDoseMg)?Math.max(1,Math.round(doseMgVal/capDoseMg)):1;
+    const capsPerWeek=capsPerDose*dows;
+    if(!capsPerWeek) return null;
+    return Math.floor((capsRem/capsPerWeek)*7);
   }
   // ── INJECTABLE: (full vials × mg/vial) + open vial mg ÷ dose per injection ──
   if(!pItem.vialMg) return null;
@@ -1751,7 +1752,11 @@ function deductStock(name,doseStr){
   if(!item) return;
   if(item.form==='oral'){
     if(item.capsRemaining==null||item.capsRemaining<=0) return;
-    item.capsRemaining=Math.max(0,item.capsRemaining-1);
+    // Deduct correct number of caps based on dose / capDose
+    const doseMgVal=parseDoseMg(doseStr);
+    const capDoseMg=item.capDose||null;
+    const capsToDeduct=(doseMgVal&&capDoseMg)?Math.max(1,Math.round(doseMgVal/capDoseMg)):1;
+    item.capsRemaining=Math.max(0,item.capsRemaining-capsToDeduct);
     persist(KEYS.pantry,pantry);return;
   }
   // Injectable: deduct from open vial first, then full vials
@@ -1848,7 +1853,11 @@ function openPantryEdit(id){
   const item=pantry.find(function(p){return p.id===id;});if(!item) return;
   document.getElementById('editPantryId').value=id;
   document.getElementById('epName').value=item.name;
-  document.getElementById('epDose').value=(doseMem[item.name]&&doseMem[item.name].dose)||item.dose;
+  const rawDoseEp=(doseMem[item.name]&&doseMem[item.name].dose)||item.dose||'';
+  const numEp=rawDoseEp.replace(/[a-zA-Z]+$/,'').trim();
+  const unitEp=rawDoseEp.toLowerCase().indexOf('mcg')!==-1?'mcg':'mg';
+  document.getElementById('epDose').value=numEp;
+  const epUnitSel=document.getElementById('epDoseUnit');if(epUnitSel)epUnitSel.value=unitEp;
   document.getElementById('epRoute').value=item.route||'Subcutaneous';
   document.getElementById('epForm').value=item.form||'vial';
   document.getElementById('epSite').value=item.site||'Abdomen';
@@ -1860,7 +1869,7 @@ function savePantryEdit(){
   const id=document.getElementById('editPantryId').value;
   const item=pantry.find(function(p){return p.id===id;});if(!item) return;
   const newName=document.getElementById('epName').value.trim();
-  const newDose=document.getElementById('epDose').value;
+  const newDose=getDoseValue('epDose','epDoseUnit');
   item.route=document.getElementById('epRoute').value;
   item.form=document.getElementById('epForm').value;
   item.site=document.getElementById('epSite').value;
@@ -2054,7 +2063,9 @@ function renderCustomizeCompounds(compounds){
       +'<div class="rc-summary">'+(c.dose||'—')+' · '+(c.timing||'—')+'</div>'
       +'<button class="rc-remove" onclick="event.stopPropagation();removeCustomizeCompound('+i+')">✕</button>'
       +'</div><div class="rc-body">'
-      +'<div class="g2"><div class="field"><label>Dose</label><input type="text" id="bdose-'+i+'" value="'+(c.dose||'—')+'" oninput="updateBC('+i+',\'dose\',this.value)" inputmode="decimal"><div class="unit-row" id="bunits-'+i+'"><button class="unit-chip'+((c.dose||'').toLowerCase().indexOf('mcg')!==-1?' on':'')+'" data-unit="mcg" onclick="applyUnit(\'bdose-'+i+'\',\'mcg\',\'bunits-'+i+'\')">mcg</button><button class="unit-chip'+((c.dose||'').toLowerCase().indexOf('mcg')===-1&&(c.dose||'').toLowerCase().indexOf('mg')!==-1?' on':'')+'" data-unit="mg" onclick="applyUnit(\'bdose-'+i+'\',\'mg\',\'bunits-'+i+'\')">mg</button></div></div>'
+      +'<div class="g2"><div class="field"><label>Dose</label>'
+      +makeDoseField('bdose-'+i,'bunit-'+i,c.dose||'','updateBC('+i+",'dose',getDoseValue('bdose-'+i,'bunit-'+i))")+'</div>'
+      +'<div class="field"><label>Route</label><select onchange="updateBC('+i+',\'route\',this.value)">'+routeOptions+'</select></div></div>'
       +'<div class="field"><label>Route</label><select onchange="updateBC('+i+',\'route\',this.value)">'+routeOptions+'</select></div></div>'
       +'<div class="g2"><div class="field"><label>Timing</label><select onchange="updateBC('+i+',\'timingWindow\',this.value)">'+twOptions+'</select></div>'
       +'<div class="field"><label>Frequency</label><select onchange="updateBCFreq('+i+',this.value)">'+freqOptions+'</select></div></div>'
@@ -2301,7 +2312,8 @@ function renderEditorEditView(proto){
       +'<div class="rc-summary">'+c.dose+' · '+c.frequency+'</div>'
       +'<button class="rc-remove" onclick="event.stopPropagation();removeEditorCompound(\''+proto.id+'\','+i+')">✕</button>'
       +'</div><div class="rc-body">'
-      +'<div class="g2"><div class="field"><label>Dose</label><input type="text" id="edose-'+proto.id+'-'+i+'" value="'+(c.dose||'—')+'" onchange="updateEditorCompound(\''+proto.id+'\','+i+',\'dose\',this.value)" inputmode="decimal"><div class="unit-row" id="eunits-'+proto.id+'-'+i+'"><button class="unit-chip'+((c.dose||'').toLowerCase().indexOf('mcg')!==-1?' on':'')+'" data-unit="mcg" onclick="applyUnit(\'edose-'+proto.id+'-'+i+'\',\'mcg\',\'eunits-'+proto.id+'-'+i+'\')">mcg</button><button class="unit-chip'+((c.dose||'').toLowerCase().indexOf('mcg')===-1&&(c.dose||'').toLowerCase().indexOf('mg')!==-1?' on':'')+'" data-unit="mg" onclick="applyUnit(\'edose-'+proto.id+'-'+i+'\',\'mg\',\'eunits-'+proto.id+'-'+i+'\')">mg</button></div></div>'
+      +'<div class="g2"><div class="field"><label>Dose</label>'
+      +makeDoseField('edose-'+proto.id+'-'+i,'eunit-'+proto.id+'-'+i,c.dose||'','updateEditorCompound(\''+proto.id+'\','+i+',\'dose\',getDoseValue(\'edose-'+proto.id+'-'+i+'\',\'eunit-'+proto.id+'-'+i+'\'))')+'</div>'
       +'<div class="field"><label>Route</label><select onchange="updateEditorCompound(\''+proto.id+'\','+i+',\'route\',this.value)">'
       +['Subcutaneous','Oral','Intramuscular','Sublingual','Intranasal','Topical'].map(function(r){return'<option'+(c.route===r?' selected':'')+'>'+r+'</option>';}).join('')+'</select></div></div>'
       +'<div class="g2"><div class="field"><label>Timing</label><select onchange="updateEditorCompound(\''+proto.id+'\','+i+',\'timingWindow\',this.value)">'+twOptions+'</select></div>'
@@ -2605,8 +2617,6 @@ async function loadHistoricalData(){
   bodyLogs.sort(function(a,b){return new Date(b.date)-new Date(a.date);});
   await persist(KEYS.bodyLogs,bodyLogs);
   toast('✓ Loaded '+added+' historical entries');
-  const btn=document.getElementById('loadHistBtn');
-  if(btn){btn.textContent='✓ Done — '+added+' entries loaded';btn.disabled=true;btn.style.opacity='0.5';}
   renderBodyComp();
   renderBodyStrip();
 }
@@ -2643,6 +2653,17 @@ async function initApp(){
 }
 
 function finishInit(){
+  // Retroactively tag Mar 15 2026+ body logs as Fat Loss Phase
+  const fatLossStart='2026-03-15';
+  let phaseTagged=0;
+  bodyLogs=bodyLogs.map(function(l){
+    if(l.date>=fatLossStart&&(!l.phase||l.phase==='')){
+      phaseTagged++;
+      return Object.assign({},l,{phase:'Fat Loss Phase'});
+    }
+    return l;
+  });
+  if(phaseTagged>0) persist(KEYS.bodyLogs,bodyLogs);
   const bcDate=document.getElementById('bcDate');if(bcDate)bcDate.value=today();
   updateMobHeader();nav('today');
 }
