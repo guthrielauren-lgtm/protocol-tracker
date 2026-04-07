@@ -475,12 +475,6 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;heigh
       <label class="btn ghost sm" style="cursor:pointer">↑ Restore<input type="file" accept=".json" style="display:none" onchange="importData(this)"></label>
     </div>
   </div>
-  <div class="stats-band" id="histStats">
-    <div class="stat-cell"><div class="stat-lbl">Total</div><div class="stat-num" id="hst1">0</div><div class="stat-sub">entries</div></div>
-    <div class="stat-cell"><div class="stat-lbl">Avg Sleep</div><div class="stat-num" id="hst2">—</div><div class="stat-sub" id="hst2s">—</div></div>
-    <div class="stat-cell"><div class="stat-lbl">Avg Energy</div><div class="stat-num" id="hst3">—</div><div class="stat-sub" id="hst3s">—</div></div>
-    <div class="stat-cell"><div class="stat-lbl">Adherence</div><div class="stat-num" id="hst4">—</div><div class="stat-sub" id="hst4s">14-day</div></div>
-  </div>
   <div id="protocolReviewWrap" style="margin-bottom:14px"></div>
   <div class="chart-period-tabs" id="histFilterTabs" style="margin-bottom:12px">
     <button class="cpt on" data-filter="all" onclick="setHistFilter('all')">All</button>
@@ -1538,28 +1532,10 @@ function setHistFilter(f){
 }
 
 function renderHistory(){
-  document.getElementById('hst1').textContent=logs.length;
-  if(logs.length>0){
-    const ciMap={};checkins.forEach(function(c){ciMap[c.date]=c;});
-    const allDates=[...new Set(logs.map(function(l){return l.date;}))];
-    const ciWithLogs=allDates.map(function(d){return ciMap[d];}).filter(Boolean);
-    if(ciWithLogs.length){
-      const avgS=(ciWithLogs.reduce(function(a,c){return a+c.sleep;},0)/ciWithLogs.length).toFixed(1);
-      const avgE=(ciWithLogs.reduce(function(a,c){return a+c.energy;},0)/ciWithLogs.length).toFixed(1);
-      const hst2=document.getElementById('hst2');if(hst2)hst2.textContent=avgS;
-      const hst3=document.getElementById('hst3');if(hst3)hst3.textContent=avgE;
-      const hst2s=document.getElementById('hst2s');if(hst2s){hst2s.textContent=+avgS>=7?'\u2191 on track':'\u2193 low';hst2s.className='stat-sub '+(+avgS>=7?'up':'dn');}
-      const hst3s=document.getElementById('hst3s');if(hst3s){hst3s.textContent=+avgE>=7?'\u2191 on track':'\u2193 low';hst3s.className='stat-sub '+(+avgE>=7?'up':'dn');}
-    }
-    const cutoff=new Date();cutoff.setDate(cutoff.getDate()-14);
-    const days=new Set(logs.filter(function(l){return new Date(l.date)>=cutoff;}).map(function(l){return l.date;}));
-    const hst4=document.getElementById('hst4');if(hst4)hst4.textContent=Math.round(days.size/14*100)+'%';
-    const hst4s=document.getElementById('hst4s');if(hst4s)hst4s.textContent=days.size+'/14 days';
-  }
   const feed=document.getElementById('histFeed');
+  if(!feed) return;
   const showDoses=histFilter==='all'||histFilter==='doses';
   const showBody=histFilter==='all'||histFilter==='body';
-  // Empty state
   const hasContent=(showDoses&&logs.length)||(showBody&&bodyLogs.length);
   if(!hasContent){
     feed.innerHTML='<div class="empty-state"><div class="empty-icon">'+
@@ -3633,6 +3609,11 @@ async function runProtocolReview(key){
     var recentLogs=logs.slice(0,50);
     var recentBody=[...bodyLogs].sort(function(a,b){return new Date(b.date)-new Date(a.date);}).slice(0,20);
     var recentCheckins=(checkins||[]).slice(0,14);
+    var avgSleep=recentCheckins.length?Math.round(recentCheckins.reduce(function(a,c){return a+c.sleep;},0)/recentCheckins.length*10)/10:null;
+    var avgEnergy=recentCheckins.length?Math.round(recentCheckins.reduce(function(a,c){return a+c.energy;},0)/recentCheckins.length*10)/10:null;
+    var avgHunger=recentCheckins.length?Math.round(recentCheckins.reduce(function(a,c){return a+c.hunger;},0)/recentCheckins.length*10)/10:null;
+    var avgRecovery=recentCheckins.length?Math.round(recentCheckins.reduce(function(a,c){return a+c.recovery;},0)/recentCheckins.length*10)/10:null;
+    var sideEffects=recentCheckins.length?[...new Set(recentCheckins.flatMap(function(c){return c.sideEffects&&c.sideEffects!=='None'?c.sideEffects.split(', '):[];}))].join(', ')||'None':'None';
     // Calc adherence
     var scheduledDays=new Set();
     var loggedDays=new Set(recentLogs.map(function(l){return l.date;}));
@@ -3651,8 +3632,11 @@ async function runProtocolReview(key){
       +'Recent body comp (Withings lbs, newest first): '+recentBody.filter(function(b){return b.source!=='dexa';}).slice(0,5).map(function(b){return b.date+' M:'+b.muscle+' F:'+b.fat;}).join('; ')+'.'
       +(recentBody.find(function(b){return b.source==='dexa';})?
         ' Latest DEXA: fat '+recentBody.find(function(b){return b.source==='dexa';}).fatPct+'% lean '+recentBody.find(function(b){return b.source==='dexa';}).muscle+'lbs.':'')
-      +' Avg sleep: '+(recentCheckins.length?Math.round(recentCheckins.reduce(function(a,c){return a+c.sleep;},0)/recentCheckins.length*10)/10:'n/a')
-      +'. Avg energy: '+(recentCheckins.length?Math.round(recentCheckins.reduce(function(a,c){return a+c.energy;},0)/recentCheckins.length*10)/10:'n/a')+'.'
+      +(avgSleep!==null?' Avg sleep (1-10 scale): '+avgSleep+'/10.':' Sleep data: not yet logged in check-ins.')
+      +(avgEnergy!==null?' Avg energy: '+avgEnergy+'/10.':'')
+      +(avgHunger!==null?' Avg hunger: '+avgHunger+'/10 (10=starving).':'')
+      +(avgRecovery!==null?' Avg recovery: '+avgRecovery+'/10.':'')
+      +(sideEffects&&sideEffects!=='None'?' Reported side effects: '+sideEffects+'.':'')
       +' You MUST respond with ONLY a valid JSON object. No markdown, no backticks, no explanation. Start your response with { and end with }.'
       +' Format: {"verdict":"one sentence verdict","trend":"fat loss","adherence_pct":'+adherence+',"highlights":["finding 1","finding 2","finding 3"],"recommendation":"one actionable sentence","caution":null}';
     var apiKey=localStorage.getItem('rp_anthropic_key')||'';
