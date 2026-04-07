@@ -3300,7 +3300,11 @@ async function syncBodySpec(){
   if(lbl) lbl.textContent='Syncing…';
   try{
     const apiKey=localStorage.getItem('rp_anthropic_key')||'';
-    const bsHeaders={'Content-Type':'application/json','anthropic-dangerous-direct-browser-access':'true'};
+    const bsHeaders={
+      'Content-Type':'application/json',
+      'anthropic-version':'2023-06-01',
+      'anthropic-dangerous-direct-browser-access':'true'
+    };
     if(apiKey) bsHeaders['x-api-key']=apiKey;
     const resp=await fetch('https://api.anthropic.com/v1/messages',{
       method:'POST',
@@ -3652,7 +3656,11 @@ async function runProtocolReview(key){
       +' You MUST respond with ONLY a valid JSON object. No markdown, no backticks, no explanation. Start your response with { and end with }.'
       +' Format: {"verdict":"one sentence verdict","trend":"fat loss","adherence_pct":'+adherence+',"highlights":["finding 1","finding 2","finding 3"],"recommendation":"one actionable sentence","caution":null}';
     var apiKey=localStorage.getItem('rp_anthropic_key')||'';
-    var headers={'Content-Type':'application/json','anthropic-dangerous-direct-browser-access':'true'};
+    var headers={
+      'Content-Type':'application/json',
+      'anthropic-version':'2023-06-01',
+      'anthropic-dangerous-direct-browser-access':'true'
+    };
     if(apiKey) headers['x-api-key']=apiKey;
     var resp=await fetch('https://api.anthropic.com/v1/messages',{
       method:'POST',
