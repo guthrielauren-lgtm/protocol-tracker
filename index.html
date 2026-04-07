@@ -26,7 +26,7 @@
   --serif:'DM Serif Display',Georgia,serif;
   --lora:'Plus Jakarta Sans',sans-serif;
   --sans:'IBM Plex Sans',sans-serif;
-  --tab-h:64px;--safe-b:env(safe-area-inset-bottom,0px);--hdr-h:56px;
+  --tab-h:64px;--safe-b:env(safe-area-inset-bottom,0px);--safe-t:env(safe-area-inset-top,0px);--hdr-h:56px;
 }
 @media(prefers-color-scheme:light){:root{
   --bg:#f5f2ec;--bg2:#ede9e0;--sf:#fff;--sf2:#f0ece4;
@@ -58,7 +58,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 .backup-btn{flex:1;font-family:var(--mono);font-size:9px;letter-spacing:.06em;padding:7px 8px;border-radius:4px;cursor:pointer;text-align:center;transition:all .15s}
 .backup-btn.export{background:var(--p1d);border:1px solid var(--p1);color:var(--p1)}
 .backup-btn.import-btn{background:var(--sf2);border:1px solid var(--bd);color:var(--mid)}
-.mob-header{display:none;align-items:center;justify-content:space-between;background:var(--bg2);border-bottom:1px solid var(--bd);padding:0 18px;height:var(--hdr-h);position:fixed;top:0;left:0;right:0;z-index:50}
+.mob-header{display:none;align-items:center;justify-content:space-between;background:var(--bg2);border-bottom:1px solid var(--bd);padding:0 18px;padding-top:var(--safe-t);height:calc(var(--hdr-h) + var(--safe-t));position:fixed;top:0;left:0;right:0;z-index:50}
 .mob-title{font-family:var(--lora);font-size:17px;font-weight:600}
 .mob-proto-btn{font-family:var(--mono);font-size:10px;padding:5px 12px;border-radius:20px;border:1px solid var(--p1);color:var(--p1);background:var(--p1d);cursor:pointer;max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;-webkit-tap-highlight-color:transparent}
 .bottom-tabs{display:none;position:fixed;bottom:0;left:0;right:0;height:calc(var(--tab-h) + var(--safe-b));padding-bottom:var(--safe-b);background:var(--bg2);border-top:1px solid var(--bd);z-index:100;align-items:stretch}
@@ -68,11 +68,11 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 .tab-label{font-family:var(--mono);font-size:9px;letter-spacing:.05em}
 .main{overflow-y:auto;height:100vh;padding:32px 36px 60px;position:relative;z-index:1}
 @media(max-width:767px){
-  .app{grid-template-columns:1fr;padding-top:var(--hdr-h)}
+  .app{grid-template-columns:1fr;padding-top:calc(var(--hdr-h) + var(--safe-t))}
   .sidebar{display:none}
   .mob-header{display:flex}
   .bottom-tabs{display:flex}
-  .main{height:calc(100dvh - var(--hdr-h));padding:16px 16px calc(var(--tab-h) + var(--safe-b) + 16px);overflow-y:auto;-webkit-overflow-scrolling:touch}
+  .main{height:calc(100dvh - var(--hdr-h) - var(--safe-t));padding:16px 16px calc(var(--tab-h) + var(--safe-b) + 16px);overflow-y:auto;-webkit-overflow-scrolling:touch}
 }
 .panel{display:none;animation:fadeUp .18s ease}
 .panel.on{display:block}
@@ -764,6 +764,14 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;heigh
       <div style="font-family:var(--mono);font-size:10px;color:var(--p3);margin-top:2px">Connected via MCP</div>
     </div>
     <span style="font-family:var(--mono);font-size:10px;color:var(--p3)">✓ Active</span>
+  </div>
+  <div class="settings-row">
+    <div style="flex:1">
+      <div class="settings-label">Anthropic API Key</div>
+      <div style="font-family:var(--mono);font-size:10px;color:var(--dim);margin-top:2px">Required for AI protocol reviews</div>
+      <div style="font-family:var(--mono);font-size:9px;color:var(--dim);margin-top:2px">Get yours at console.anthropic.com</div>
+    </div>
+    <input type="password" id="anthropicApiKey" placeholder="sk-ant-..." style="font-family:var(--mono);font-size:10px;padding:4px 8px;border:1px solid var(--bd);border-radius:4px;background:var(--sf2);color:var(--text);width:140px" onchange="localStorage.setItem('rp_anthropic_key',this.value);toast('API key saved ✓')">
   </div>
   <div class="settings-row">
     <div>
@@ -3291,9 +3299,12 @@ async function syncBodySpec(){
   if(btn){btn.disabled=true;btn.style.opacity='0.6';}
   if(lbl) lbl.textContent='Syncing…';
   try{
+    const apiKey=localStorage.getItem('rp_anthropic_key')||'';
+    const bsHeaders={'Content-Type':'application/json','anthropic-dangerous-direct-browser-access':'true'};
+    if(apiKey) bsHeaders['x-api-key']=apiKey;
     const resp=await fetch('https://api.anthropic.com/v1/messages',{
       method:'POST',
-      headers:{'Content-Type':'application/json'},
+      headers:bsHeaders,
       body:JSON.stringify({
         model:'claude-sonnet-4-6',
         max_tokens:1000,
@@ -3498,6 +3509,9 @@ function renderSettings(){
     var el=document.getElementById(k);
     if(el) el.checked=displayPrefs[k]!==false;
   });
+  // API key
+  var ak=document.getElementById('anthropicApiKey');
+  if(ak) ak.value=localStorage.getItem('rp_anthropic_key')||'';
   // Withings worker URL
   var ww=document.getElementById('withingsWorkerUrl');
   if(ww) ww.value=localStorage.getItem('rp_withings_worker')||'';
@@ -3637,18 +3651,21 @@ async function runProtocolReview(key){
       +'. Avg energy: '+(recentCheckins.length?Math.round(recentCheckins.reduce(function(a,c){return a+c.energy;},0)/recentCheckins.length*10)/10:'n/a')+'.'
       +' You MUST respond with ONLY a valid JSON object. No markdown, no backticks, no explanation. Start your response with { and end with }.'
       +' Format: {"verdict":"one sentence verdict","trend":"fat loss","adherence_pct":'+adherence+',"highlights":["finding 1","finding 2","finding 3"],"recommendation":"one actionable sentence","caution":null}';
+    var apiKey=localStorage.getItem('rp_anthropic_key')||'';
+    var headers={'Content-Type':'application/json','anthropic-dangerous-direct-browser-access':'true'};
+    if(apiKey) headers['x-api-key']=apiKey;
     var resp=await fetch('https://api.anthropic.com/v1/messages',{
       method:'POST',
-      headers:{
-        'Content-Type':'application/json',
-        'anthropic-dangerous-direct-browser-access':'true'
-      },
+      headers:headers,
       body:JSON.stringify({model:'claude-sonnet-4-6',max_tokens:800,
         system:'You are a body recomposition analysis assistant. Always respond with pure JSON only — no markdown, no code blocks, no preamble. Your entire response must be a single valid JSON object starting with { and ending with }.',
         messages:[{role:'user',content:prompt}]})
     });
     var rawText=await resp.text();
-    if(!resp.ok) throw new Error('HTTP '+resp.status+': '+rawText.slice(0,120));
+    if(!resp.ok){
+      if(resp.status===401) throw new Error('API key required — add yours in Settings → Integrations');
+      throw new Error('HTTP '+resp.status+': '+rawText.slice(0,120));
+    }
     var data;
     try{data=JSON.parse(rawText);}catch(e){throw new Error('Non-JSON response: '+rawText.slice(0,120));}
     if(data.error) throw new Error(data.error.type+': '+data.error.message);
