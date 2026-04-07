@@ -1588,7 +1588,7 @@ function renderHistory(){
           +'</div></div>';
       }).join('');
     }
-    const scoreHtml=ci?'<div class="day-score" style="color:var(--p3)">Zzz '+ci.sleep+'</div><div class="day-score" style="color:var(--p1)">E '+ci.energy+'</div>':'';
+    const scoreHtml=ci?'<div class="day-score" style="color:var(--p3)">Zzz '+ci.sleep+'</div><div class="day-score" style="color:var(--p1)">E '+ci.energy+'</div><div class="day-score" style="color:var(--p2)">H '+ci.hunger+'</div><div class="day-score" style="color:var(--p4)">R '+ci.recovery+'</div>':'';
     const ciRow=ci?'<div style="padding:8px 0;border-top:1px solid var(--bd);margin-top:6px;font-family:var(--mono);font-size:10px;color:var(--dim)">Check-in · Sleep:'+ci.sleep+' Energy:'+ci.energy+' Hunger:'+ci.hunger+' Recovery:'+ci.recovery+(ci.sideEffects&&ci.sideEffects!=='None'?' · '+ci.sideEffects:'')+'</div>':'';
     const allDots=(showDoses?d.doses.map(function(l){return'<div class="day-dot" style="background:'+getPColor(l.compound)+'" title="'+l.compound+'"></div>';}).join(''):'')
       +(showBody&&d.body.length?'<div class="day-dot" style="background:var(--p3)" title="Body"></div>':'');
@@ -3192,8 +3192,9 @@ async function initApp(){
   );
 
   if(!hasAnyData){
-    // Show restore prompt — do NOT seed defaults until user chooses
-    openModal('restorePromptModal');
+    // First load on GitHub Pages — auto-seed defaults silently, no prompt needed
+    // User can restore a backup anytime from Settings → Restore
+    await seedDefaults();
     return;
   }
 
