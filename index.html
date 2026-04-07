@@ -960,15 +960,15 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;heigh
 </div>
 
 <!-- First-load restore prompt -->
-<div class="modal-overlay" id="restorePromptModal" style="z-index:500">
-  <div class="modal" style="max-width:480px;text-align:center;padding:32px 24px">
-    <div style="font-family:var(--serif);font-size:22px;margin-bottom:10px">No saved data found</div>
-    <div style="font-family:var(--mono);font-size:11px;color:var(--mid);line-height:1.7;margin-bottom:20px">This appears to be a fresh session.<br>If you have a backup file, restore it now to recover your logs, body comp data, and protocols.</div>
+<div class="modal-overlay" id="restorePromptModal" style="z-index:9999;background:rgba(0,0,0,0.92)">
+  <div class="modal" style="max-width:380px;text-align:center;padding:32px 24px">
+    <div style="font-family:var(--lora);font-size:20px;font-weight:600;margin-bottom:10px">Welcome back</div>
+    <div style="font-family:var(--mono);font-size:11px;color:var(--mid);line-height:1.7;margin-bottom:20px">No data found on this device.<br>Restore a backup to recover your logs — or start fresh to use the app with demo data.</div>
     <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
       <label class="btn" style="cursor:pointer">↑ Restore Backup<input type="file" accept=".json" style="display:none" onchange="restoreFromPrompt(this)"></label>
       <button class="btn ghost" onclick="dismissRestorePrompt()">Start Fresh</button>
     </div>
-    <div style="font-family:var(--mono);font-size:10px;color:var(--dim);margin-top:16px">Tip: use the Backup button regularly to save your data.</div>
+    <div style="font-family:var(--mono);font-size:10px;color:var(--dim);margin-top:16px;line-height:1.5">Tip: use Settings → Backup JSON regularly<br>to save your data across devices.</div>
   </div>
 </div>
 
